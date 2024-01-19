@@ -6,7 +6,7 @@ lab:
 
 # Partage des connaissances de l’équipe à l’aide de wikis de projet Azure
 
-## Manuel de labo pour l’étudiant
+## Manuel de labo de l’étudiant
 
 ## Configuration de laboratoire requise
 
@@ -63,7 +63,7 @@ Dans cette tâche, vous allez publier une branche d’un référentiel Azure Dev
     | Paramètre | Valeur |
     | ------- | ----- |
     | Référentiel | **EShopOnWeb** |
-    | Agence | **main** |
+    | Branche | **main** |
     | Dossier | **/Documents** |
     | Nom du wiki | **EShopOnWeb (Documents)** |
 

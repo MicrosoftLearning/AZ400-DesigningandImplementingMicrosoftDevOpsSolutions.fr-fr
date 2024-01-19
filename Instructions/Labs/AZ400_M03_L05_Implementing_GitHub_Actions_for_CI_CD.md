@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Mettre en œuvre GitHub Actions pour CI/CD
+  title: Implémentation de GitHub Actions pour CI/CD
   module: 'Module 03: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
-# Mettre en œuvre GitHub Actions pour CI/CD
+# Implémentation de GitHub Actions pour CI/CD
 
 ## Manuel de labo de l’étudiant
 
@@ -16,15 +16,15 @@ lab:
 
 - Vérifiez que vous disposez d'un compte Microsoft ou d'un compte Microsoft Entra avec le rôle Contributeur ou Propriétaire dans l'abonnement Azure. Pour plus d’informations, consultez [Répertorier les attributions de rôle Azure à l’aide du portail Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) et [Afficher et attribuer des rôles d’administrateur dans Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
-- **Si vous n’avez pas encore de compte GitHub** utilisable dans le cadre de ce labo, suivez les instructions disponibles dans [Créer un nouveau compte GitHub](https://github.com/join) pour en créer un.
+- **Si vous n’avez pas encore de compte GitHub** utilisable pour ce labo, suivez les instructions disponibles dans [Inscription à un nouveau compte GitHub](https://github.com/join) pour en créer un.
 
 ## Présentation du labo
 
-Dans ce labo, vous allez découvrir comment mettre en œuvre un workflow GitHub Actions qui déploie une application web Azure.
+Dans ce labo, vous allez découvrir comment implémenter un workflow GitHub Actions qui déploie une application web Azure.
 
 ## Objectifs
 
-À la fin de ce labo, vous serez en mesure d’accomplir les tâches suivantes :
+À la fin de ce labo, vous serez en mesure d’effectuer les tâches suivantes :
 
 - Implémenter un flux de travail GitHub Actions pour CI/CD.
 - Expliquer les caractéristiques de base des workflows GitHub Actions.
@@ -35,28 +35,28 @@ Dans ce labo, vous allez découvrir comment mettre en œuvre un workflow GitHub 
 
 ### Exercice 0 : importer eShopOnWeb dans votre référentiel GitHub
 
-Dans le cadre de cet exercice, vous importerez le code de référentiel [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existant dans votre propre référentiel privé GitHub.
+Dans cet exercice, vous allez importer le code de référentiel [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existant dans votre propre référentiel privé GitHub.
 
 Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labos.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
 
 #### Tâche 1 : créer un référentiel public dans GitHub et importer eShopOnWeb
 
-Dans le cadre de cette tâche, vous créerez un référentiel GitHub public vide et importer le référentiel [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existant.
+Dans cette tâche, vous allez créer un référentiel GitHub public vide et importer le référentiel [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existant.
 
-1. Lancez un navigateur web sur l’ordinateur de labo, accédez au [site web GitHub](https://github.com/), connectez-vous à l’aide de votre compte et cliquez sur **Nouveau** pour créer un référentiel.
+1. À partir de l’ordinateur de labo, démarrez un navigateur web, accédez au [site web GitHub](https://github.com/), connectez-vous à l’aide de votre compte, puis cliquez sur **Nouveau** pour créer un référentiel.
 
     ![Créer un référentiel](images/github-new.png)
 
-2. Sur la page **Créer un référentiel**, cliquez sur le lien **Importer un référentiel** (sous le titre de la page).
+2. Dans la page **Créer un référentiel**, cliquez sur le lien **Importer un référentiel** (sous le titre de la page).
 
-    > REMARQUE : vous pouvez également accéder directement au site web d’importation à l’adresse https://github.com/new/import.
+    > REMARQUE : vous pouvez également ouvrir le site web d’importation directement à l’adresse https://github.com/new/import.
 
-3. Sur la page **Importer votre projet dans GitHub** :
+3. Dans la page **Importer votre projet dans GitHub** :
 
     | Champ | Valeur |
     | --- | --- |
@@ -67,34 +67,34 @@ Dans le cadre de cette tâche, vous créerez un référentiel GitHub public vide
 
 4. Cliquez sur **Commencer l’importation** et attendez que votre référentiel soit prêt.
 
-5. Sur la page du référentiel, accédez aux **Paramètres**, cliquez sur **Actions > Général** et sélectionnez l’option **Autoriser toutes les actions et tous les workflows réutilisables**. Cliquez sur **Save**(Enregistrer).
+5. Dans la page du dépôt, accédez à **Paramètres**, cliquez sur **Actions > Général** et choisissez l’option **Autoriser toutes les actions et tous les workflows réutilisables**. Cliquez sur **Save**(Enregistrer).
 
     ![Activer GitHub Actions](images/enable-actions.png)
 
 ### Exercice 1 : configurer votre référentiel GitHub et l’accès à Azure
 
-Dans le cadre de cet exercice, vous créerez un principal de service Azure pour autoriser GitHub à accéder à votre abonnement Azure à partir de GitHub Actions. Vous configurerez également le workflow GitHub qui génère, teste et déploie votre site web sur Azure.
+Dans cet exercice, vous allez créer un principal de service Azure pour autoriser GitHub à accéder à votre abonnement Azure à partir de GitHub Actions. Vous allez également configurer le workflow GitHub qui génèrera, testera et déploiera votre site web sur Azure.
 
 #### Tâche 1 : créer un principal de service Azure et l’enregistrer en tant que secret GitHub
 
-Dans le cadre de cette tâche, vous créerez le principal de service Azure utilisé par GitHub pour déployer les ressources souhaitées. Vous pouvez également utiliser [OpenID Connect dans Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure) comme mécanisme d’authentification sans secret.
+Dans cette tâche, vous allez créer le principal de service Azure utilisé par GitHub pour déployer les ressources souhaitées. En guise d’alternative, vous pouvez également utiliser [OpenID Connect dans Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure), comme mécanisme d’authentification sans secret.
 
-1. Sur votre ordinateur de labo, ouvrez le Portail Azure (https://portal.azure.com/)) dans votre navigateur.
-2. Sur le portail, cliquez sur **Groupes de ressources**.
-3. Cliquez sur **+ Créer** pour créer un groupe de ressources dans le cadre de cet exercice.
-4. Dans l’onglet **Créer un groupe de ressources**, nommez votre groupe de ressources comme suit : **rg-az400-eshoponweb-NAME** (remplacez NAME par un alias unique). Cliquez sur **Vérifier + Créer > Créer**.
-5. Dans le Portail Azure, ouvrez **Cloud Shell** (près de la barre de recherche).
+1. Sur votre ordinateur de labo, ouvrez le portail Azure (https://portal.azure.com/)dans une fenêtre de navigateur.
+2. Dans le portail, recherchez les **Groupes de ressources** et cliquez dessus.
+3. Cliquez sur **+ Créer** pour créer un groupe de ressources pour l’exercice.
+4. Sous l’onglet **Créer un groupe de ressources**, donnez le nom suivant à votre groupe de ressources : **rg-az400-eshoponweb-NAME** (remplacez NAME par un alias unique). Cliquez sur **Vérifier + créer > Créer**.
+5. Dans le portail Azure, ouvrez **Cloud Shell** (à côté de la barre de recherche).
 
-    > REMARQUE : si vous ouvrez Cloud Shell pour la première fois, vous devez configurer le [stockage persistant](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage).
+    > REMARQUE : si c’est la première fois que vous ouvrez Cloud Shell, vous devez configurer le [stockage persistant](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)
 
-6. Assurez-vous que le terminal s’exécute en mode **Bash** et exécutez la commande suivante en remplaçant **SUBSCRIPTION-ID** et **RESOURCE-GROUP** par vos propres identificateurs (tous deux sont consultables sur la page **Vue d’ensemble** du groupe de ressources) :
+6. Vérifiez que le terminal s’exécute en mode **Bash** et exécutez la commande suivante, en remplaçant **SUBSCRIPTION-ID** et **RESOURCE-GROUP** par vos propres identificateurs (les deux sont disponibles dans la page **Vue d’ensemble** du groupe de ressources) :
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
-    > REMARQUE : veillez à saisir ou coller ces informations sur une seule ligne.
-    > REMARQUE : cette commande créera un principal de service avec un accès de niveau Contributeur au groupe de ressources que vous venez de créer. Cela permet de garantir que GitHub Actions disposera des autorisations nécessaires pour interagir avec ce groupe de ressources uniquement, et pas plus (et non pas le reste de l’abonnement).
+    > REMARQUE : assurez-vous de saisir ou de coller ces éléments sous la forme d’une seule ligne.
+    > REMARQUE : cette commande crée un principal de service avec un accès Contributeur au groupe de ressources créé précédemment. De cette façon, nous nous assurons que GitHub Actions aura uniquement les autorisations nécessaires pour interagir exclusivement avec ce groupe de ressources (et non avec le reste de l’abonnement)
 
-7. La commande générera un objet JSON que vous utiliserez ultérieurement en tant que secret GitHub pour le workflow. Copiez le JSON. Le JSON contient les identificateurs utilisés dans le cadre de l’authentification auprès d’Azure au nom d’une identité Microsoft Entra (principal de service).
+7. La commande génère un objet JSON que vous utiliserez ultérieurement comme secret GitHub pour le workflow. Copiez le JSON. Le JSON contient les identificateurs utilisés pour s’authentifier auprès d’Azure dans le nom d’une identité Microsoft Entra (principal de service).
 
     ```JSON
         {
@@ -105,78 +105,78 @@ Dans le cadre de cette tâche, vous créerez le principal de service Azure utili
             (...)
         }
     ```
-8. Vous devez également exécuter la commande suivante pour enregistrer le fournisseur de ressources pour l’**Azure App Service** que vous déploierez ultérieurement :
+8. Vous devez également exécuter la commande suivante pour inscrire le fournisseur de ressources au **Azure App Service** que vous allez déployer ultérieurement :
    ```bash
    az provider register --namespace Microsoft.Web
    ``` 
 10. Dans une fenêtre de navigateur, revenez à votre référentiel GitHub **eShopOnWeb**.
-11. Sur la page du référentiel, ouvrez les **Paramètres** et cliquez sur **Secrets et variables > Actions**. Cliquez sur **Nouveau secret de référentiel**
+11. Dans la page du référentiel, accédez à **Paramètres**, cliquez sur **Secrets et variables > Actions**. Cliquez sur **Nouveau secret de référentiel**.
     - Nom : **AZURE_CREDENTIALS**
-    - Secret : **collez l’objet JSON précédemment copié** (GitHub peut conserver plusieurs secrets sous le même nom utilisés par l’action [azure/ouverture de session](https://github.com/Azure/login)).
+    - Secret : **collez l’objet JSON précédemment copié ** (GitHub peut conserver plusieurs secrets sous le même nom, utilisés par l’action [azure/login](https://github.com/Azure/login))
 
-12. Cliquez sur **Ajouter un secret**. GitHub Actions sera à présent en mesure de référencer le principal de service à l’aide du secret de référentiel.
+12. Cliquez sur **Ajouter un secret**. À présent, GitHub Actions pourra référencer le principal de service à l’aide du secret du référentiel.
 
-#### Tâche 2 : modifier et exécuter le workflow GitHub
+#### Tâche 2 : modifier et exécuter le workflow GitHub
 
-Dans le cadre de cette tâche, vous modifierez le workflow GitHub donné et l’exécuterez pour déployer la solution dans votre propre abonnement.
+Dans cette tâche, vous allez modifier le workflow GitHub donné et l’exécuter pour déployer la solution dans votre propre abonnement.
 
 1. Dans une fenêtre de navigateur, revenez à votre référentiel GitHub **eShopOnWeb**.
 2. Sur la page du référentiel, accédez au **code** et ouvrez le fichier suivant : **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**. Ce workflow définit le processus CI/CD pour le code de site web .NET 7 donné.
-3. Supprimez les commentaires de la section **active** (supprimez « # »). Le workflow se déclenche à chaque transmission de type push vers la branche principale. Il est également possible de le déclencher manuellement (« workflow_dispatch »).
-4. Dans la section **env**, apportez les modifications suivantes :
-    - Remplacez **NAME** dans la variable **RESOURCE-GROUP**. Il doit s’agir du groupe de ressources que vous avez créé lors des étapes précédentes.
-    - (Facultatif) Vous pouvez choisir votre [région Azure](https://azure.microsoft.com/explore/global-infrastructure/geographies) la plus proche pour **LOCATION**. Par exemple, « eastus », « eastasia », « westus », etc.
+3. Supprimez les commentaires de la section **active** (supprimez « # »). Le workflow se déclenche avec chaque envoi (push) vers la branche principale et offre également un déclencheur manuel (« workflow_dispatch »).
+4. Dans la section  **env**, apportez les modifications suivantes :
+    - Remplacez **NAME** dans la variable **RESOURCE-GROUP**. Il doit s’agir du même groupe de ressources que vous avez créé dans les étapes précédentes.
+    - (Facultatif) Vous pouvez sélectionner votre [région Azure](https://azure.microsoft.com/explore/global-infrastructure/geographies) la plus proche pour **LOCATION**. Par exemple, « westeurope », « eastasia » ou « eastus », etc.
     - Remplacez **YOUR-SUBS-ID** dans **SUBSCRIPTION-ID**.
-    - Remplacez **NAME** dans **WEBAPP-NAME** par un alias unique. Il sera utilisé pour créer un site web globalement unique à l’aide d’Azure App Service.
-5. Lisez attentivement le workflow : les commentaires sont là pour vous aider à tout comprendre.
+    - Remplacez **NAME** dans **WEBAPP-NAME** par un alias unique. Il sera utilisé pour créer un site web global unique à l’aide d’Azure App Service.
+5. Lisez attentivement la description du flux de travail, les commentaires sont fournis pour vous aider à la compréhension.
 
-6. Cliquez sur **Démarrer la validation** et **validez les modifications** sans changer les valeurs par défaut (modification de la branche principale). Le workflow s’exécutera automatiquement.
+6. Cliquez sur **Démarrer la validation** et **Valider les modifications** en laissant les valeurs par défaut (modification de la branche principale). Le flux de travail est exécuté automatiquement.
 
-#### Tâche 3 : passer en revue l’exécution du workflow GitHub
+#### Tâche 3 : passer en revue l’exécution du flux de travail GitHub
 
-Dans le cadre de cette tâche, vous passerez en revue l’exécution du workflow GitHub :
+Dans cette tâche, vous allez passer en revue l’exécution du flux de travail GitHub :
 
 1. Dans une fenêtre de navigateur, revenez à votre référentiel GitHub **eShopOnWeb**.
-2. Sur la page du référentiel, accédez aux **actions** : vous y verrez la configuration du workflow avant son exécution. Cliquez dessus.
+2. Dans la page du référentiel, accédez à **Actions**, vous verrez la configuration du flux de travail avant l’exécution. Cliquez dessus.
 
     ![Workflow GitHub en cours](images/gh-actions.png)
 
-3. Attendez la fin de l’exécution du workflow. Le **résumé** affiche les deux travaux de workflow, l’état et les artefacts conservés suite à l’exécution. Vous pouvez cliquer sur chaque travail pour examiner les journaux d’activité.
+3. Attendez la fin de l’exécution du workflow. Dans le **Résumé**, vous pouvez voir les deux travaux de workflow, l’état et les artefacts conservés à partir de l’exécution. Vous pouvez cliquer dans chaque travail pour passer en revue les journaux.
 
     ![Workflow réussi](images/gh-action-success.png)
 
-4. Dans une fenêtre de navigateur, rouvrez le Portail Azure (https://portal.azure.com/)). Ouvrez le groupe de ressources que vous venez de créer. Vous verrez que l’action GitHub a créé un plan Azure App Service + App Service à l’aide d’un modèle Bicep. Vous pouvez voir le site web publié qui ouvre App Service et cliquer sur **Parcourir**.
+4. Dans une fenêtre de navigateur, revenez au portail Azure (https://portal.azure.com/)). Ouvrez le groupe de ressources créé précédemment. Vous verrez que GitHub Actions, à l’aide d’un modèle bicep, a créé un Plan Azure App Service + App Service. Vous pouvez voir le site web publié en ouvrant App Service et en cliquant sur **Parcourir**.
 
     ![Parcourir WebApp](images/browse-webapp.png)
 
-#### (FACULTATIF) Tâche 4 : ajouter une approbation manuelle avant le déploiement à l’aide d’environnements GitHub
+#### (Facultatif) Tâche 4 : ajouter une approbation manuelle avant le déploiement à l’aide d’Environnements GitHub
 
-Dans le cadre de cette tâche, vous utiliserez des environnements GitHub pour demander une approbation manuelle avant d’exécuter les actions définies sur le travail de déploiement de votre workflow.
+Dans cette tâche, vous allez utiliser des environnements GitHub pour demander une approbation manuelle avant d’exécuter les actions définies sur le travail de déploiement de votre workflow.
 
-1. Sur la page du référentiel, accédez au **code** et ouvrez le fichier suivant : **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**.
-2. Dans la section **déployer** du travail, vous trouverez une référence à un **environnement** appelé **Développement**. Les [environnements](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) qu’utilise GitHub ajoutent des règles de protection (et des secrets) pour vos cibles.
+1. Dans la page du référentiel, accédez à **Code** et ouvrez le fichier suivant : **eShopOnWeb/.github/workflows/eshoponweb-cicd.yml**.
+2. Dans la section du travail de **déploiement**, vous trouverez une référence à un **environnement** appelé **Développement**. Les [environnements](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) utilisés par GitHub ajoutent des règles de protection (et des secrets) pour vos cibles.
 
-3. Sur la page du référentiel, accédez aux **paramètres**. Ouvrez **Environnements**, puis cliquez sur **Nouvel environnement**.
-4. Nommez-le **Développement**, puis cliquez sur **Configurer l’environnement**.
+3. Dans la page du référentiel, accédez à **Paramètres**, ouvrez **Environnements**, puis cliquez sur **Nouvel environnement**.
+4. Attribuez-lui le nom **Développement**, puis cliquez sur **Configurer l’environnement**.
 
-    > REMARQUE : si un environnement appelé **Développement** existe déjà dans la liste des **environnements**, ouvrez sa configuration en cliquant sur son nom.  
+    > Remarque : si un environnement appelé **Développement** existe déjà dans la liste **Environnements**, ouvrez sa configuration en cliquant sur le nom de l’environnement.  
     
-5. Sous l’onglet **Configurer le développement**, cochez l’option **Réviseurs requis** et sélectionnez votre compte GitHub en tant que réviseur. Cliquez sur **Enregistrer les règles de protection**.
-6. Testez à présent la règle de protection. Sur la page du référentiel, accédez aux **actions**. Cliquez sur le workflow **Génération et test d’eShopOnWeb**, puis sélectionnez **Exécuter le workflow > Exécuter le workflow** pour l’exécuter manuellement.
+5. Dans l’onglet **Configurer le développement**, cochez l’option **Réviseurs requis** et votre compte GitHub en tant que réviseur. Cliquez sur **Enregistrer les règles de protection**.
+6. À présent, testez la règle de protection. Dans la page du référentiel, accédez à **Actions**, cliquez sur le workflow **eShopOnWeb Build and Test**, puis sur **Exécuter le workflowflux > Exécuter le workflow** pour exécuter manuellement.
 
     ![déclencher manuellement le workflow](images/gh-manual-run.png)
 
-7. Cliquez sur l’exécution démarrée du workflow et attendez la fin du travail **buildandtest**. Une demande de vérification s’affiche lorsque le workflow est prêt pour le travail de **déploiement**.
+7. Cliquez sur l’exécution démarrée du workflow et attendez que le travail **buildandtest** se termine. Une demande de révision s’affiche lorsque le travail de **déploiement** est atteint.
 
-8. Cliquez sur **Vérifier les déploiements**, cochez la case **Développement**, puis cliquez sur **Approuver et déployer**.
+8. Cliquez sur **Réviser les déploiements**, cochez **Développement**, puis cliquez sur **Approuver et déployer**.
 
     ![approbation](images/gh-approve.png)
 
-9. Le workflow suit l’exécution et l’achèvement du travail de **déploiement**.
+9. Le workflow suit l’exécution du travail de **déploiement** et se termine.
 
-### Exercice 2 : Supprimer les ressources du labo Azure.
+### Exercice 2 : supprimer les ressources du labo Azure
 
-Dans le cadre de cet exercice, vous utiliserez Azure Cloud Shell pour supprimer les ressources Azure provisionnées dans ce labo pour éliminer les frais superflus.
+Dans cet exercice, vous allez utiliser Azure Cloud Shell pour supprimer les ressources Azure provisionnées dans ce labo afin d’éviter des frais inutiles.
 
 1. Dans le Portail Azure, ouvrez la session shell **Bash** dans le volet **Cloud Shell**.
 2. Listez tous les groupes de ressources créés dans les labos de ce module en exécutant la commande suivante :
@@ -195,4 +195,4 @@ Dans le cadre de cet exercice, vous utiliserez Azure Cloud Shell pour supprimer 
 
 ## Révision
 
-Dans ce labo, vous avez mis en œuvre un workflow GitHub Actions qui déploie une application web Azure.
+Dans ce labo, vous avez implémenté un workflow GitHub Actions qui déploie une application web Azure.
