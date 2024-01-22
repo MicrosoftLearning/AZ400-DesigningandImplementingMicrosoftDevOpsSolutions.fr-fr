@@ -6,7 +6,7 @@ lab:
 
 # Activation de l’intégration continue à Azure Pipelines
 
-## Manuel de labo pour l’étudiant
+## Manuel de labo de l’étudiant
 
 ## Configuration de laboratoire requise
 
@@ -41,13 +41,13 @@ Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se com
 
 Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à utiliser par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Attribuez au projet le nom **eShopOnWeb** et conservez les valeurs par défaut des autres champs. Sélectionnez **Créer**.
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Attribuez au projet le nom **eShopOnWeb** et conservez les valeurs par défaut des autres champs. Cliquez sur **Créer**.
 
 #### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Repos > Fichiers**, **Importer un référentiel**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
 
 2. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
@@ -80,11 +80,11 @@ Commençons par importer le pipeline de build nommé [eshoponweb-ci-pr.yml](http
     - **DotNet Publish** : publie l’application et ses dépendances dans un dossier en vue d’un déploiement sur un système d’hébergement. Dans ce cas, il s’agit de **Build.ArtifactStagingDirectory**.
 
 7. Cliquez sur le bouton **Enregistrer** pour enregistrer la définition de pipeline.
-8. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension, puis sur l’option **Renommer/Supprimer**. Nommez-le **eshoponweb-ci-pr**, puis cliquez sur **Enregistrer**.
+8. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension et sur l’option **Renommer/Déplacer**. Nommez-le **eshoponweb-ci-pr**, puis cliquez sur **Enregistrer**.
 
 #### Tâche 2 : ajouter des stratégies de branche
 
-Dans cette tâche, vous allez ajouter des stratégies à la branche principale et autoriser uniquement les modifications à l’aide de demandes de tirage (pull request) qui sont conformes aux stratégies définies. Vous souhaitez vous assurer que les modifications apportées à une branche sont vérifiées avant d’être fusionnées.
+Dans cette tâche, vous allez ajouter des stratégies à la branche principale et autoriser uniquement les modifications à l’aide de demandes de tirage (pull) qui sont conformes aux stratégies définies. Vous souhaitez vous assurer que les modifications apportées à une branche sont vérifiées avant d’être fusionnées.
 
 1. Accédez à la section **Repos > Branches**.
 2. Sous l’onglet **Exploiter** du volet **Branches**, pointez sur l’entrée de branche **principale** pour afficher le symbole de points de suspension sur le côté droit.
@@ -167,7 +167,7 @@ La définition de pipeline de build par défaut n’active pas l’intégration 
 4. Sélectionnez **Créer une branche pour cette validation**.
 5. Conservez le nom de branche par défaut et laissez l’option **Démarrer une demande de tirage** cochée.
 6. Dans le menu Paramètres, cliquez sur **Enregistrer**
-7. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension, puis sur l’option **Renommer/Supprimer**. Nommez-le **eshoponweb-ci**, puis cliquez sur **Enregistrer**.
+7. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension et sur l’option **Renommer/Déplacer**. Nommez-le **eshoponweb-ci**, puis cliquez sur **Enregistrer**.
 8. Accédez à **Repos > Demandes de tirage**.
 9. Cliquez sur la demande de tirage **« Mettre à jour eshoponweb-ci.yml pour Azure Pipelines »**. 
 10. Une fois toutes les validations réussies, dans le coin supérieur droit, cliquez sur **Approuver**. Vous pouvez maintenant cliquer sur **Terminer**.

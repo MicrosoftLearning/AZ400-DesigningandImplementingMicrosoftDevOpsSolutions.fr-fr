@@ -6,7 +6,7 @@ lab:
 
 # Planification et gestion de portefeuille Agile avec Azure Boards
 
-# Manuel de labo pour l’étudiant
+# Manuel de labo de l’étudiant
 
 ## Configuration de laboratoire requise
 
@@ -45,7 +45,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Nommez votre projet **eShopOnWeb**. Définissez l’option Visibilité sur **Privée**.
 2. Cliquez sur **Avancé** et spécifiez **Scrum** comme **Processus d’élément de travail**.
- Sélectionnez **Créer**.
+ Cliquez sur **Créer**.
 
     ![Création d’un projet](images/create-project.png)
 
@@ -98,7 +98,10 @@ Chaque nouveau projet est configuré avec une équipe par défaut, dont le nom c
 
     ![Faites de même pour Sprint 2 et 3, et vérifiez qu’ils sont créés pour l’équipe « EShop-Web »](images/m1/EShop-WEB-3sprints_v1.png)
 
-11. De retour dans le volet **Tableaux**, en haut du volet, sélectionnez l’onglet **Zones**. Vous y trouverez une zone générée automatiquement dont le nom correspond au nom de l’équipe.
+11. Toujours dans le volet **Paramètres du projet / Tableaux / Configuration d’équipe**, en haut du volet, sélectionnez l’onglet **Zones**. Vous y trouverez une zone générée automatiquement avec le nom correspondant au nom de l’équipe.
+
+![Dans Zones, sélectionnez EShopOnWeb\EShop-Web.](images/m1/EShop-WEB-areas_v1.png)
+
 12. Cliquez sur les points de suspension (...) en regard de l’entrée **zone par défaut** et, dans la liste déroulante, sélectionnez **Inclure les sous-zones**.
 
     ![Sous l’onglet « Zones », cliquez sur les points de suspension (...) pour la zone « EShop-WEB », puis sélectionnez « Inclure les sous-zones »](images/m1/EShop-WEB-sub_areas_v1.png)
@@ -136,11 +139,13 @@ Les éléments de travail jouent un rôle important dans Azure DevOps. Qu’il 
 8. Dans la section **Travail associé** en bas à droite, sélectionnez l’entrée **Ajouter un lien** et, dans la liste déroulante, sélectionnez **Nouvel élément**.
 9. Dans le volet **Ajouter un lien**, dans la liste déroulante **Type de lien**, sélectionnez **Enfant**. Ensuite, dans la liste déroulante **Type d’élément de travail**, sélectionnez **Fonctionnalité**, dans la zone de texte **Titre**, tapez **Tableau de bord de formation**, puis cliquez sur **OK**.
 
-    ![Incluez le titre « Tableau de bord de formation » et cliquez sur « OK ».](images/m1/EShop-WEB-child_feature_v1.png)
+    ![Incluez le titre « Tableau de bord de formation » et cliquez sur « OK ».](images/m1/EShop-WEB-create_child_feature.png)
 
     > **Remarque** : dans le volet **Tableau de bord de formation**, notez que l’affectation, la **Zone** et l’**Itération** possèdent déjà les mêmes valeurs que l’épopée sur laquelle la fonctionnalité est basée. En outre, la fonctionnalité est automatiquement liée à l’élément parent à partir duquel elle a été créée.
 
-10. Dans le volet **Tableau de bord de formation**, cliquez sur **Enregistrer et fermer**.
+10. Cliquez sur **Ajouter un lien** pour enregistrer l’élément Enfant. Dans le panneau (Nouvelle fonctionnalité) **Tableau de bord d’entraînement**, cliquez sur **Enregistrer et fermer**.
+
+![Épopée avec élément enfant lié](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
 11. Dans le volet de navigation verticale du portail Azure DevOps, dans la liste des éléments **Boards**, sélectionnez **Tableaux**.
 12. Dans le volet **Tableaux**, sélectionnez l’entrée **Tableaux EShop-WEB**. Le tableau de l’équipe correspondante s’ouvre alors.
@@ -217,23 +222,27 @@ Les réunions de planification se composent généralement de deux parties. Dans
 Le backlog de sprint doit contenir toutes les informations dont l’équipe a besoin pour réussir le travail dans le délai imparti sans avoir à se précipiter à la fin. Avant de planifier le sprint, vous devez avoir créé, hiérarchisé et estimé le backlog et défini les sprints.
 
 1. Dans le volet de navigation vertical du portail Azure DevOps, sélectionnez l’icône **Boards** et, dans la liste des éléments**Boards**, sélectionnez **Sprints**.
-2. Sous l’onglet **Tableau des tâches** de l’affichage **Sprints**, dans la barre d’outils, sur le côté droit, sélectionnez le symbole **Options d’affichage** (directement à gauche de l’icône d’entonnoir) et, dans la liste déroulante **Options d’affichage**, sélectionnez l’entrée **Détails du travail**.
+2. Sous l’onglet **Tableau des tâches** de l’affichage **Sprints**, dans la barre d’outils, sur le côté droit, sélectionnez le symbole **Options d’affichage** (directement à gauche de l’icône d’entonnoir) et, dans la liste déroulante **Options d’affichage**, sélectionnez l’entrée **Détails du travail**. Sélectionnez **Sprint 2** comme filtre.
 
     ![Dans la fenêtre « Boards » > « Sprints », dans l’équipe « EShop-WEB », sélectionnez l’icône « Options d’affichage», puis cliquez sur « Détails du travail ».](images/m1/EShop-WEB-work_details_v1.png)
 
     > **Remarque** : le sprint actuel a une portée assez limitée. Il existe deux tâches dont l’état est **À faire**. À ce stade, aucune des deux tâches n’a été affectée. Pour chacune, une valeur numérique est visible à droite de l’entrée **Non attribué**, qui représente une estimation du travail restant.
 
-3. Dans le rectangle représentant la page **Ajouter une page pour les tutoriels les plus récents**, cliquez sur l’entrée **Non attribué** et, dans la liste des comptes d’utilisateur, sélectionnez votre compte pour affecter la tâche à vous-même.
+3. Dans la colonne **ToDo**, notez l’élément de tâche **Ajouter une page pour les tutoriels les plus récents**, cliquez sur l’entrée **Non affecté** et, dans la liste des comptes d’utilisateur, sélectionnez votre compte pour vous affecter la tâche.
 
 4. Sélectionnez l’onglet **Capacité** de la vue **Sprints**.
 
-    > **Remarque** : cette vue vous permet de définir les activités qu’un utilisateur peut entreprendre et à quel niveau de capacité.
+![Affichage des capacités du sprint](images/m1/EShop-WEB-capacity_v1.png)
 
-5. Sous l’onglet **Capacité** de la vue **Sprints**, directement sous l’étiquette **Activité**, dans la liste déroulante **Non attribué**, sélectionnez **Développement** et, dans la zone de texte **Capacité par jour**, tapez **1**.
+    > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
+
+5. Sous l’onglet **Capacité** de l’affichage **Sprints**, cliquez sur **+Ajouter un utilisateur** et sélectionnez votre compte d’utilisateur. Pour cet utilisateur, définissez le champ **Activité** sur **Développement** et, dans la zone de texte **Capacité par jour**, tapez **1**.
 
     > **Remarque** : cela représente 1 heure de travail de développement par jour. Notez que vous pouvez ajouter des activités supplémentaires à chaque utilisateur, dans le cas où leurs tâches ne se limitent pas au développement.
 
-    > **Remarque** : supposons que vous allez prendre des vacances.
+![Définir la capacité de développement pour un utilisateur](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+
+    > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
 
 6. Sous l’onglet **Capacité** de la vue **Sprints**, directement à côté de l’entrée représentant votre compte d’utilisateur, dans la colonne **Jours de congé**, cliquez sur l’entrée **0 jour**. Un panneau dans lequel vous pouvez définir vos jours de congé s’affiche alors.
 7. Dans le panneau affiché, utilisez la vue Calendrier pour définir vos vacances sur cinq jours ouvrés pendant le sprint actuel (au cours des trois prochaines semaines) et, une fois que vous avez terminé, cliquez sur **OK**.
@@ -257,7 +266,7 @@ Le backlog de sprint doit contenir toutes les informations dont l’équipe a be
 
     > **Remarque** : une façon de résoudre ce problème de capacité consiste à déplacer la tâche vers une itération ultérieure. Il existe plusieurs façons de procéder. Vous pouvez, par exemple, ouvrir la tâche ici et la modifier dans le volet d’accès aux détails de la tâche. Une autre approche consiste à utiliser la vue **Backlog**, qui permet de la déplacer via une option de menu en ligne. À ce stade, ne déplacez pas encore la tâche.
 
-11. Sous l’onglet **Tableau des tâches** de la vue **Sprints**, dans la barre d’outils, sur le côté droit, sélectionnez le symbole **Options d’affichage** (directement à gauche de l’icône d’entonnoir) et, dans la liste déroulante **Options d’affichage**, sélectionnez l’entrée **Personnes**.
+11. Sous l’onglet **Tableau des tâches** de l’affichage **Sprints**, dans la barre d’outils, à droite, sélectionnez le symbole **Options d’affichage** (juste à gauche de l’icône d’entonnoir) et, dans la liste déroulante **Options d’affichage**, sélectionnez l’entrée **Affecté à=** .
 
     > **Remarque** : votre affichage est alors ajusté afin que vous puissiez passer en revue la progression des tâches par personne plutôt que par élément de backlog.
 
@@ -273,6 +282,8 @@ Le backlog de sprint doit contenir toutes les informations dont l’équipe a be
     ![Fenêtre « Paramètres », vérifiez que tous les champs contiennent des informations](images/m1/EShop-WEB-styles_v1.png)
 
     > **Remarque** : cette opération définit toutes les cartes affectées à des activités de **Développement** en vert.
+
+    ![Styles de tâches de sprint](images/m1/EShop-WEB-sprint-green_v1.png)
 
 15. Dans le panneau **Paramètres**, sélectionnez l’onglet **Retards de traitement**.
 
@@ -297,7 +308,7 @@ Dans cette tâche, vous allez parcourir le processus de personnalisation des tab
 Afin d’optimiser la capacité d’une équipe à fournir en permanence des logiciels de haute qualité, Kanban met l’accent sur deux pratiques principales. La première, la visualisation du flux de travail, nécessite que vous mappiez les étapes de workflow de votre équipe et configuriez un tableau Kanban pour qu’il corresponde. La seconde, qui consiste à limiter la quantité de travail en cours, exige que vous définissiez des limites WIP (work-in-progress). Vous êtes alors prêt à suivre les progrès réalisés sur votre tableau Kanban et à surveiller les indicateurs clés pour réduire les délais ou les temps de cycle. Votre tableau kanban convertit votre backlog en panneau interactif, fournissant ainsi un flux de travail visuel. À mesure que le travail progresse de l’état de concept à sa réalisation, vous mettez à jour les éléments sur le tableau. Chaque colonne représente une étape du travail, et chaque carte représente un récit utilisateur (cartes bleues) ou un bogue (cartes rouges) à cette étape du travail. Toutefois, chaque équipe développe son propre processus au fil du temps, de sorte que la possibilité de personnaliser le tableau Kanban pour qu’il corresponde à la façon dont votre équipe travaille est essentielle pour la réussite de la livraison.
 
 1. Dans le volet de navigation vertical du portail Azure DevOps, dans la liste des éléments **Boards**, sélectionnez **Tableaux**.
-2. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres de l’équipe** (juste à droite de l’icône d’entonnoir).
+2. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres du tableau** (juste à droite de l’icône d’entonnoir).
 
     > **Remarque** : l’équipe met l’accent sur le travail effectué avec les données, de sorte qu’une attention particulière est portée à toute tâche associée à l’accès ou au stockage de données.
 
@@ -307,7 +318,7 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
 
     > **Remarque** : chaque fois qu’un élément de retard de traitement ou qu’un bogue est marqué avec **données**, cette balise est mise en surbrillance.
 
-4. Dans le panneau **Paramètres**, sélectionnez l’onglet **Annotations**.
+4. Dans **Configurer les paramètres du tableau** (engrenage) Dans le panneau **Paramètres**, sélectionnez l’onglet **Annotations**.
 
     > **Remarque** : vous pouvez spécifier les **annotations** que vous souhaitez inclure sur les carte pour faciliter la lecture et la navigation. Lorsqu’une annotation est activée, les éléments de travail enfants de ce type sont facilement accessibles en cliquant sur la visualisation sur chaque carte.
 
@@ -316,17 +327,17 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
     > **Remarque** : l’onglet **Tests** vous permet de configurer la façon dont vous souhaitez que les tests apparaissent et se comportent sur les cartes.
 
 6. Dans le panneau **Paramètres**, cliquez sur **Enregistrer et fermer** pour enregistrer la règle de style.
-7. Dans l’onglet **Tableau** du panneau **EShop-WEB**, cliquez avec le bouton droit sur l’élément de travail représentant l’élément de retard de traitement **En tant que client, je souhaite afficher les nouveaux tutoriels**, puis sélectionnez **Ouvrir**.
-8. Dans le panneau **En tant que client, je souhaite afficher les nouveaux tutoriels**, en haut du panneau, à droite de l’entrée **0 commentaires**, cliquez sur **Ajouter une balise**.
+7. À partir de l’onglet **Tableau** du panneau **EShop-WEB**, ouvrez l’élément de travail représentant l’élément de backlog **En tant que client, je souhaite afficher les nouveaux tutoriels**.
+8. Dans l’affichage d’élément détaillé, en haut du panneau, à droite de l’entrée **0 commentaire**, cliquez sur **Ajouter une étiquette**.
 9. Dans la zone de texte qui s’affiche, tapez **données** et appuyez sur la touche **Entrée**.
 10. Répétez l’étape précédente pour ajouter la balise **expérience utilisateur**.
-11. Dans le panneau **En tant que client, je souhaite afficher les nouveaux tutoriels**, cliquez sur **Enregistrer et fermer**.
+11. Enregistrez ces modifications en cliquant sur **Enregistrer et fermer**.
 
     ![Dans le panneau « En tant que client, je souhaite afficher les nouveaux tutoriels », cliquez sur « Enregistrer et fermer »](images/m1/EShop-WEB-tags_v1.png)
 
     > **Remarque** : les deux balises sont désormais visibles sur la carte, avec la balise **données** mise en surbrillance en jaune conformément à la configuration.
 
-12. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres de l’équipe** (juste à droite de l’icône d’entonnoir).
+12. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres du tableau** (juste à droite de l’icône d’entonnoir).
 13. Dans le panneau **Paramètres**, sélectionnez l’onglet **Colonnes**.
 
     > **Remarque** : cette section vous permet d’ajouter de nouvelles étapes au workflow.
@@ -335,14 +346,12 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
 
     > **Remarque** : la limite de travaux en cours de 1 indique qu’un seul élément de travail doit se trouver à ce stade à la fois. Vous devriez normalement fixer cette valeur à un niveau plus élevé, mais dans le cas présent, il n’y a que deux éléments de travail pour démontrer la fonctionnalité.
 
-15. Dans le panneau **Paramètres**, sous l’onglet **Colonnes**, faites glisser et déposez l’onglet nouvellement créé entre **Validé** et **Terminé**.
-16. Dans le panneau **Paramètres**, cliquez sur **Enregistrer et fermer**.
-
     ![Dans le panneau « Paramètres », cliquez sur « Enregistrer et fermer ».](images/m1/EShop-WEB-qa_column_v1.png)
 
-    > **Remarque** : vérifiez que le workflow comporte la nouvelle étape.
+15. Dans le panneau **Paramètres**, sélectionnez à nouveau l’onglet **Colonnes**. Notez les points de suspension en regard de la colonne **Approuvé par l’assurance qualité** que vous avez créée. Sélectionnez deux fois **Déplacer vers la droite** afin que la colonne Approuvé par l’assurance qualité soit positionnée entre **Commité** et **Terminé**.
+16. Dans le panneau **Paramètres**, cliquez sur **Enregistrer**.
 
-17. **Actualisez** le **portail Boards**, de sorte que la colonne **AQ approuvée**4 soit maintenant visible dans la vue tableau Kanban.
+17. **Actualisez** le **portail Boards**, afin que la colonne **Approuvé par l’assurance qualité** soit maintenant visible dans l’affichage de tableau Kanban.
 18. Faites glisser l’élément de travail **En tant que client, je souhaite voir les tutoriels que j’ai récemment consultés** de l’étape **Validé** dans l’étape **AQ approuvée**.
 19. Faites glisser l’élément de travail **En tant que client, je souhaite afficher les nouveaux tutoriels** de l’étape **Approuvé** dans l’étape **AQ approuvée**.
 
@@ -351,7 +360,7 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
     > **Remarque** : l’étape dépasse désormais sa **limite TEC** et est colorée en rouge en signe d’avertissement.
 
 20. Déplacez l’élément de backlog **En tant que client, je souhaite afficher les tutoriels que j’ai récemment consultés** vers **Validé**.
-21. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres de l’équipe** (juste à droite de l’icône d’entonnoir).
+21. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres du tableau** (juste à droite de l’icône d’entonnoir).
 22. Dans le panneau **Paramètres**, revenez à l’onglet **Colonnes** et sélectionnez l’onglet **AQ approuvée**.
 
     > **Remarque** : il existe souvent un décalage entre le moment où le travail est déplacé dans une colonne et le moment où le travail démarre réellement. Pour corriger ce décalage et connaître l’état réel du travail en cours, vous pouvez activer les colonnes fractionnées. Lorsqu’elles sont fractionnées, chaque colonne contient deux sous-colonnes, **En cours** et **Terminé**. Les colonnes fractionnées permettent à votre équipe d’implémenter un modèle de tirage (pull). Sans colonnes fractionnées, les équipes poussent le travail vers l’avant, pour signaler qu’elles ont terminé leur phase de travail. Toutefois, le fait de l’envoyer à l’étape suivante ne signifie pas nécessairement qu’un membre de l’équipe commence immédiatement à travailler sur cet élément.
@@ -367,19 +376,19 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
 
     > **Remarque** : l’étape **AQ approuvée** a maintenant des colonnes **En cours** et **Terminé**. Vous pouvez également cliquer sur le symbole d’information (avec la lettre **i** dans un cercle) en regard de l’en-tête de colonne pour lire la **Définition de terminé**.
 
-26. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres de l’équipe** (juste à droite de l’icône d’entonnoir).
+![Fractionner des colonnes pour Approuvé par l’assurance qualité](images/m1/EShop-WEB-qa_2columns_v1.png)
+
+26. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres du tableau** (juste à droite de l’icône d’entonnoir).
 
     > **Remarque** : votre tableau Kanban prend en charge votre capacité à visualiser le flux de travail à mesure qu’il passe de nouveau à terminé. Lorsque vous ajoutez des **couloirs**, vous pouvez également visualiser l’état du travail qui prend en charge différentes classes de niveau de service. Vous pouvez créer un couloir pour représenter toute autre dimension qui soutient vos besoins de suivi.
 
 27. Dans le panneau **Paramètres**, sélectionnez l’onglet **Couloirs**.
 28. Sous l’onglet **Couloirs**, cliquez sur **+ Couloir**, directement sous l’étiquette **Nom du couloir**, dans la zone de texte **Nom**, tapez **Accélération**.
-29. Dans le panneau **Paramètres**, cliquez sur **Enregistrer et fermer**.
+29. Dans le panneau **Paramètres**, cliquez sur **Enregistrer**.
 
-    ![Dans le panneau « Paramètres », passez en revue les informations, puis cliquez sur « Enregistrer et fermer ».](images/m1/EShop-WEB-swimlane_v1.png)
+    ![Dans le panneau « Paramètres », passez en revue les informations, puis cliquez sur « Enregistrer ».](images/m1/EShop-WEB-swimlane_v1.png)
 
 30. Revenez à l’onglet **Tableau** du panneau **Tableaux**, faites glisser et déposez l’élément de travail **Validé** dans l’étape **AQ approuvée \| En cours** du couloir **Accélération** afin qu’il bénéficie de la priorité lorsque la bande passante de l’assurance qualité devient disponible.
-
-    > **Remarque** : si vous souhaitez examiner un tableau plus sophistiqué contenant davantage d’éléments de travail, sous l’onglet **Tableau** du panneau **Tableaux**, dans le coin supérieur gauche, sélectionnez **EShop-WEB** et dans la liste déroulante des équipes, sélectionnez **Équipe eShopOnWeb**. Ce tableau fournit un terrain de jeu pour vous permettre d’expérimenter et de passer en revue les résultats.
 
 #### Tâche 5 : personnaliser le processus d’équipe
 
@@ -484,12 +493,24 @@ Les tableaux de bord permettent aux équipes de visualiser l’état et de surve
     ![Dans l’onglet « Éditeur » du volet « Requêtes > Mes requêtes », dans la deuxième ligne, colonne « Champ », sélectionnez « Chemin de la zone ». Dans la liste déroulante « Valeur » correspondante, sélectionnez « eShopOnWeb\\EShop-WEB ».](images/m1/EShop-WEB-query_v1.png)
 
 16. Dans le panneau **Nouvelle requête**, dans la zone de texte **Entrer le nom**, tapez **Tâches web**. Dans la liste déroulante **Dossiers**, sélectionnez **Requêtes partagées**, puis cliquez sur **OK**.
-17. Sélectionnez l’onglet **Graphiques**, puis cliquez sur **+ Nouveau graphique**.
-18. Dans le panneau **Configurer le graphique**, dans la zone de texte **Nom**, tapez **Tâches web - Par affectation**, dans la liste déroulante **Grouper par**, sélectionnez **Affecté à**, puis cliquez sur **OK** pour enregistrer les modifications.
+17. Dans la vue **Requêtes>Requêtes partagées**, sélectionnez l’onglet **Graphiques**, puis cliquez sur **+ Nouveau graphique**.
+18. Dans le panneau **Configurer le graphique**, dans la zone de texte **Nom**, tapez **Tâches web : par affectation**, dans la liste déroulante **Grouper par**, sélectionnez **Affecté à**, puis cliquez sur **Enregistrer le graphique** pour enregistrer les modifications.
 
     ![Dans le panneau « Configurer le graphique », dans la zone de texte « Nom », tapez « Tâches web - Par affectation », dans la liste déroulante « Grouper par », sélectionnez « Affecté à », puis cliquez sur « OK » pour enregistrer les modifications.](images/m1/EShop-WEB-chart_v1.png)
 
     > **Remarque** : vous pouvez maintenant ajouter ce graphique à un tableau de bord.
+
+19. Revenez à la section **Tableaux de bord** dans le menu **Vue d’ensemble**. Dans la section **EShop-Web**, sélectionnez le tableau de bord **Formation produit** que vous avez utilisé précédemment afin de l’ouvrir. 
+
+20. Cliquez sur **Modifier** dans le menu supérieur. Dans la liste **Ajouter un widget**, recherchez **Graphique**, puis sélectionnez **Graphique pour les éléments de travail**. Cliquez sur **Ajouter** pour ajouter ce widget au tableau de bord EShop-Web. 
+
+21. Cliquez sur **Configurer** (engrenage) dans **Graphique pour les éléments de travail** pour ouvrir les paramètres du widget. 
+
+22. Acceptez le titre tel quel. Sous **Requête**, sélectionnez **Requêtes partagées / Tâches web**. Conservez **Camembert** comme Type de graphique. Sous **Grouper par**, sélectionnez **Affecté à**. Conservez les valeurs par défaut d’Agrégation (nombre) et de Tri (valeur/croissant). 
+
+23. Confirmez la configuration en cliquant sur **Enregistrer**. 
+
+24. Notez que le graphique en secteurs des résultats de la requête est affiché dans le tableau de bord. **Enregistrez** les modifications en appuyant sur le bouton **Fin de l’édition** en haut.
 
 ## Révision
 
