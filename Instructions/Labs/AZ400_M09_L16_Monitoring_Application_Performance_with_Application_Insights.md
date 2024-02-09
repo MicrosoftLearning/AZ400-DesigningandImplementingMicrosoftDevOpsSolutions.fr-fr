@@ -4,7 +4,7 @@ lab:
   module: 'Module 09: Implement continuous feedback'
 ---
 
-# Surveiller les performances des applications avec Application Insights et Test de charge Azure
+# Surveiller les performances des applications avec Test de charge Azure
 
 ## Manuel de labo de l’étudiant
 
