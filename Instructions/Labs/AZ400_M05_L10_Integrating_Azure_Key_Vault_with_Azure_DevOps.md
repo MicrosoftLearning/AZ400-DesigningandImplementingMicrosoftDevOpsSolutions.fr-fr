@@ -58,12 +58,12 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 
     ![Importer un référentiel](images/import-repo.png)
 
-2. Le référentiel est organisé de la manière suivante :
+1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 ### Exercice 1 : Configurer le pipeline CI pour créer un conteneur eShopOnWeb
 
@@ -86,12 +86,12 @@ Vous aurez besoin d’un principal de service pour déployer des ressources Azur
 Un principal de service est créé automatiquement par Azure Pipelines, lorsque vous vous connectez à un abonnement Azure depuis une définition de pipeline ou lorsque vous créez une nouvelle connexion de service depuis la page des paramètres du projet (option automatique). Vous pouvez également créer manuellement le principal de service à partir du portail ou à l’aide d’Azure CLI, et le réutiliser dans d’autres projets.
 
 1. Sur l’ordinateur de labo, démarrez un navigateur web, accédez au [**portail Azure**](https://portal.azure.com) et connectez-vous avec le compte d’utilisateur qui a le rôle Propriétaire dans l’abonnement Azure que vous utiliserez dans ce labo et le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement.
-2. Dans le portail Azure, ouvrez le volet **Cloud Shell** situé directement à droite de la zone de texte de recherche en haut de la page.
-3. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
+1. Dans le portail Azure, ouvrez le volet **Cloud Shell** situé directement à droite de la zone de texte de recherche en haut de la page.
+1. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
 
    >**Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
 
-4. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez les commandes suivantes pour récupérer les valeurs de l’ID d’abonnement Azure et des attributs de nom d’abonnement :
+1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez les commandes suivantes pour récupérer les valeurs de l’ID d’abonnement Azure et des attributs de nom d’abonnement :
 
     ```bash
     az account show --query id --output tsv
@@ -100,7 +100,7 @@ Un principal de service est créé automatiquement par Azure Pipelines, lorsque 
 
     > **Remarque** : copiez les deux valeurs dans un fichier texte. Vous en aurez besoin plus tard dans ce labo.
 
-5. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un principal de service (remplacez **myServicePrincipalName**par une chaîne unique de caractères composés de lettres et de chiffres) et **mySubscriptionID** par votre ID d’abonnement Azure :
+1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un principal de service (remplacez **myServicePrincipalName**par une chaîne unique de caractères composés de lettres et de chiffres) et **mySubscriptionID** par votre ID d’abonnement Azure :
 
     ```bash
     az ad sp create-for-rbac --name myServicePrincipalName \
@@ -110,24 +110,24 @@ Un principal de service est créé automatiquement par Azure Pipelines, lorsque 
 
     > **Remarque** : la commande génère une sortie JSON. Copiez la sortie dans un fichier texte. Vous en aurez besoin plus tard dans ce labo.
 
-6. Ensuite, sur l’ordinateur de labo, démarrez un navigateur web et accédez au projet Azure DevOps **eShopOnWeb**. Cliquez sur **Paramètres du projet > Connexions de service (sous Pipelines)**, puis sur **Nouvelle connexion de service**.
+1. Ensuite, sur l’ordinateur de labo, démarrez un navigateur web et accédez au projet Azure DevOps **eShopOnWeb**. Cliquez sur **Paramètres du projet > Connexions de service (sous Pipelines)**, puis sur **Nouvelle connexion de service**.
 
     ![Nouvelle connexion de service](images/new-service-connection.png)
 
     > **Remarque** : S’il n’existe aucune connexion de service précédemment créée sur la page, le bouton de création de connexion de service se trouve au centre de la page et a l’étiquette **Créer une connexion de service**
 
-7. Dans le panneau **Nouvelle connexion de service**, sélectionnez **Azure Resource Manager**, puis **Suivant** (vous devrez peut-être faire défiler la page vers le bas).
+1. Dans le panneau **Nouvelle connexion de service**, sélectionnez **Azure Resource Manager**, puis **Suivant** (vous devrez peut-être faire défiler la page vers le bas).
 
-8. Choisissez ensuite **Principal de service (manuel)**, puis cliquez sur **Suivant**.
+1. Choisissez ensuite **Principal de service (manuel)**, puis cliquez sur **Suivant**.
 
-9. Renseignez les champs vides à l’aide des informations collectées lors des étapes précédentes :
+1. Renseignez les champs vides à l’aide des informations collectées lors des étapes précédentes :
     - ID et nom de l’abonnement.
     - ID du principal de service (appId), clé du principal de service (password) et ID du locataire (tenant).
     - Dans le champ **Nom de connexion de service**, tapez **azure subs**. Ce nom est référencé dans les pipelines YAML lorsque vous avez besoin d’une connexion de service Azure DevOps pour communiquer avec votre abonnement Azure.
 
     ![Connexion au service Azure](images/azure-service-connection.png)
 
-10. Cliquez sur **Vérifier et enregistrer**.
+1. Cliquez sur **Vérifier et enregistrer**.
 
 #### Tâche 2 : configurer et exécuter un pipeline CI
 
@@ -135,28 +135,30 @@ Dans cette tâche, vous allez importer une définition de pipeline YAML CI exist
 
 1. Sur l’ordinateur de labo, démarrez un navigateur web, puis accédez au projet Azure DevOps **eShopOnWeb**. Accédez à **Pipelines > Pipelines**, puis cliquez sur **Créer un pipeline** (ou sur **Nouveau pipeline**).
 
-2. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
+1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-3. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-ci-dockercompose.yml**, puis cliquez sur **Continuer**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-ci-dockercompose.yml**, puis cliquez sur **Continuer**.
 
     ![Sélectionner un pipeline](images/select-ci-container-compose.png)
 
-4. Dans la définition du pipeline YAML, personnalisez le nom du groupe de ressources en remplaçant **NAME** dans **AZ400-EWebShop-NAME** et remplacez **YOUR-SUBSCRIPTION-ID** par votre propre ID d’abonnement Azure.
+1. Dans la définition de pipeline YAML, personnalisez le nom du groupe de ressources en remplaçant **NAME** dans **AZ400-EWebShop-NAME** par une valeur unique et remplacez **YOUR-SUBSCRIPTION-ID** par votre propre ID d’abonnement Azure.
 
-5. Cliquez sur **Enregistrer et exécuter**, puis attendez que l’exécution du pipeline se termine.
+1. Cliquez sur **Enregistrer et exécuter**, puis attendez que l’exécution du pipeline se termine.
+
+    > **Important** :si le message « Ce pipeline a besoin d’une autorisation d’accès aux ressources pour que cette exécution puisse se poursuivre jusqu’à Docker Compose vers ACI » s’affiche, cliquez sur Afficher, Autoriser et Autoriser à nouveau. Cette opération est nécessaire pour permettre au pipeline de créer la ressource.
 
     > **Remarque** : la génération peut prendre plusieurs minutes. La définition de build est composée des tâches suivantes :
     - **AzureResourceManagerTemplateDeployment** utilise **bicep** pour déployer une instance Azure Container Registry.
     - La tâche **PowerShell** utilise la sortie bicep (serveur de connexion acr) et crée une variable de pipeline.
     - La tâche **DockerCompose** génère et envoie (push) les images conteneur pour eShopOnWeb vers Azure Container Registry.
 
-6. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension puis sur l’option **Renommer/Supprimer**. Nommez le pipeline **eshoponweb-ci-dockercompose**, puis cliquez sur **Enregistrer**.
+1. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension puis sur l’option **Renommer/Supprimer**. Nommez le pipeline **eshoponweb-ci-dockercompose**, puis cliquez sur **Enregistrer**.
 
-7. Une fois l’exécution terminée, sur le portail Azure, ouvrez le groupe de ressources précédemment défini. Vous devriez y trouver une instance Azure Container Registry (ACR) avec les images conteneur **eshoppublicapi** et **eshopwebmvc** créées. Vous utiliserez **eshopwebmvc** uniquement lors de la phase de déploiement.
+1. Une fois l’exécution terminée, sur le portail Azure, ouvrez le groupe de ressources précédemment défini. Vous devriez y trouver une instance Azure Container Registry (ACR) avec les images conteneur **eshoppublicapi** et **eshopwebmvc** créées. Vous utiliserez **eshopwebmvc** uniquement lors de la phase de déploiement.
 
     ![Images conteneur dans ACR](images/azure-container-registry.png)
 
-8. Cliquez sur **Clés d’accès** et copiez la valeur **password** (mot de passe), qui sera utilisée dans la tâche suivante, car nous la conserverons comme secret dans Azure Key Vault.
+1. Cliquez sur **Clés d’accès**, activez l’**utilisateur administrateur** si ce n’est pas déjà fait, puis copiez la valeur du **mot de passe**. Elle sera utilisée dans la tâche suivante, car nous la conserverons comme secret dans Azure Key Vault.
 
     ![Mot de passe ACR](images/acr-password.png)
 
@@ -167,8 +169,8 @@ Dans cette tâche, vous allez créer un coffre Azure Key Vault à l’aide du 
 Pour ce scénario de labo, nous allons utiliser une instance de conteneur Azure (ACI) qui extrait et exécute une image conteneur stockée dans Azure Container Registry (ACR). Nous avons l’intention de stocker le mot de passe de l’instance ACR en tant que secret dans le coffre de clés.
 
 1. Dans le portail Azure, dans la zone de texte **Rechercher des ressources, des services et des documents**, tapez **Coffre de clés**, puis appuyez sur la touche **Entrée**.
-2. Dans le panneau **Coffre de clés**, cliquez sur **Créer > Coffre de clés**.
-3. Sous l’onglet **Informations de base** du panneau **Créer un coffre de clés**, spécifiez les paramètres suivants, puis cliquez sur **Suivant** :
+1. Dans le panneau **Coffre de clés**, cliquez sur **Créer > Coffre de clés**.
+1. Sous l’onglet **Informations de base** du panneau **Créer un coffre de clés**, spécifiez les paramètres suivants, puis cliquez sur **Suivant** :
 
     | Paramètre | Valeur |
     | --- | --- |
@@ -180,22 +182,22 @@ Pour ce scénario de labo, nous allons utiliser une instance de conteneur Azure 
     | Jours de conservation des coffres supprimés | **7** |
     | Protection contre le vidage | **Désactiver la protection de purge** |
 
-4. Sous l’onglet **Configuration de l’accès** du panneau **Créer un coffre de clés**, sélectionnez **Stratégie d’accès au coffre**, puis dans la section **Stratégies d’accès**, cliquez sur **+ Créer** pour configurer une nouvelle stratégie.
+1. Sous l’onglet **Configuration de l’accès** du panneau **Créer un coffre de clés**, sélectionnez **Stratégie d’accès au coffre**, puis dans la section **Stratégies d’accès**, cliquez sur **+ Créer** pour configurer une nouvelle stratégie.
 
-    > **Remarque** : vous devez sécuriser l’accès à vos coffres de clés en autorisant uniquement les applications et utilisateurs autorisés. Pour accéder aux données du coffre, vous devez fournir des autorisations de lecture (Get/List) au principal de service créé précédemment que vous utiliserez pour l’authentification dans le pipeline. 
+    > **Remarque** : vous devez sécuriser l’accès à vos coffres de clés en autorisant uniquement les applications et utilisateurs autorisés. Pour accéder aux données du coffre, vous devez fournir des autorisations de lecture (Get/List) au principal de service créé précédemment que vous utiliserez pour l’authentification dans le pipeline.
 
     1. Dans le panneau **Autorisations**, sous **Autorisations du secret**, activez les autorisations **Get** et **List**. Cliquez sur **Suivant**.
     2. Dans le panneau **Principal**, recherchez le **principal de service créé précédemment** en utilisant l’ID ou le nom donné, puis sélectionnez-le dans la liste. Cliquez sur **Suivant**, **Suivant**, **Créer** (stratégie d’accès).
     3. Dans le panneau **Vérifier + créer**, cliquez sur **Créer**.
 
-5. Dans le panneau **Créer un coffre de clés**, cliquez sur **Vérifier + créer  > Créer**.
+1. Dans le panneau **Créer un coffre de clés**, cliquez sur **Vérifier + créer  > Créer**.
 
     > **Remarque** : attendez que l’instance Azure Key Vault soit approvisionnée. Cela devrait prendre moins d’une minute.
 
-6. Dans le panneau **Votre déploiement a été effectué**, cliquez sur **Accéder à la ressource**.
-7. Dans le panneau Azure Key Vault (ewebshop-kv-NAME), dans le menu vertical situé à gauche du panneau, dans la section **Objets**, cliquez sur **Secrets**.
-8. Dans le panneau **Secrets**, cliquez sur **Générer/Importer**.
-9. Dans le panneau **Créer un secret**, spécifiez les paramètres suivants, puis cliquez sur **Créer** (en laissant les autres paramètres avec leur valeur par défaut) :
+1. Dans le panneau **Votre déploiement a été effectué**, cliquez sur **Accéder à la ressource**.
+1. Dans le panneau Azure Key Vault (ewebshop-kv-NAME), dans le menu vertical situé à gauche du panneau, dans la section **Objets**, cliquez sur **Secrets**.
+1. Dans le panneau **Secrets**, cliquez sur **Générer/Importer**.
+1. Dans le panneau **Créer un secret**, spécifiez les paramètres suivants, puis cliquez sur **Créer** (en laissant les autres paramètres avec leur valeur par défaut) :
 
     | Paramètre | Valeur |
     | --- | --- |
@@ -209,9 +211,9 @@ Dans cette tâche, vous allez créer un groupe de variables dans Azure DevOps qu
 
 1. Sur votre ordinateur de labe, démarrez un navigateur web, puis accédez au projet Azure DevOps **eShopOnWeb**.
 
-2. Dans le volet de navigation vertical du portail Azure DevOps, sélectionnez **Pipelines > Bibliothèque**. Cliquez sur **+ Groupe de variables**.
+1. Dans le volet de navigation vertical du portail Azure DevOps, sélectionnez **Pipelines > Bibliothèque**. Cliquez sur **+ Groupe de variables**.
 
-3. Dans le panneau **Nouveau groupe de variables**, spécifiez les paramètres suivants :
+1. Dans le panneau **Nouveau groupe de variables**, spécifiez les paramètres suivants :
 
     | Paramètre | Valeur |
     | --- | --- |
@@ -220,8 +222,8 @@ Dans cette tâche, vous allez créer un groupe de variables dans Azure DevOps qu
     | Abonnement Azure | **Connexion de service Azure disponible > Azure subs** |
     | Nom du coffre de clés | Nom de votre coffre de clés|
 
-4. Sous **Variables**, cliquez sur **+ Ajouter**, puis sélectionnez le secret **acr-secret**. Cliquez sur **OK**.
-5. Cliquez sur **Save**(Enregistrer).
+1. Sous **Variables**, cliquez sur **+ Ajouter**, puis sélectionnez le secret **acr-secret**. Cliquez sur **OK**.
+1. Cliquez sur **Save**(Enregistrer).
 
     ![Créer un groupe de variables](images/vg-create.png)
 
@@ -231,19 +233,19 @@ Dans cette tâche, vous allez importer un pipeline CD, le personnaliser et l’e
 
 1. Sur l’ordinateur de labo, démarrez un navigateur web, puis accédez au projet Azure DevOps **eShopOnWeb**. Accédez à **Pipelines > Pipelines**, puis cliquez sur **Nouveau pipeline**.
 
-2. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
+1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-3. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-cd-aci.yml**, puis cliquez sur **Continuer**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-cd-aci.yml**, puis cliquez sur **Continuer**.
 
-4. Dans la définition de pipeline YAML, personnalisez :
+1. Dans la définition de pipeline YAML, personnalisez :
 
     - **YOUR-SUBSCRIPTION-ID** en fonction de votre ID d’abonnement Azure.
     - **az400eshop-NAME** remplacez NAME pour le rendre globalement unique.
     - **YOUR-ACR.azurecr.io** et **ACR-USERNAME** en fonction de votre serveur de connexion ACR (ils ont tous les deux besoin du nom ACR, que vous pouvez consulter dans ACR > Clés d’accès).
     - **AZ400-EWebShop-NAME** en fonction du nom du groupe de ressources défini auparavant dans le labo.
 
-5. Cliquez sur **Enregistrer et exécuter**.
-6. Ouvrez le pipeline et attendez que son exécution se termine.
+1. Cliquez sur **Enregistrer et exécuter**.
+1. Ouvrez le pipeline et attendez que son exécution se termine.
 
     > **Important** :si le message « Ce pipeline a besoin d’une autorisation d’accès aux ressources pour que cette exécution puisse se poursuivre jusqu’à Docker Compose vers ACI » s’affiche, cliquez sur Afficher, Autoriser et Autoriser à nouveau. Cette opération est nécessaire pour permettre au pipeline de créer la ressource.
 
@@ -252,7 +254,7 @@ Dans cette tâche, vous allez importer un pipeline CD, le personnaliser et l’e
     - La tâche **Variables (pour l’étape de déploiement)** se connecte au groupe de variables pour utiliser le secret Azure Key Vault **acr-secret**.
     - La tâche **AzureResourceManagerTemplateDeployment** déploie Azure Container Instance (ACI) à l’aide du modèle bicep et fournit les paramètres de connexion ACR pour permettre à ACI de télécharger l’image conteneur créée précédemment à partir d’Azure Container Registry (ACR).
 
-7. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension, puis sur l’option **Renommer/Supprimer**. Nommez-le **eshoponweb-cd-aci**, puis cliquez sur **Enregistrer**.
+1. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension, puis sur l’option **Renommer/Supprimer**. Nommez-le **eshoponweb-cd-aci**, puis cliquez sur **Enregistrer**.
 
 ### Exercice 2 : supprimer les ressources du labo Azure
 

@@ -51,14 +51,14 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
-2. Le référentiel est organisé de la manière suivante :
+1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep & ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep & ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - Le dossier **.github** contient les définitions de workflow GitHub YAML.
-    - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labos.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 ### Exercice 1 : créer un Azure Pipelines basé sur YAML
 
@@ -68,23 +68,24 @@ Dans cet exercice, vous allez créer un pipeline de build de cycle de vie d’ap
 
 Dans cette tâche, vous allez créer un pipeline YAML Azure DevOps basé sur un modèle.
 
-1. À partir du navigateur web affichant le portail Azure DevOps avec le projet **EShopOnWeb** ouvert, dans le volet de navigation vertical situé à gauche, cliquez sur **Pipelines**.
-2. Cliquez sur le bouton **Créer un pipeline** si aucun autre pipeline n’a encore été créé ou sur **Nouveau pipeline** pour créer un pipeline supplémentaire. 
+1. Dans le navigateur web qui affiche le portail Azure DevOps avec le projet **eShopOnWeb** ouvert, dans le volet de navigation vertical situé à gauche, cliquez sur **Pipelines**.
+1. Cliquez sur le bouton **Créer un pipeline** si aucun autre pipeline n’a encore été créé ou sur **Nouveau pipeline** pour créer un pipeline supplémentaire.
 
-3. Dans le volet **Où se trouve votre code ?**, cliquez sur **Azure Repos Git**.
-4. Dans le volet **Sélectionner un référentiel**, cliquez sur **EShopOnWeb**.
-5. Dans le volet **Configurer votre pipeline**, cliquez sur **Fichier YAML Azure Pipelines existant**.
-6. Dans le volet **Sélectionner un fichier YAML existant**, sélectionnez **principal** pour la branche et **/.ado/eshoponweb-ci-pr.yml** pour le chemin d’accès.
-7. Cliquez sur **Continuer**.
-8. Dans le volet **Passer en revue le fichier YAML de votre pipeline**, passez en revue l’exemple de pipeline. Il s’agit d’un pipeline de build d’application .NET plutôt direct, qui effectue les opérations suivantes :
-- Une étape unique : Build
-- Un seul travail : Build
-- 3 tâches dans le travail de build :
-- Dotnet Restore
-- Dotnet Build
-- Dotnet Publish
+1. Dans le volet **Où se trouve votre code ?**, cliquez sur **Azure Repos Git**.
+1. Dans le volet **Sélectionner un référentiel**, cliquez sur **eShopOnWeb**.
+1. Dans le volet **Configurer votre pipeline**, cliquez sur **Fichier YAML Azure Pipelines existant**.
+1. Dans le volet **Sélectionner un fichier YAML existant**, sélectionnez **principal** pour la branche et **/.ado/eshoponweb-ci-pr.yml** pour le chemin d’accès.
+1. Cliquez sur **Continuer**.
+1. Dans le volet **Passer en revue le fichier YAML de votre pipeline**, passez en revue l’exemple de pipeline. Il s’agit d’un pipeline de build d’application .NET plutôt direct, qui effectue les opérations suivantes :
 
-9. Dans le volet **Passer en revue le fichier YAML de votre pipeline**, cliquez sur le symbole caret pointant vers le bas en regard du bouton **Exécuter**, puis sur **Enregistrer**.
+   - Une étape unique : Build
+   - Un seul travail : Build
+   - 3 tâches dans le travail de build :
+   - Dotnet Restore
+   - Dotnet Build
+   - Dotnet Publish
+
+1. Dans le volet **Passer en revue le fichier YAML de votre pipeline**, cliquez sur le symbole caret pointant vers le bas en regard du bouton **Exécuter**, puis sur **Enregistrer**.
 
     > Remarque : nous créons seulement la définition de pipeline pour l’instant, sans l’exécuter. Vous allez d’abord configurer un pool d’agents Azure DevOps et exécuter le pipeline dans un exercice ultérieur. 
 
@@ -98,33 +99,33 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 
 1. Dans la machine virtuelle Lab (machine virtuelle lab) ou votre propre ordinateur, lancez un navigateur web, accédez au [portail Azure DevOps](https://dev.azure.com) et connectez-vous à l’aide du compte Microsoft associé à votre organisation Azure DevOps.
 
-  > **Remarque** : tous les logiciels requis nécessaires doivent être installés sur l’ordinateur virtuel de labo. Si vous effectuez l’installation sur votre propre ordinateur, vous devez installer les kits SDK .NET 7.0.x ou ultérieurs nécessaires pour générer le projet de démo. Reportez-vous à la section [Télécharger .NET](https://dotnet.microsoft.com/download/dotnet) pour en savoir plus.
+  > **Remarque** : tous les logiciels requis nécessaires doivent être installés sur l’ordinateur virtuel de labo. Si vous effectuez l’installation sur votre propre ordinateur, vous devez installer les SDK .NET version 8.0.x ou ultérieure nécessaires pour générer le projet de démonstration. Reportez-vous à la section [Télécharger .NET](https://dotnet.microsoft.com/download/dotnet) pour en savoir plus.
 
 1. Dans le portail Azure DevOps, dans le coin supérieur droit de la page Azure DevOps, cliquez sur l’icône **Paramètres utilisateur**. Selon que vous avez activé ou non les fonctionnalités en préversion, vous devriez voir un élément **Sécurité** ou **Jetons d’accès personnels** dans le menu. Si vous voyez **Sécurité**, cliquez dessus, puis sélectionnez **Jetons d’accès personnels**. Dans le volet **Jetons d’accès personnels**, cliquez sur **+ Nouveau jeton**.
-2. Dans le volet **Créer un jeton d’accès personnel**, cliquez sur le lien **Afficher toutes les étendues**, spécifiez les paramètres suivants, puis cliquez sur **Créer** (conservez la valeur par défaut de tous les autres paramètres) :
+1. Dans le volet **Créer un jeton d’accès personnel**, cliquez sur le lien **Afficher toutes les étendues**, spécifiez les paramètres suivants, puis cliquez sur **Créer** (conservez la valeur par défaut de tous les autres paramètres) :
 
     | Paramètre | Valeur |
     | --- | --- |
-    | Nom | **EShopOnWeb** |
+    | Nom | **eShopOnWeb** |
     | Étendue (définie personnalisée) | **Pools d’agents** (afficher plus d’options d’étendue ci-dessous si nécessaire)|
     | Autorisations | **Lire et gérer** |
 
-3. Dans le volet **Réussite**, copiez la valeur du jeton d’accès personnel dans le Presse-papiers.
+1. Dans le volet **Réussite**, copiez la valeur du jeton d’accès personnel dans le Presse-papiers.
 
     > **Remarque** : veillez à copier le jeton. Vous ne pourrez plus la récupérer après avoir fermé ce volet.
 
-4. Dans le volet **Réussite**, cliquez sur **Fermer**.
-5. Dans le volet **Jeton d’accès personnels** du portail Azure DevOps, cliquez sur le symbole **Azure DevOps** dans le coin supérieur gauche, puis sur l’étiquette **Paramètres de l’organisation** dans le coin inférieur gauche.
-6. Sur le côté gauche du volet **Vue d’ensemble**, dans la section **Pipelines** du menu vertical, cliquez sur **Pools d’agents**.
-7. Dans le volet **Pools d’agents**, dans le coin supérieur droit, cliquez sur **Ajouter un pool**.
-8. Dans le volet **Ajouter un pool d’agents**, dans la liste déroulante **Type de pool**, sélectionnez **Auto-hébergé**. Dans la zone de texte **Nom**, tapez **az400m03l03a-pool**, puis cliquez sur **Créer**.
-9.  Dans le volet **Pools d’agents**, cliquez sur l’entrée représentant le pool **az400m03l03a-pool** nouvellement créé.
-10. Dans l’onglet **Travaux** du volet **az400m03l03a-pool**, cliquez sur le bouton **Nouvel agent**.
-11. Dans le volet **Obtenir l’agent**, vérifiez que les onglets **Windows** et **x64** sont sélectionnés, puis cliquez sur **Télécharger** pour télécharger l’archive ZIP contenant les fichiers binaires de l’agent afin de le télécharger dans le dossier **Téléchargements** local dans votre profil utilisateur.
+1. Dans le volet **Réussite**, cliquez sur **Fermer**.
+1. Dans le volet **Jeton d’accès personnels** du portail Azure DevOps, cliquez sur le symbole **Azure DevOps** dans le coin supérieur gauche, puis sur l’étiquette **Paramètres de l’organisation** dans le coin inférieur gauche.
+1. Sur le côté gauche du volet **Vue d’ensemble**, dans la section **Pipelines** du menu vertical, cliquez sur **Pools d’agents**.
+1. Dans le volet **Pools d’agents**, dans le coin supérieur droit, cliquez sur **Ajouter un pool**.
+1. Dans le volet **Ajouter un pool d’agents**, dans la liste déroulante **Type de pool**, sélectionnez **Auto-hébergé**. Dans la zone de texte **Nom**, tapez **az400m03l03a-pool**, puis cliquez sur **Créer**.
+1. Dans le volet **Pools d’agents**, cliquez sur l’entrée représentant le pool **az400m03l03a-pool** nouvellement créé.
+1. Dans l’onglet **Travaux** du volet **az400m03l03a-pool**, cliquez sur le bouton **Nouvel agent**.
+1. Dans le volet **Obtenir l’agent**, vérifiez que les onglets **Windows** et **x64** sont sélectionnés, puis cliquez sur **Télécharger** pour télécharger l’archive ZIP contenant les fichiers binaires de l’agent afin de le télécharger dans le dossier **Téléchargements** local dans votre profil utilisateur.
 
     > **Remarque** : si un message d’erreur indiquant que les paramètres système actuels vous empêchent de télécharger le fichier s’affiche à ce stade, dans la fenêtre Navigateur, dans le coin supérieur droit, cliquez sur le symbole d’engrenage désignant l’en-tête du menu **Paramètres**. Dans le menu déroulant, sélectionnez **Options Internet**. Dans la boîte de dialogue **Options Internet**, cliquez sur **Avancé**. Dans l’onglet **Avancé**, cliquez sur **Réinitialiser**. Dans la boîte de dialogue **Réinitialiser les paramètres du navigateur**, cliquez à nouveau sur **Réinitialiser**, cliquez sur **Fermer**, puis réessayez de télécharger.
 
-12. Démarrez Windows PowerShell en tant qu’administrateur et, dans la console **Administrateur : Windows PowerShell**, exécutez les lignes suivantes pour créer le répertoire **C:\\agent** et extraire le contenu de l’archive téléchargée.
+1. Démarrez Windows PowerShell en tant qu’administrateur et, dans la console **Administrateur : Windows PowerShell**, exécutez les lignes suivantes pour créer le répertoire **C:\\agent** et extraire le contenu de l’archive téléchargée.
 
     ```powershell
     cd \
@@ -134,13 +135,13 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
     [System.IO.Compression.ZipFile]::ExtractToDirectory($TARGET, "$PWD")
     ```
 
-14. Dans la même console **Administrateur : Windows PowerShell**, exécutez ce qui suit pour configurer l’agent :
+1. Dans la même console **Administrateur : Windows PowerShell**, exécutez ce qui suit pour configurer l’agent :
 
     ```powershell
     .\config.cmd
     ```
 
-15. Lorsque vous y êtes invité, spécifiez les valeurs des paramètres suivants :
+1. Lorsque vous y êtes invité, spécifiez les valeurs des paramètres suivants :
 
     | Paramètre | Valeur |
     | ------- | ----- |
@@ -158,13 +159,13 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 
     > **Remarque** : vous pouvez exécuter votre agent auto-hébergé en tant que service ou processus interactif. Vous pouvez commencer par le mode interactif, qui simplifie la vérification des fonctionnalités de l’agent. Pour une utilisation en production, vous devez envisager d’exécuter l’agent en tant que service ou en tant que processus interactif avec ouverture de session automatique activée, car les deux conservent leur état d’exécution et vérifient que l’agent démarre automatiquement si le système d’exploitation est redémarré.
 
-16. Basculez vers la fenêtre du navigateur affichant le portail Azure DevOps et fermez le volet **Obtenir l’agent**.
-17. De retour sous l’onglet **Agents** du volet **az400m03l03a-pool**, notez que l’agent nouvellement configuré est répertorié avec l’état **En ligne**.
-18. Dans la fenêtre du navigateur web affichant le portail Azure DevOps, dans le coin supérieur gauche, cliquez sur l’étiquette **Azure DevOps**.
-19. Dans la liste des projets, cliquez sur la vignette représentant votre projet **EShopOnWeb**.
-20. Dans le volet **EShopOnWeb**, dans le volet de navigation vertical situé à gauche, cliquez sur **Pipelines** dans la section **Pipelines**.
-21. Dans l’onglet **Récent** du volet **Pipelines**, sélectionnez **EShopOnWeb**. Dans le volet **EShopOnWeb**, sélectionnez **Modifier**.
-22. Dans le volet de modification **EShopOnWeb**, dans le pipeline YAML existant, remplacez la ligne 13, qui indique `vmImage: windows-latest` désignant le pool d’agents cible par le contenu suivant, désignant le pool d’agents auto-hébergés nouvellement créé :
+1. Basculez vers la fenêtre du navigateur affichant le portail Azure DevOps et fermez le volet **Obtenir l’agent**.
+1. De retour sous l’onglet **Agents** du volet **az400m03l03a-pool**, notez que l’agent nouvellement configuré est répertorié avec l’état **En ligne**.
+1. Dans la fenêtre du navigateur web affichant le portail Azure DevOps, dans le coin supérieur gauche, cliquez sur l’étiquette **Azure DevOps**.
+1. Dans la liste des projets, cliquez sur la vignette représentant votre projet **eShopOnWeb**.
+1. Dans le volet **eShopOnWeb**, dans le volet de navigation vertical situé à gauche, dans la section **Pipelines**, cliquez sur **Pipelines**.
+1. Dans l’onglet **Récent** du volet **Pipelines**, sélectionnez **eShopOnWeb**, puis, dans le volet **eShopOnWeb**, sélectionnez **Modifier**.
+1. Dans le volet de modification **eShopOnWeb**, dans le pipeline YAML existant, remplacez la ligne 13, qui indique `vmImage: windows-latest` désignant le pool d’agents cible, par le contenu suivant, désignant le nouveau pool d’agents autohébergés :
 
     ```yaml
     name: az400m03l03a-pool
@@ -176,16 +177,16 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 
     ![Syntaxe du pool YAML](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
-23. Dans le volet d’édition **EShopOnWeb** , dans le coin supérieur droit du volet, cliquez sur **Enregistrer et exécuter**. Le build basé sur le pipeline sera automatiquement déclenché.
-24. Dans le portail Azure DevOps, dans le volet de navigation vertical situé à gauche, cliquez sur **Pipelines** dans la section **Pipelines**. Selon la configuration de votre laboratoire, le pipeline peut vous demander des autorisations. Cliquez sur **Autoriser** pour autoriser l’exécution du pipeline. 
-25. Sous l’onglet **Récent** du volet **Pipelines**, cliquez sur l’entrée **EShopOnWeb**. Sous l’onglet **Exécutions** du volet **EShopOnWeb**, sélectionnez l’exécution la plus récente. Dans le volet **Résumé** de l’exécution, faites défiler vers le bas, dans la section **Tâches**, cliquez sur **Phase 1** et surveillez la tâche jusqu’à son achèvement.
+1. Dans le volet de modification **eShopOnWeb**, dans le coin supérieur droit du volet, cliquez sur **Enregistrer et exécuter**. Le build basé sur le pipeline sera automatiquement déclenché.
+1. Dans le portail Azure DevOps, dans le volet de navigation vertical situé à gauche, cliquez sur **Pipelines** dans la section **Pipelines**. Selon la configuration de votre laboratoire, le pipeline peut vous demander des autorisations. Cliquez sur **Autoriser** pour autoriser l’exécution du pipeline. 
+1. Dans l’onglet **Récent** du volet **Pipelines**, cliquez sur l’entrée **eShopOnWeb**. Dans l’onglet **Exécutions** du volet **eShopOnWeb**, sélectionnez l’exécution la plus récente. Dans le volet **Résumé** de l’exécution, faites défiler la page vers le bas, puis, dans la section **Travaux**, cliquez sur **Phase 1** et surveillez le travail jusqu’à sa fin.
 
 ### Exercice 3 : supprimer les ressources du labo
 
 1. Arrêtez et supprimez le service d’agent en exécutant `.\config.cmd remove` dans l’invite de commandes.
-2. Supprimez le pool d’agents.
-3. Révoquez le jeton PAT.
-4. Annulez les modifications apportées au fichier **eshoponweb-ci-pr.yml**. Pour cela, accédez au fichier à partir de Repos/.ado/eshoponweb-ci-pr.yml, sélectionnez **Modifier**, supprimez les lignes 13-15 (extrait du pool d’agents), puis rétablissez le paramètre d’origine `vmImage: windows-latest`. (En effet, vous utiliserez le même exemple de fichier de pipeline dans un prochain exercice de labo.) 
+1. Supprimez le pool d’agents.
+1. Révoquez le jeton PAT.
+1. Annulez les modifications apportées au fichier **eshoponweb-ci-pr.yml**. Pour cela, accédez au fichier à partir de Repos/.ado/eshoponweb-ci-pr.yml, sélectionnez **Modifier**, supprimez les lignes 13-15 (extrait du pool d’agents), puis rétablissez le paramètre d’origine `vmImage: windows-latest`. (En effet, vous utiliserez le même exemple de fichier de pipeline dans un prochain exercice de labo.)
 
 ![Rétablir les paramètres vmImage du pool de pipelines](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
