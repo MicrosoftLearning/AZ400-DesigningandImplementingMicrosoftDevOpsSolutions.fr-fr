@@ -64,45 +64,45 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Attribuez au projet le nom **eShopOnWeb** et conservez les valeurs par défaut des autres champs. Cliquez sur **Créer**.
 
-    ![Création d’un projet](images/create-project.png)
+   ![Création d’un projet](images/create-project.png)
 
 #### Tâche 2 : (ignorer si déjà fait) importer un dépôt Git eShopOnWeb
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
-    ![Importer un référentiel](images/import-repo.png)
+   ![Importer un référentiel](images/import-repo.png)
 
-2. Le référentiel est organisé de la manière suivante :
-    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
-    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
+1. Le référentiel est organisé de la manière suivante :
+   - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
+   - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+   - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+   - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
+   - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 #### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) configurer un pipeline CI en tant que code avec YAML dans Azure DevOps
 
 Dans cette tâche, vous allez ajouter une définition de build YAML au projet existant.
 
 1. Revenez au volet **Pipelines** du hub **Pipelines**.
-2. Dans la fenêtre **Créer votre premier pipeline**, cliquez sur **Créer un pipeline**.
+1. Dans la fenêtre **Créer votre premier pipeline**, cliquez sur **Créer un pipeline**.
 
-    > **Remarque** : nous allons utiliser l’Assistant pour créer une définition de pipeline YAML basée sur notre projet.
+   > **Remarque** : nous allons utiliser l’Assistant pour créer une définition de pipeline YAML basée sur notre projet.
 
-3. Dans le volet **Où se trouve votre code ?**, cliquez sur l’option **Azure Repos Git (YAML)**.
-4. Dans le volet **Sélectionner un référentiel**, cliquez sur **eShopOnWeb**.
-5. Dans le volet **Configurer votre pipeline**, faites défiler la page vers le bas, puis sélectionnez **Fichier YAML Azure Pipelines existant**.
-6. Dans le panneau **Sélectionner un fichier YAML existant**, spécifiez les paramètres suivants :
+1. Dans le volet **Où se trouve votre code ?**, cliquez sur l’option **Azure Repos Git (YAML)**.
+1. Dans le volet **Sélectionner un référentiel**, cliquez sur **eShopOnWeb**.
+1. Dans le volet **Configurer votre pipeline**, faites défiler la page vers le bas, puis sélectionnez **Fichier YAML Azure Pipelines existant**.
+1. Dans le panneau **Sélectionner un fichier YAML existant**, spécifiez les paramètres suivants :
    - Branche : **main**
    - Chemin : **.ado/eshoponweb-ci.yml**
-7. Cliquez sur **Continuer** pour enregistrer les paramètres.
-8. Dans l’écran **Passer en revue le fichier YAML de pipeline**, cliquez sur **Exécuter** pour démarrer le processus de pipeline de build.
-9. Attendez la fin du pipeline de build. Ignorez les avertissements concernant le code source lui-même, car ils ne sont pas pertinents pour cet exercice de labo.
+1. Cliquez sur **Continuer** pour enregistrer les paramètres.
+1. Dans l’écran **Passer en revue le fichier YAML de pipeline**, cliquez sur **Exécuter** pour démarrer le processus de pipeline de build.
+1. Attendez la fin du pipeline de build. Ignorez les avertissements concernant le code source lui-même, car ils ne sont pas pertinents pour cet exercice de labo.
 
-    > **Remarque** : chaque tâche du fichier YAML est disponible pour révision, y compris les avertissements et les erreurs.
+   > **Remarque** : chaque tâche du fichier YAML est disponible pour révision, y compris les avertissements et les erreurs.
 
-10. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension et sur l’option **Renommer/déplacer**. Nommez-le **eshoponweb-ci**, puis cliquez sur **Enregistrer**.
+1. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension et sur l’option **Renommer/déplacer**. Nommez-le **eshoponweb-ci**, puis cliquez sur **Enregistrer**.
 
 ### Exercice 2 : créer les ressources Azure nécessaires pour le pipeline de mise en production
 
@@ -111,85 +111,88 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 Dans cette tâche, vous allez créer deux applications web Azure représentant les environnements **DevTest** et **Production**, dans lesquels vous allez déployer l’application via Azure Pipelines.
 
 1. Sur l’ordinateur de labo, démarrez un navigateur web, accédez au [**portail Azure**](https://portal.azure.com) et connectez-vous avec le compte d’utilisateur qui a le rôle Propriétaire dans l’abonnement Azure que vous utiliserez dans ce labo et le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement.
-2. Dans le portail Azure, cliquez sur l’icône **Cloud Shell**, située directement à droite de la zone de texte de recherche en haut de la page.
-3. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
+1. Dans le portail Azure, cliquez sur l’icône **Cloud Shell**, située directement à droite de la zone de texte de recherche en haut de la page.
+1. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
 
-   >**Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
+   > **Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
 
-4. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un groupe de ressources (remplacez l’`<region>`espace réservé de variable par le nom de la région Azure qui hébergera les deux applications web Azure, par exemple « westeurope » ou « centralus » ou toute autre région disponible de votre choix) :
+1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un groupe de ressources (remplacez l’`<region>`espace réservé de variable par le nom de la région Azure qui hébergera les deux applications web Azure, par exemple « westeurope » ou « centralus » ou toute autre région disponible de votre choix) :
 
-    > **Remarque** : les emplacements possibles sont disponibles en exécutant la commande suivante. Utilisez le **Nom** sur `<region>` : `az account list-locations -o table`
+   > **Remarque** : les emplacements possibles sont disponibles en exécutant la commande suivante. Utilisez le **Nom** sur `<region>` : `az account list-locations -o table`
 
-    ```bash
-    REGION='centralus'
-    RESOURCEGROUPNAME='az400m04l09-RG'
-    az group create -n $RESOURCEGROUPNAME -l $REGION
-    ```
+   ```bash
+   REGION='centralus'
+   RESOURCEGROUPNAME='az400m04l09-RG'
+   az group create -n $RESOURCEGROUPNAME -l $REGION
+   ```
 
-5. Pour créer un plan App Service
+1. Pour créer un plan App Service
 
-    ```bash
-    SERVICEPLANNAME='az400m04l09-sp1'
-    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
-    ```
+   ```bash
+   SERVICEPLANNAME='az400m04l09-sp1'
+   az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
+   ```
 
-6. Créez deux applications web avec des noms d’application uniques.
+1. Créez deux applications web avec des noms d’application uniques.
 
-     ```bash
-     SUFFIX=$RANDOM$RANDOM
-     az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n RGATES$SUFFIX-DevTest
-     az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n RGATES$SUFFIX-Prod
-     ```
+   ```bash
+   SUFFIX=$RANDOM$RANDOM
+   az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n RGATES$SUFFIX-DevTest
+   az webapp create -g $RESOURCEGROUPNAME -p $SERVICEPLANNAME -n RGATES$SUFFIX-Prod
+   ```
 
-    > **Remarque** : enregistrez le nom de l’application web DevTest. Vous en aurez besoin plus tard dans ce labo.
+   > **Remarque** : enregistrez le nom de l’application web DevTest. Vous en aurez besoin plus tard dans ce labo.
 
-7. Attendez la fin du processus d’approvisionnement des ressources des services d’application web, puis fermez le volet **Cloud Shell**.
+1. Attendez la fin du processus d’approvisionnement des ressources des services d’application web, puis fermez le volet **Cloud Shell**.
 
 #### Tâche 2 : configurer une ressource Application Insights
 
 1. Dans le portail Azure, utilisez la zone de texte **Rechercher des ressources, services et documents** en haut de la page pour rechercher **Application Insights**, puis, dans la liste des résultats, sélectionnez **Application Insights**.
-2. Dans le volet **Application Insights**, sélectionnez **+ Créer**.
-3. Sous l’onglet **Informations de base** du panneau **Application Insights**, spécifiez les paramètres suivants (laissez les valeurs par défaut des autres paramètres) :
+1. Dans le volet **Application Insights**, sélectionnez **+ Créer**.
+1. Sous l’onglet **Informations de base** du panneau **Application Insights**, spécifiez les paramètres suivants (laissez les valeurs par défaut des autres paramètres) :
 
-    | Paramètre | Valeur |
-    | --- | --- |
-    | Groupe de ressources | **az400m04l09-RG** |
-    | Nom | Nom de l’application web DevTest que vous avez enregistrée dans la tâche précédente |
-    | Région | Même région Azure sur laquelle vous avez déployé les applications web plus tôt dans la tâche précédente |
-    | Mode ressource | **Classique** |
+   | Paramètre        | Valeur                                                                                 |
+   | -------------- | ------------------------------------------------------------------------------------- |
+   | Groupe de ressources | **az400m04l09-RG**                                                                    |
+   | Nom           | Nom de l’application web DevTest que vous avez enregistrée dans la tâche précédente                     |
+   | Région         | Même région Azure sur laquelle vous avez déployé les applications web plus tôt dans la tâche précédente |
+   | Mode ressource  | **Classique**                                                                           |
 
-    > **Remarque** : ignorez le message de dépréciation. Cela est nécessaire pour éviter les défaillances de la tâche Activer l’intégration continue DevOps que vous utiliserez plus loin dans ce labo.
+   > **Remarque** : ignorez le message de dépréciation. Cela est nécessaire pour éviter les défaillances de la tâche Activer l’intégration continue DevOps que vous utiliserez plus loin dans ce labo.
 
-4. Cliquez sur **Vérifier + créer**, puis sur **Créer**.
-5. Attendez la fin du processus de provisionnement.
-6. Dans le portail Azure, accédez au groupe de ressources **az400m04l09-RG** que vous avez créé dans la tâche précédente.
-7. Dans la liste des ressources, cliquez sur l’application web **DevTest**.
-8. Dans la page de l’application web **DevTest**, dans le menu vertical de gauche, dans la section **Paramètres**, cliquez sur **Application Insights**.
-9. Dans le panneau **Application Insights**, sélectionnez **Activer Application Insights**.
-10. Dans la section **Modifier votre ressource**, cliquez sur l’option **Sélectionner une ressource existante**. Dans la liste des ressources existantes, sélectionnez la ressource Application Insight nouvellement créée, cliquez sur **Appliquer** et, lorsque vous y êtes invité, cliquez sur **Oui**.
-11. Attendez que la modification prenne effet.
+1. Cliquez sur **Vérifier + créer**, puis sur **Créer**.
+1. Attendez la fin du processus de provisionnement.
+1. Dans le portail Azure, accédez au groupe de ressources **az400m04l09-RG** que vous avez créé dans la tâche précédente.
+1. Dans la liste des ressources, cliquez sur l’application web **DevTest**.
+1. Dans la page de l’application web **DevTest**, dans le menu vertical de gauche, dans la section **Paramètres**, cliquez sur **Application Insights**.
+1. Dans le panneau **Application Insights**, sélectionnez **Activer Application Insights**.
+1. Dans la section **Modifier votre ressource**, cliquez sur l’option **Sélectionner une ressource existante**. Dans la liste des ressources existantes, sélectionnez la ressource Application Insight nouvellement créée, cliquez sur **Appliquer** et, lorsque vous y êtes invité, cliquez sur **Oui**.
+1. Attendez que la modification prenne effet.
 
-    > **Remarque** : vous allez maintenant créer des alertes de surveillance, que vous utiliserez ultérieurement dans ce labo.
-12. Dans la même option de menu **Paramètres** / **Application Insights** de l’application web, sélectionnez **Afficher les données Application Insights**. Le panneau Application Insights s’ouvre dans le portail Azure.
-13. Dans le panneau des ressources Application Insights, dans la section **Surveillance**, cliquez sur **Alertes**, puis sur **Créer > règle d’alerte**.
-14. Dans le panneau **Sélectionner un signal**, dans la zone de texte **Rechercher par nom de signal**, tapez **Demandes**. Dans la liste des résultats, sélectionnez **Demandes ayant échoué**.
-15. Dans le panneau **Créer une règle d’alerte**, dans la section **Condition**, laissez le **Seuil** défini sur **Statique**, validez les autres paramètres par défaut comme suit :
-    - Type d’agrégation : Count
-    - Opérateur : Supérieur à
-    - Unité: Nombre
-16. Dans la zone de texte **Valeur seuil**, saisissez **0** puis cliquez sur **Next:Actions**. N’apportez aucune modification dans le panneau de paramètres **Actions** et définissez les paramètres suivants sous la section **Détails** :
+   > **Remarque** : vous allez maintenant créer des alertes de surveillance, que vous utiliserez ultérieurement dans ce labo.
 
-    | Paramètre | Valeur |
-    | --- | --- |
-    | Niveau de gravité | **2 - Avertissement** |
-    | Nom de la règle d’alerte | **RGATESDevTest_FailedRequests** |
-    | Options avancées : résoudre automatiquement les alertes | **désactivé** |
+1. Dans la même option de menu **Paramètres** / **Application Insights** de l’application web, sélectionnez **Afficher les données Application Insights**. Le panneau Application Insights s’ouvre dans le portail Azure.
+1. Dans le panneau des ressources Application Insights, dans la section **Surveillance**, cliquez sur **Alertes**, puis sur **Créer > règle d’alerte**.
+1. Dans le panneau **Sélectionner un signal**, dans la zone de texte **Rechercher par nom de signal**, tapez **Demandes**. Dans la liste des résultats, sélectionnez **Demandes ayant échoué**.
+1. Dans le panneau **Créer une règle d’alerte**, dans la section **Condition**, laissez le **Seuil** défini sur **Statique**, validez les autres paramètres par défaut comme suit :
 
-    > **Remarque** : les règles d’alerte de métrique peuvent prendre jusqu’à 10 minutes pour s’activer.
+   - Type d’agrégation : Count
+   - Opérateur : Supérieur à
+   - Unité: Nombre
 
-    > **Remarque** : vous pouvez créer plusieurs règles d’alerte sur différentes métriques, telles que la disponibilité < 99 %, le temps de réponse du serveur > 5 secondes ou les exceptions de serveur > 0
+1. Dans la zone de texte **Valeur seuil**, saisissez **0** puis cliquez sur **Next:Actions**. N’apportez aucune modification dans le panneau de paramètres **Actions** et définissez les paramètres suivants sous la section **Détails** :
 
-17. Confirmez la création de la règle d’alerte en cliquant sur **Vérifier + créer**, puis confirmez une fois de plus en cliquant sur **Créer**. Attendez que la règle d’alerte soit créée.
+   | Paramètre                                        | Valeur                            |
+   | ---------------------------------------------- | -------------------------------- |
+   | Niveau de gravité                                       | **2 - Avertissement**                   |
+   | Nom de la règle d’alerte                                | **RGATESDevTest_FailedRequests** |
+   | Options avancées : résoudre automatiquement les alertes | **désactivé**                      |
+
+   > **Remarque** : les règles d’alerte de métrique peuvent prendre jusqu’à 10 minutes pour s’activer.
+
+   > **Remarque** : vous pouvez créer plusieurs règles d’alerte sur différentes métriques, telles que la disponibilité < 99 %, le temps de réponse du serveur > 5 secondes ou les exceptions de serveur > 0
+
+1. Confirmez la création de la règle d’alerte en cliquant sur **Vérifier + créer**, puis confirmez une fois de plus en cliquant sur **Créer**. Attendez que la règle d’alerte soit créée.
 
 ### Exercice 2 : configurer le pipeline de mise en production
 
@@ -200,47 +203,50 @@ Dans cet exercice, vous allez configurer un pipeline de mise en production.
 Dans cette tâche, vous allez configurer les tâches de mise en production dans le cadre du pipeline de mise en production.
 
 1. Dans le projet **eShopOnWeb** du portail Azure DevOps, dans le volet de navigation vertical, sélectionnez **Pipelines**, puis, dans la section **Pipelines**, cliquez sur **Mises en production**.
-2. Cliquez sur **Nouveau pipeline**.
-3. Dans la fenêtre **Sélectionner un modèle**, **choisissez****Déploiement d’Azure App Service** (Déployer votre application sur Azure App Service. Choisissez l’application web parmi Windows, Linux, des conteneurs, des applications de fonction ou WebJobs) sous la **liste proposée** des modèles.
-4. Cliquez sur **Appliquer**.
-5. Dans la fenêtre **Étape** qui s’affiche, modifiez le nom par défaut de l’étape « Étape 1 » en **DevTest**. Fermez la fenêtre contextuelle à l’aide du bouton **X**. Vous êtes maintenant dans l’éditeur graphique du pipeline de mise en production, montrant l’étape DevTest.
-6. En haut de la page, renommez le pipeline actuel de **Nouveau pipeline de mise en production** en **eshoponweb-cd**.
-7. Pointez la souris sur l’étape DevTest puis cliquez sur le bouton**Cloner** pour copier l’étape DevTest vers une étape supplémentaire. Nommez cette étape **Production**.
+1. Cliquez sur **Nouveau pipeline**.
+1. Dans la fenêtre **Sélectionner un modèle**, **choisissez****Déploiement d’Azure App Service** (Déployer votre application sur Azure App Service. Choisissez l’application web parmi Windows, Linux, des conteneurs, des applications de fonction ou WebJobs) sous la **liste proposée** des modèles.
+1. Cliquez sur **Appliquer**.
+1. Dans la fenêtre **Étape** qui s’affiche, modifiez le nom par défaut de l’étape « Étape 1 » en **DevTest**. Fermez la fenêtre contextuelle à l’aide du bouton **X**. Vous êtes maintenant dans l’éditeur graphique du pipeline de mise en production, montrant l’étape DevTest.
+1. En haut de la page, renommez le pipeline actuel de **Nouveau pipeline de mise en production** en **eshoponweb-cd**.
+1. Pointez la souris sur l’étape DevTest puis cliquez sur le bouton**Cloner** pour copier l’étape DevTest vers une étape supplémentaire. Nommez cette étape **Production**.
 
-    > **Remarque** : le pipeline contient désormais deux étapes nommées **DevTest** et **Production**.
+   > **Remarque** : le pipeline contient désormais deux étapes nommées **DevTest** et **Production**.
 
-8. Sous l’onglet **Pipeline**, sélectionnez le rectangle **Ajouter un artefact**, puis sélectionnez **eshoponweb-ci** dans le champ **Source (pipeline de build).** Cliquez sur **Ajouter** pour confirmer la sélection de l’artefact.
-9. Dans le rectangle **Artefacts**, notez le **Déclencheur de déploiement continu** (éclair). Cliquez dessus pour ouvrir les paramètres du **Déclencheur de déploiement continu**. Cliquez sur **Désactivé** pour basculer le commutateur et l'activer. Conservez tous les autres paramètres par défaut et fermez le volet **Déclencheur de déploiement continu** en cliquant sur la marque **x** dans son coin supérieur droit.
-10. Dans l’étape **Environnements DevTest**, cliquez sur l'étiquette **1 travail, 1 tâche** et passez en revue les tâches de cette étape.
+1. Sous l’onglet **Pipeline**, sélectionnez le rectangle **Ajouter un artefact**, puis sélectionnez **eshoponweb-ci** dans le champ **Source (pipeline de build).** Cliquez sur **Ajouter** pour confirmer la sélection de l’artefact.
+1. Dans le rectangle **Artefacts**, notez le **Déclencheur de déploiement continu** (éclair). Cliquez dessus pour ouvrir les paramètres du **Déclencheur de déploiement continu**. Cliquez sur **Désactivé** pour basculer le commutateur et l'activer. Conservez tous les autres paramètres par défaut et fermez le volet **Déclencheur de déploiement continu** en cliquant sur la marque **x** dans son coin supérieur droit.
+1. Dans l’étape **Environnements DevTest**, cliquez sur l'étiquette **1 travail, 1 tâche** et passez en revue les tâches de cette étape.
 
-    > **Remarque** : l’environnement DevTest a 1 tâche qui, respectivement, publie le package d’artefacts sur Azure Web App.
+   > **Remarque** : l’environnement DevTest a 1 tâche qui, respectivement, publie le package d’artefacts sur Azure Web App.
 
-11. Dans le volet **Tous les pipelines > eshoponweb-cd**, vérifiez que l’étape **DevTest** est sélectionnée. Dans la liste déroulante **Abonnement Azure**, sélectionnez votre abonnement Azure et cliquez sur **Autoriser**. Si vous y êtes invité, authentifiez-vous à l’aide du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement Azure.
-12. Vérifiez que le type d’application est défini sur Application web sur Windows. Ensuite, dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web **DevTest**.
-13. Sélectionnez la tâche **Déployer Azure App Service**. Dans le champ **Package ou dossier**, mettez à jour la valeur par défaut de « $(System.DefaultWorkingDirectory)//\*\*\*.zip » à « $(System.DefaultWorkingDirectory)/\*\*/Web.zip »
+1. Dans le volet **Tous les pipelines > eshoponweb-cd**, vérifiez que l’étape **DevTest** est sélectionnée. Dans la liste déroulante **Abonnement Azure**, sélectionnez votre abonnement Azure et cliquez sur **Autoriser**. Si vous y êtes invité, authentifiez-vous à l’aide du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement Azure.
+1. Vérifiez que le type d’application est défini sur Application web sur Windows. Ensuite, dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web **DevTest**.
+1. Sélectionnez la tâche **Déployer Azure App Service**. Dans le champ **Package ou dossier**, mettez à jour la valeur par défaut de « $(System.DefaultWorkingDirectory)//\*\*\*.zip » à « $(System.DefaultWorkingDirectory)/\*\*/Web.zip »
 
-    > notez le point d’exclamation en regard de l’onglet Tâches. Cela est attendu, car nous devons configurer les paramètres de l'étape de production.
+   > notez le point d’exclamation en regard de l’onglet Tâches. Cela est attendu, car nous devons configurer les paramètres de l'étape de production.
 
-14. Dans le volet **Tous les pipelines > eshoponweb-cd**, accédez à l’onglet **Pipeline** et, cette fois, dans l'étape **Production**, cliquez sur l’étiquette **1 travail, 1 tâche**. À l’instar de l’étape précédente DevTest, complétez les paramètres du pipeline. Sous l’onglet Tâches / processus Déploiement en production, dans la liste déroulante **Abonnement Azure**, sélectionnez l’abonnement Azure que vous avez utilisé pour l'étape **Environnement DevTest**, affiché sous **Connexions de service Azure disponibles**, puisque nous avons déjà créé la connexion de service lors de l’autorisation de l’abonnement.
-15. Dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web **Prod**.
-16. Sélectionnez la tâche **Déployer Azure App Service**. Dans le champ **Package ou dossier**, mettez à jour la valeur par défaut de « $(System.DefaultWorkingDirectory)//\*\*\*.zip » à « $(System.DefaultWorkingDirectory)/\*\*/Web.zip »
-17. Dans le volet **Tous les pipelines > eshoponweb-cd**, cliquez sur **Enregistrer** et, dans la boîte de dialogue **Enregistrer**, cliquez sur **OK**.
+1. Ouvrez le volet **Paramètres d’application et de configuration** et entrez `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` dans la zone **Paramètres de l’application**.
 
-    Vous avez maintenant correctement configuré le pipeline de mise en production.
+1. Dans le volet **Tous les pipelines > eshoponweb-cd**, accédez à l’onglet **Pipeline** et, cette fois, dans l'étape **Production**, cliquez sur l’étiquette **1 travail, 1 tâche**. À l’instar de l’étape précédente DevTest, complétez les paramètres du pipeline. Sous l’onglet Tâches / processus Déploiement en production, dans la liste déroulante **Abonnement Azure**, sélectionnez l’abonnement Azure que vous avez utilisé pour l'étape **Environnement DevTest**, affiché sous **Connexions de service Azure disponibles**, puisque nous avons déjà créé la connexion de service lors de l’autorisation de l’abonnement.
+1. Dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web **Prod**.
+1. Sélectionnez la tâche **Déployer Azure App Service**. Dans le champ **Package ou dossier**, mettez à jour la valeur par défaut de « $(System.DefaultWorkingDirectory)//\*\*\*.zip » à « $(System.DefaultWorkingDirectory)/\*\*/Web.zip »
+1. Ouvrez le volet **Paramètres d’application et de configuration** et entrez `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` dans la zone **Paramètres de l’application**.
+1. Dans le volet **Tous les pipelines > eshoponweb-cd**, cliquez sur **Enregistrer** et, dans la boîte de dialogue **Enregistrer**, cliquez sur **OK**.
 
-18. Dans la fenêtre du navigateur affichant le projet **eShopOnWeb**, dans le volet de navigation vertical, dans la section **Pipelines**, cliquez sur **Pipelines**.
-19. Dans le volet **Pipelines**, cliquez sur l’entrée représentant le pipeline de build **eshoponweb-ci**, puis cliquez sur **Exécuter le pipeline**.
-20. Dans le volet **Exécuter le pipeline**, acceptez les paramètres par défaut, puis cliquez sur **Exécuter** pour déclencher le pipeline. **Attendez la fin de l’exécution du pipeline**.
+   Vous avez maintenant correctement configuré le pipeline de mise en production.
 
-    > **Remarque** : une fois le build généré, la mise en production sera déclenchée automatiquement et l’application sera déployée dans les deux environnements. Validez les actions de mise en production, une fois le pipeline de build terminé.
+1. Dans la fenêtre du navigateur affichant le projet **eShopOnWeb**, dans le volet de navigation vertical, dans la section **Pipelines**, cliquez sur **Pipelines**.
+1. Dans le volet **Pipelines**, cliquez sur l’entrée représentant le pipeline de build **eshoponweb-ci**, puis cliquez sur **Exécuter le pipeline**.
+1. Dans le volet **Exécuter le pipeline**, acceptez les paramètres par défaut, puis cliquez sur **Exécuter** pour déclencher le pipeline. **Attendez la fin de l’exécution du pipeline**.
 
-21. Dans le volet de navigation vertical, dans la section **Pipelines**, cliquez sur **Mises en production** et, dans le volet **eshoponweb-cd**, cliquez sur l’entrée représentant la mise en production la plus récente.
-22. Dans le panneau **eshoponweb-cd > Release-1**, suivez la progression de la mise en production et vérifiez que le déploiement sur les deux applications web s’est terminé correctement.
-23. Basculez vers l’interface du portail Azure, puis accédez au groupe de ressources **az400m04l09-RG**. Dans la liste des ressources, cliquez sur l’application web **DevTest**. Dans le panneau de l’application web, cliquez sur **Parcourir** et vérifiez que la page web (site web e-commerce) se charge correctement dans un nouvel onglet de navigateur web.
-24. Revenez à l’interface du portail Azure, cette fois en accédant au groupe de ressources **az400m04l09-RG**. Dans la liste des ressources, cliquez sur l’application web **Production**. Dans le panneau de l’application web, cliquez sur **Parcourir** et vérifiez que la page web se charge correctement dans un nouvel onglet de navigateur web.
-25. Fermez l’onglet du navigateur web affichant le site web **EShopOnWeb**.
+   > **Remarque** : une fois le build généré, la mise en production sera déclenchée automatiquement et l’application sera déployée dans les deux environnements. Validez les actions de mise en production, une fois le pipeline de build terminé.
 
-    > **Remarque** : vous disposez maintenant de l’application avec CI/CD configuré. Dans l’exercice suivant, nous allons configurer des murs qualité dans le cadre d’un pipeline de mise en production plus avancé.
+1. Dans le volet de navigation vertical, dans la section **Pipelines**, cliquez sur **Mises en production** et, dans le volet **eshoponweb-cd**, cliquez sur l’entrée représentant la mise en production la plus récente.
+1. Dans le panneau **eshoponweb-cd > Release-1**, suivez la progression de la mise en production et vérifiez que le déploiement sur les deux applications web s’est terminé correctement.
+1. Basculez vers l’interface du portail Azure, puis accédez au groupe de ressources **az400m04l09-RG**. Dans la liste des ressources, cliquez sur l’application web **DevTest**. Dans le panneau de l’application web, cliquez sur **Parcourir** et vérifiez que la page web (site web e-commerce) se charge correctement dans un nouvel onglet de navigateur web.
+1. Revenez à l’interface du portail Azure, cette fois en accédant au groupe de ressources **az400m04l09-RG**. Dans la liste des ressources, cliquez sur l’application web **Production**. Dans le panneau de l’application web, cliquez sur **Parcourir** et vérifiez que la page web se charge correctement dans un nouvel onglet de navigateur web.
+1. Fermez l’onglet du navigateur web affichant le site web **EShopOnWeb**.
+
+   > **Remarque** : vous disposez maintenant de l’application avec CI/CD configuré. Dans l’exercice suivant, nous allons configurer des murs qualité dans le cadre d’un pipeline de mise en production plus avancé.
 
 ### Exercice 3 : configurer les portes de mise en production
 
@@ -251,24 +257,24 @@ Dans cet exercice, vous allez configurer des murs qualité dans le pipeline de m
 Dans cette tâche, vous allez configurer des portes de prédéploiement.
 
 1. Basculez vers la fenêtre du navigateur web qui affiche le portail Azure DevOps, puis ouvrez le projet **eShopOnWeb**. Dans le volet de navigation vertical, dans la section **Pipelines**, cliquez sur **Mises en production** puis, dans le volet **eshoponweb-cd**, cliquez sur **Modifier**.
-2. Dans le volet **Tous les pipelines > eshoponweb-cd**, sur le bord gauche du rectangle représentant l’étape **Environnement DevTest**, cliquez sur la forme ovale représentant les **Conditions de prédéploiement**.
-3. Dans le volet **Conditions de prédéploiement**, définissez le curseur **Approbations de prédéploiement** sur **Activé** puis, dans la zone de texte **Approbateurs**, saisissez e nom de votre compte Azure DevOps et sélectionnez-le.
+1. Dans le volet **Tous les pipelines > eshoponweb-cd**, sur le bord gauche du rectangle représentant l’étape **Environnement DevTest**, cliquez sur la forme ovale représentant les **Conditions de prédéploiement**.
+1. Dans le volet **Conditions de prédéploiement**, définissez le curseur **Approbations de prédéploiement** sur **Activé** puis, dans la zone de texte **Approbateurs**, saisissez e nom de votre compte Azure DevOps et sélectionnez-le.
 
-    > **Remarque** : dans un scénario réel, il doit s’agir d’un alias de nom d’équipe DevOps au lieu de votre propre nom.
+   > **Remarque** : dans un scénario réel, il doit s’agir d’un alias de nom d’équipe DevOps au lieu de votre propre nom.
 
-4. **Enregistrez** les paramètres d’approbation préalable et fermez la fenêtre contextuelle.
-5. Cliquez sur **Créer une mise en production** et confirmez en appuyant sur le bouton **Créer** dans la fenêtre contextuelle.
-6. Notez le message de confirmation vert indiquant que « Release-2 » a été créé. Cliquez sur le lien « Release-2 » pour accéder à ses détails.
-7. Notez que l’étape **DevTest** est dans un état **Approbation en attente**. Cliquez sur le bouton **Approuver**. Cela relance l’étape DevTest.
+1. **Enregistrez** les paramètres d’approbation préalable et fermez la fenêtre contextuelle.
+1. Cliquez sur **Créer une mise en production** et confirmez en appuyant sur le bouton **Créer** dans la fenêtre contextuelle.
+1. Notez le message de confirmation vert indiquant que « Release-2 » a été créé. Cliquez sur le lien « Release-2 » pour accéder à ses détails.
+1. Notez que l’étape **DevTest** est dans un état **Approbation en attente**. Cliquez sur le bouton **Approuver**. Cela relance l’étape DevTest.
 
 #### Tâche 2 : configurer des portes de post-déploiement pour Azure Monitor
 
 Dans cette tâche, vous allez activer le mur de post-déploiement pour l’environnement DevTest.
 
 1. De retour dans le volet **Tous les pipelines > eshoponweb-cd**, sur le bord droit du rectangle représentant l’étape **Environnement DevTest**, cliquez sur la forme ovale représentant les **Conditions post-déploiement**.
-2. Dans le volet **Conditions post-déploiement**, définissez le curseur **Portes** sur **Activé**, cliquez sur **+ Ajouter** puis, dans le menu contextuel, cliquez sur **Interroger les alertes Azure Monitor**.
-3. Dans le volet **Conditions post-déploiement**, dans la section **Interroger les alertes Azure Monitor**, dans la liste déroulante **Abonnement Azure**, sélectionnez l’entrée de **connexion de service** représentant la connexion à votre abonnement Azure puis, dans la liste déroulante **Groupe de ressources**, sélectionnez l’entrée **az400m04l09-RG**.
-4. Dans le volet **Conditions post-déploiement**, développez la section **Avancé** et configurez les options suivantes :
+1. Dans le volet **Conditions post-déploiement**, définissez le curseur **Portes** sur **Activé**, cliquez sur **+ Ajouter** puis, dans le menu contextuel, cliquez sur **Interroger les alertes Azure Monitor**.
+1. Dans le volet **Conditions post-déploiement**, dans la section **Interroger les alertes Azure Monitor**, dans la liste déroulante **Abonnement Azure**, sélectionnez l’entrée de **connexion de service** représentant la connexion à votre abonnement Azure puis, dans la liste déroulante **Groupe de ressources**, sélectionnez l’entrée **az400m04l09-RG**.
+1. Dans le volet **Conditions post-déploiement**, développez la section **Avancé** et configurez les options suivantes :
 
    - Type de filtre : **Aucun**
    - Gravité : **Sev0, Sev1, Sev2, Sev3, Sev4**
@@ -276,16 +282,16 @@ Dans cette tâche, vous allez activer le mur de post-déploiement pour l’envir
    - État d’alerte : **Reconnu, Nouveau**
    - Condition d’analyse : **Déclenché**
 
-5. Dans le volet **Conditions post-déploiement**, développez les **Options d’évaluation** et configurez les options suivantes :
+1. Dans le volet **Conditions post-déploiement**, développez les **Options d’évaluation** et configurez les options suivantes :
 
    - Définissez la valeur de **Délai entre la réévaluation des portes** sur **5 minutes**.
    - Définissez la valeur de **Délai d’expiration avant l’échec des portes** sur **8 minutes**.
    - Sélectionnez l’option **En cas de réussite des portes, demander les approbations**.
 
-    > **Remarque** : l’intervalle d’échantillonnage et le délai d’expiration fonctionnent ensemble afin que les portes appellent leurs fonctions à intervalles appropriés et rejettent le déploiement s’ils ne réussissent pas pendant le même intervalle d’échantillonnage au cours de la période d’expiration.
+   > **Remarque** : l’intervalle d’échantillonnage et le délai d’expiration fonctionnent ensemble afin que les portes appellent leurs fonctions à intervalles appropriés et rejettent le déploiement s’ils ne réussissent pas pendant le même intervalle d’échantillonnage au cours de la période d’expiration.
 
-6. Fermez le volet **Conditions post-déploiement** en cliquant sur le **x** dans son coin supérieur droit.
-7. De retour dans le volet **eshoponweb-cd**, cliquez sur **Enregistrer** puis, dans la boîte de dialogue **Enregistrer**, cliquez sur **OK**.
+1. Fermez le volet **Conditions post-déploiement** en cliquant sur le **x** dans son coin supérieur droit.
+1. De retour dans le volet **eshoponweb-cd**, cliquez sur **Enregistrer** puis, dans la boîte de dialogue **Enregistrer**, cliquez sur **OK**.
 
 ### Exercice 4 : tester les portes de mise en production
 
@@ -296,33 +302,33 @@ Dans cet exercice, vous allez tester les portes de mise en production en mettant
 Dans cette tâche, vous allez d’abord générer des alertes pour l’application web DevTest, puis suivre le processus de mise en production avec les portes de mise en production activées.
 
 1. À partir du portail Azure, accédez à la ressource **Application web DevTest** déployée précédemment.
-2. Dans le volet Vue d’ensemble, notez le champ **URL** montrant le lien hypertexte de l’application web. Cliquez sur ce lien, qui vous redirige vers l’application web EShopOnWeb dans le navigateur.
-3. Pour simuler une **demande ayant échoué**, ajoutez **/discount** à l’URL, ce qui entraînera un message d’erreur, car cette page n’existe pas. Actualisez cette page plusieurs fois pour générer plusieurs événements.
-4. Dans le portail Azure, dans le champ « Rechercher des ressources, des services et des documents », entrez **Application Insights** et sélectionnez la ressource **DevTest-AppInsights** créée dans l’exercice précédent. Accédez ensuite aux **Alertes**.
-5. Il doit y avoir au moins **1** nouvelle alerte dans la liste des résultats, avec une **Gravité 2**. Entrez **Alertes** pour ouvrir le service Alertes d’Azure Monitor.
-6. Notez qu’au moins **1** Failed_Alert avec **gravité 2 - Avertissement** doit être affichée dans la liste. Celle-ci a été déclenchée lorsque vous avez validé l’adresse URL du site web inexistante dans l’exercice précédent.
+1. Dans le volet Vue d’ensemble, notez le champ **URL** montrant le lien hypertexte de l’application web. Cliquez sur ce lien qui vous redirige vers l’application web eShopOnWeb dans le navigateur.
+1. Pour simuler une **demande ayant échoué**, ajoutez **/discount** à l’URL, ce qui entraînera un message d’erreur, car cette page n’existe pas. Actualisez cette page plusieurs fois pour générer plusieurs événements.
+1. Dans le portail Azure, dans le champ « Rechercher des ressources, des services et des documents », entrez **Application Insights** et sélectionnez la ressource **DevTest-AppInsights** créée dans l’exercice précédent. Accédez ensuite aux **Alertes**.
+1. Il doit y avoir au moins **1** nouvelle alerte dans la liste des résultats, avec une **Gravité 2**. Entrez **Alertes** pour ouvrir le service Alertes d’Azure Monitor.
+1. Notez qu’au moins **1** Failed_Alert avec **gravité 2 - Avertissement** doit être affichée dans la liste. Celle-ci a été déclenchée lorsque vous avez validé l’adresse URL du site web inexistante dans l’exercice précédent.
 
-    > **Remarque :** si aucune alerte n’apparaît encore, attendez quelques minutes.
+   > **Remarque :** si aucune alerte n’apparaît encore, attendez quelques minutes.
 
-7. Revenez au portail Azure DevOps et ouvrez le projet **EShopOnWeb**. Accédez à **Pipelines**, sélectionnez **Mises en productions** et **eshoponweb-cd**.
-8. Cliquez sur le bouton **Créer une mise en production**.
-9. Attendez que le pipeline de mise en production démarre, puis **approuvez** l’action de mise en production de l’étape DevTest.
-10. Attendez que l’étape de mise en production DevTest se termine correctement. Vous remarquerez que les **Portes de post-déploiement** passent à l’état **Portes d’évaluation**.  Cliquez sur l’icône **Portes d’évaluation**.
-11. Pour **Interroger les alertes Azure Monitor**, notez l’état d’échec initial.
-12. Laissez le pipeline de mise en production en attente pendant les 5 minutes qui suivent. Une fois les 5 minutes écoulées, notez que la 2e évaluation échoue à nouveau.
-13. Ce comportement est attendu, car une alerte Application Insights a été déclenchée pour l’application web DevTest.
+1. Revenez dans le portail Azure DevOps et ouvrez le projet **eShopOnWeb**. Accédez à **Pipelines**, sélectionnez **Mises en productions** et **eshoponweb-cd**.
+1. Cliquez sur le bouton **Créer une mise en production**.
+1. Attendez que le pipeline de mise en production démarre, puis **approuvez** l’action de mise en production de l’étape DevTest.
+1. Attendez que l’étape de mise en production DevTest se termine correctement. Vous remarquerez que les **Portes de post-déploiement** passent à l’état **Portes d’évaluation**. Cliquez sur l’icône **Portes d’évaluation**.
+1. Pour **Interroger les alertes Azure Monitor**, notez l’état d’échec initial.
+1. Laissez le pipeline de mise en production en attente pendant les 5 minutes qui suivent. Une fois les 5 minutes écoulées, notez que la 2e évaluation échoue à nouveau.
+1. Ce comportement est attendu, car une alerte Application Insights a été déclenchée pour l’application web DevTest.
 
-    > **Remarque** : étant donné qu’une alerte est déclenchée par l’exception, la porte **Interroger Azure Monitor** échoue. Cela empêche à son tour le déploiement dans l’environnement de **production**.
+   > **Remarque** : étant donné qu’une alerte est déclenchée par l’exception, la porte **Interroger Azure Monitor** échoue. Cela empêche à son tour le déploiement dans l’environnement de **production**.
 
-14. Patientez quelques minutes et validez à nouveau l’état des portes de mise en production. Quelques minutes après la vérification initiale des portes de mise en production, et puisque l’alerte Application Insight initiale a été déclenchée avec l’action « Déclenché », une porte de mise en production doit aboutir, permettant ainsi de déployer l’étape de mise en production.
+1. Patientez quelques minutes et validez à nouveau l’état des portes de mise en production. Quelques minutes après la vérification initiale des portes de mise en production, et puisque l’alerte Application Insight initiale a été déclenchée avec l’action « Déclenché », une porte de mise en production doit aboutir, permettant ainsi de déployer l’étape de mise en production.
 
-    > **Remarque :** si votre porte échoue, fermez l’alerte.
+   > **Remarque :** si votre porte échoue, fermez l’alerte.
 
 ### Exercice 6 : supprimer les ressources du labo Azure
 
 Dans cet exercice, vous allez supprimer les ressources Azure approvisionnées dans ce labo pour éviter des frais inattendus.
 
->**Remarque** : N’oubliez pas de supprimer toutes les nouvelles ressources Azure que vous n’utilisez plus. La suppression des ressources inutilisées vous évitera d’encourir des frais inattendus.
+> **Remarque** : N’oubliez pas de supprimer toutes les nouvelles ressources Azure que vous n’utilisez plus. La suppression des ressources inutilisées vous évitera d’encourir des frais inattendus.
 
 #### Tâche 1 : supprimer les ressources du labo Azure
 
@@ -331,17 +337,17 @@ Dans cette tâche, vous allez utiliser Azure Cloud Shell pour supprimer les ress
 1. Dans le Portail Azure, ouvrez la session shell **Bash** dans le volet **Cloud Shell**.
 1. Listez tous les groupes de ressources créés dans les labos de ce module en exécutant la commande suivante :
 
-    ```sh
-    az group list --query "[?starts_with(name,'az400m04l09-RG')].name" --output tsv
-    ```
+   ```sh
+   az group list --query "[?starts_with(name,'az400m04l09-RG')].name" --output tsv
+   ```
 
 1. Supprimez tous les groupes de ressources que vous avez créés dans les labos de ce module en exécutant la commande suivante :
 
-    ```sh
-    az group list --query "[?starts_with(name,'az400m04l09-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
+   ```sh
+   az group list --query "[?starts_with(name,'az400m04l09-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+   ```
 
-    >**Remarque** : La commande s’exécute de façon asynchrone (comme déterminé par le paramètre --no-wait). Par conséquent, vous serez en mesure d’exécuter une autre commande Azure CLI immédiatement après au cours de la même session Bash, mais la suppression réelle du groupe de ressources prendra quelques minutes.
+   > **Remarque** : La commande s’exécute de façon asynchrone (comme déterminé par le paramètre --no-wait). Par conséquent, vous serez en mesure d’exécuter une autre commande Azure CLI immédiatement après au cours de la même session Bash, mais la suppression réelle du groupe de ressources prendra quelques minutes.
 
 ## Révision
 

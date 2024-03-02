@@ -56,16 +56,16 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
     ![Importer un référentiel](images/import-repo.png)
 
-2. Le référentiel est organisé de la manière suivante :
+1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 ### Exercice 1 : mettre en œuvre la sécurité et la conformité dans un pipeline Azure DevOps à l’aide de Mend Bolt
 
@@ -79,17 +79,17 @@ Dans cette tâche, vous allez activer WhiteSource Bolt dans le nouveau projet Az
 
     ![Parcourir Marketplace](images/browse-marketplace.png)
 
-2. Sur la Place de marché, recherchez **Mend Bolt (formerly WhiteSource)** et ouvrez-le. Mend Bolt est la version gratuite de l’outil précédemment appelé WhiteSource, qui analyse tous vos projets et détecte les composants open source, leur licence et leurs vulnérabilités connues.
+1. Sur la Place de marché, recherchez **Mend Bolt (formerly WhiteSource)** et ouvrez-le. Mend Bolt est la version gratuite de l’outil précédemment appelé WhiteSource, qui analyse tous vos projets et détecte les composants open source, leur licence et leurs vulnérabilités connues.
 
     > Avertissement : veillez à sélectionner l’option Mend **Bolt** (la version **gratuite**) !
 
-3. Sur la page **Mend Bolt (formerly WhiteSource)**, cliquez sur **Get if for free** (Obtenir gratuitement).
+1. Sur la page **Mend Bolt (formerly WhiteSource)**, cliquez sur **Get if for free** (Obtenir gratuitement).
 
     ![Obtenir Mend Bolt](images/mend-bolt.png)
 
-4. Sur la page suivante, sélectionnez l’organisation Azure DevOps souhaitée, puis procédez à l’**installation**. **Passez à l’organisation** une fois l’installation terminée.
+1. Sur la page suivante, sélectionnez l’organisation Azure DevOps souhaitée, puis procédez à l’**installation**. **Passez à l’organisation** une fois l’installation terminée.
 
-5. Dans Azure DevOps, accédez à **Paramètres de l’organisation**, puis, sous **Extensions**, sélectionnez **Mend**. Fournissez votre adresse e-mail professionnelle (**votre compte personnel de labo**, par exemple, en utilisant AZ400learner@outlook.com au lieu de student@microsoft.com), le nom de  la société et d’autres détails, puis cliquez sur le bouton **Créer un compte** pour commencer à utiliser la version gratuite.
+1. Dans Azure DevOps, accédez à **Paramètres de l’organisation**, puis, sous **Extensions**, sélectionnez **Mend**. Fournissez votre adresse e-mail professionnelle (**votre compte personnel de labo**, par exemple, en utilisant <AZ400learner@outlook.com> au lieu de <student@microsoft.com>), le nom de  la société et d’autres détails, puis cliquez sur le bouton **Créer un compte** pour commencer à utiliser la version gratuite.
 
     ![Obtenir un compte Mend](images/mend-account.png)
 
@@ -99,25 +99,25 @@ Dans cette tâche, vous allez créer et déclencher un pipeline de build CI dan
 
 1. Sur votre ordinateur de labo, à partir du projet Azure DevOps **eShopOnWeb**, dans la barre de menus verticale à gauche, accédez à la section **Pipelines > Pipelines**, cliquez sur **Créer un pipeline** (ou sur **Nouveau pipeline**).
 
-2. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
+1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-3. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-ci-mend.yml**, puis cliquez sur **Continuer**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-ci-mend.yml**, puis cliquez sur **Continuer**.
 
     ![Sélectionner un pipeline](images/select-pipeline.png)
 
-4. Passez en revue le pipeline, puis cliquez sur **Exécuter**. Cette opération prend quelques minutes.
+1. Passez en revue le pipeline, puis cliquez sur **Exécuter**. Cette opération prend quelques minutes.
     > **Remarque** : la génération peut prendre plusieurs minutes. La définition de build est composée des tâches suivantes :
     - Tâche **DotnetCLI** pour restaurer, générer, tester et publier le projet dotnet.
     - Tâche **Whitesource** (conserve toujours l’ancien nom) pour exécuter l’analyse de l’outil Mend des bibliothèques OSS.
     - **Publish Artifacts**. Les agents exécutant ce pipeline chargent le projet web publié.
 
-5. Pendant l’exécution du pipeline, **renommez**-le pour l’identifier plus facilement (car le projet peut être utilisé pour plusieurs labos). Accédez à la section **Pipelines/Pipelines** dans le projet Azure DevOps, cliquez sur le nom du pipeline en cours d’exécution (il obtient un nom par défaut), puis recherchez l’option **Renommer/Déplacer** sur l’icône de points de suspension. Renommez-le **eshoponweb-ci-mend**, puis cliquez sur **Enregistrer**.
+1. Pendant l’exécution du pipeline, **renommez**-le pour l’identifier plus facilement (car le projet peut être utilisé pour plusieurs labos). Accédez à la section **Pipelines/Pipelines** dans le projet Azure DevOps, cliquez sur le nom du pipeline en cours d’exécution (il obtient un nom par défaut), puis recherchez l’option **Renommer/Déplacer** sur l’icône de points de suspension. Renommez-le **eshoponweb-ci-mend**, puis cliquez sur **Enregistrer**.
 
     ![Renommer le pipeline](images/rename-pipeline.png)
 
-6. Une fois l’exécution du pipeline terminée, vous pouvez passer en revue les résultats. Ouvrez la dernière exécution du pipeline **eshoponweb-ci-mend**. L’onglet Résumé affiche les journaux de l’exécution, ainsi que des détails connexes tels que la version du référentiel utilisée (validation), le type de déclencheur, les artefacts publiés, la couverture des tests, etc.
+1. Une fois l’exécution du pipeline terminée, vous pouvez passer en revue les résultats. Ouvrez la dernière exécution du pipeline **eshoponweb-ci-mend**. L’onglet Résumé affiche les journaux de l’exécution, ainsi que des détails connexes tels que la version du référentiel utilisée (validation), le type de déclencheur, les artefacts publiés, la couverture des tests, etc.
 
-7. Sous l’onglet **Mend Bolt**, vous pouvez consulter l’analyse de sécurité OSS. Elle affiche les détails sur l’inventaire utilisé, les vulnérabilités trouvées (et comment les résoudre) et un rapport intéressant sur les licences associées à la bibliothèque. Consultez le rapport en prenant votre temps.
+1. Sous l’onglet **Mend Bolt**, vous pouvez consulter l’analyse de sécurité OSS. Elle affiche les détails sur l’inventaire utilisé, les vulnérabilités trouvées (et comment les résoudre) et un rapport intéressant sur les licences associées à la bibliothèque. Consultez le rapport en prenant votre temps.
 
     ![Résultats Mend](images/mend-results.png)
 

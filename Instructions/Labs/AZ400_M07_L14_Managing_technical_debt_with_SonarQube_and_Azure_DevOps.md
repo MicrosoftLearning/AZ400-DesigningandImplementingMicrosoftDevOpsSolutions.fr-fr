@@ -58,22 +58,22 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
     ![Importer un référentiel](images/import-repo.png)
 
-2. Le référentiel est organisé de la manière suivante :
+1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
-### Exercice 1 : configurer l’installation de Sonarcloud
+### Exercice 1 : Configurer l’installation de SonarCloud
 
 #### Tâche 1 : changer votre projet Azure DevOps en Public
 
-Dans cette tâche, vous allez changer la visibilité de votre projet Azure DevOps en Public, car Sonarcloud est gratuit pour les projets ADO publics.
+Dans cette tâche, vous allez rendre votre projet Azure DevOps public, car SonarCloud est gratuit pour les projets ADO publics.
 
 1. Sur l’ordinateur de labo, dans la fenêtre du navigateur web affichant le portail Azure DevOps, ouvrez votre projet **eShopOnWeb**, puis cliquez sur **Paramètres du projet** (coin inférieur gauche). Définissez **Visibilité** sur **Public**. Cliquez sur **Enregistrer**.
 
@@ -87,7 +87,7 @@ Dans cette tâche, vous allez générer un jeton d’accès personnel Azure DevO
 
     ![Créer un PAT](images/PAT.png)
 
-2. Dans le volet **Créer un jeton d’accès personnel**, cliquez sur le lien **Afficher toutes les étendues**, spécifiez les paramètres suivants, puis cliquez sur **Créer** (conservez la valeur par défaut de tous les autres paramètres) :
+1. Dans le volet **Créer un jeton d’accès personnel**, cliquez sur le lien **Afficher toutes les étendues**, spécifiez les paramètres suivants, puis cliquez sur **Créer** (conservez la valeur par défaut de tous les autres paramètres) :
 
      | Paramètre | Valeur |
      | --- | --- |
@@ -96,74 +96,74 @@ Dans cette tâche, vous allez générer un jeton d’accès personnel Azure DevO
      | Étendue | **Code** |
      | Autorisations | **Complète** |
 
-3. Dans le volet **Réussite**, copiez la valeur du jeton d’accès personnel dans le Presse-papiers.
+1. Dans le volet **Réussite**, copiez la valeur du jeton d’accès personnel dans le Presse-papiers.
 
      > **Remarque** : assurez-vous d’enregistrer la valeur du jeton. Vous ne pourrez plus la récupérer après avoir fermé ce volet.
 
-4. Dans le volet **Réussite**, cliquez sur **Fermer**.
+1. Dans le volet **Réussite**, cliquez sur **Fermer**.
 
 #### Tâche 3 : installer et configurer l’extension SonarCloud Azure DevOps
 
 Dans cette tâche, vous allez installer et configurer l’extension SonarCloud Azure DevOps dans votre projet Azure DevOps.
 
 1. Sur votre ordinateur de labo, démarrez un navigateur web, accédez à la page de l’extension [SonarCloud](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarcloud) sur Visual Studio Marketplace, cliquez sur **Obtenir gratuitement**, vérifiez que le nom de votre organisation Azure DevOps apparaît dans la liste déroulante **Sélectionner une organisation Azure DevOps**, puis cliquez sur **Installer**.
-2. Une fois l’installation terminée, cliquez sur **Passer à l’organisation**. Cela redirige le navigateur vers le portail Azure DevOps affichant la page d’accueil de votre organisation.
+1. Une fois l’installation terminée, cliquez sur **Passer à l’organisation**. Cela redirige le navigateur vers le portail Azure DevOps affichant la page d’accueil de votre organisation.
 
     > **Remarque** : si vous ne disposez pas des autorisations appropriées pour installer une extension à partir de Marketplace, une requête est envoyée à l’administrateur de compte pour lui demander d’approuver l’installation.
 
     > **Remarque** : l’extension SonarCloud contient des tâches de génération, des modèles de build et un widget de tableau de bord personnalisé.
 
-3. Dans la fenêtre du navigateur web, accédez à la **page d’accueil de SonarCloud**[https://sonarcloud.io/](https://sonarcloud.io/).
-4. Dans la page d’accueil de SonarCloud, cliquez sur **Se connecter**.
-5. Dans la **section de connexion ou d’inscription à SonarCloud**, cliquez sur l’option **Azure DevOps**.
-6. Si vous êtes invité à **Autoriser cette application à accéder à vos informations ?**, cliquez sur **Oui**. Si vous y êtes invité, sélectionnez **Consentement pour le compte de votre organisation**, puis **Accepter**.
+1. Dans la fenêtre du navigateur web, accédez à la **page d’accueil de SonarCloud**[https://sonarcloud.io/](https://sonarcloud.io/).
+1. Dans la page d’accueil de SonarCloud, cliquez sur **Se connecter**.
+1. Dans la **section de connexion ou d’inscription à SonarCloud**, cliquez sur l’option **Azure DevOps**.
+1. Si vous êtes invité à **Autoriser cette application à accéder à vos informations ?**, cliquez sur **Oui**. Si vous y êtes invité, sélectionnez **Consentement pour le compte de votre organisation**, puis **Accepter**.
 
     > **Remarque** : dans SonarCloud, vous allez créer une organisation et, au sein de celle-ci, un nouveau projet. L’organisation et le projet que vous avez configurés dans SonarCloud reflètent l’organisation et le projet que vous avez configurés dans Azure DevOps.
 
-7. Cliquez sur **Importer une organisation à partir d’Azure**.
+1. Cliquez sur **Importer une organisation à partir d’Azure**.
 
     ![Importer une organisation ADO vers Sonarcloud](images/sonarcloud-import.png)
 
-8. Dans la page **Créer une organisation**, dans la zone de texte **Nom de l’organisation Azure DevOps**, saisissez le nom de votre organisation Azure DevOps, dans la zone de texte **Jeton d’accès personnel**, collez la valeur du jeton Azure DevOps que vous avez enregistré dans la tâche précédente, puis cliquez sur **Continuer**. **Ce jeton sera utilisé par Sonarcloud pour analyser votre code hébergé dans Azure DevOps**
+1. Dans la page **Créer une organisation**, dans la zone de texte **Nom de l’organisation Azure DevOps**, saisissez le nom de votre organisation Azure DevOps, dans la zone de texte **Jeton d’accès personnel**, collez la valeur du jeton Azure DevOps que vous avez enregistré dans la tâche précédente, puis cliquez sur **Continuer**. **Ce jeton sera utilisé par Sonarcloud pour analyser votre code hébergé dans Azure DevOps**
 
-9. Dans la section **Importer les détails de l’organisation**, dans la zone de texte **Clé**, saisissez une chaîne de caractères qui désignera votre organisation SonarCloud, donnez-lui le même nom que votre organisation Azure DevOps, puis cliquez sur **Continuer**.
+1. Dans la section **Importer les détails de l’organisation**, dans la zone de texte **Clé**, saisissez une chaîne de caractères qui désignera votre organisation SonarCloud, donnez-lui le même nom que votre organisation Azure DevOps, puis cliquez sur **Continuer**.
 
     > **Remarque** : la clé doit être unique dans le système SonarCloud. Assurez-vous qu’une coche verte apparaît à droite de la zone de texte **Clé**. Cela indique que la clé satisfait la condition préalable d’unicité.
 
-10. Dans la section **Choisir un plan**, sélectionnez le plan que vous envisagez d’utiliser pour ce labo (**gratuit** est suggéré), puis cliquez sur **Créer une organisation**.
+1. Dans la section **Choisir un plan**, sélectionnez le plan que vous envisagez d’utiliser pour ce labo (**gratuit** est suggéré), puis cliquez sur **Créer une organisation**.
 
     > **Remarque** : vous avez maintenant créé l’organisation SonarCloud qui reflète votre organisation Azure DevOps.
 
     > **Remarque** : dans l’organisation nouvellement créée, vous allez ensuite créer un projet SonarCloud qui reflète le projet Azure DevOps **SonarExamples**.
 
-11. Dans la page **Analyser les projets – Sélectionner des référentiels**, dans la liste des projets Azure DevOps, cochez la case en regard de l’entrée **eshoponweb / eshoponweb**, puis cliquez sur **Configurer**.
-12. Dans la page **Choisir votre méthode d’analyse**, cliquez sur la vignette **Avec Azure DevOps Pipelines**.
+1. Dans la page **Analyser les projets – Sélectionner des référentiels**, dans la liste des projets Azure DevOps, cochez la case en regard de l’entrée **eshoponweb / eshoponweb**, puis cliquez sur **Configurer**.
+1. Dans la page **Choisir votre méthode d’analyse**, cliquez sur la vignette **Avec Azure DevOps Pipelines**.
 
     ![Avec Azure DevOps Pipelines ](images/sonar-setup.png)
 
     > **Remarque** : vous pouvez ignorer la création de l’extension si vous l’avez déjà installée.
 
-13. Dans la page **Analyser un projet avec Azure Pipelines**, dans **Ajouter un nouveau point de terminaison de service SonarCloud**, suivez les étapes mentionnées **dans votre projet Azure DevOps**, donnez le nom **SonarSC** à la connexion de service, **cochez** la case pour accorder l’accès à tous les pipelines, puis cliquez sur **Vérifier et enregistrer**.
+1. Dans la page **Analyser un projet avec Azure Pipelines**, dans **Ajouter un nouveau point de terminaison de service SonarCloud**, suivez les étapes mentionnées **dans votre projet Azure DevOps**, donnez le nom **SonarSC** à la connexion de service, **cochez** la case pour accorder l’accès à tous les pipelines, puis cliquez sur **Vérifier et enregistrer**.
 
     ![Connexion de service SonarCloud](images/sonar-sc.png)
 
     > **Remarque** : cette étape définit la façon dont votre pipeline Azure communique avec SonarCloud. SonarCloud vous fournit un jeton utilisé par vos pipelines pour communiquer avec le service.
 
-14. Sur votre ordinateur de labo, à partir du projet Azure DevOps **eShopOnWeb**, dans la barre de menus verticale à gauche, accédez à la section **Pipelines > Pipelines**, cliquez sur **Créer un pipeline** (ou sur **Nouveau pipeline**).
+1. Sur votre ordinateur de labo, à partir du projet Azure DevOps **eShopOnWeb**, dans la barre de menus verticale à gauche, accédez à la section **Pipelines > Pipelines**, cliquez sur **Créer un pipeline** (ou sur **Nouveau pipeline**).
 
-15. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
+1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-16. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin suivant **/.ado/eshoponweb-sonar-ci.yml**, puis cliquez sur **Continuer**. Passez en revue le pipeline avec les détails mentionnés à l’étape suivante **(certains paramètres doivent être remplacés)**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin suivant **/.ado/eshoponweb-sonar-ci.yml**, puis cliquez sur **Continuer**. Passez en revue le pipeline avec les détails mentionnés à l’étape suivante **(certains paramètres doivent être remplacés)**.
 
-17. De retour sur le site web SonarCloud, dans la page **Analyser un projet avec Azure Pipelines**, dans la section **Configurer Azure Pipelines**, cliquez sur **.NET**. Une séquence d’étapes requises s’affiche pour **Préparer la configuration de l’analyse**, **Exécuter l’analyse du code** et **Publier le résultat de la porte de qualité**. Vous aurez besoin de ces instructions pour **modifier la tâche « Préparer la configuration de l’analyse » sur le pipeline YAML fourni à l’étape précédente**.
+1. De retour sur le site web SonarCloud, dans la page **Analyser un projet avec Azure Pipelines**, dans la section **Configurer Azure Pipelines**, cliquez sur **.NET**. Une séquence d’étapes requises s’affiche pour **Préparer la configuration de l’analyse**, **Exécuter l’analyse du code** et **Publier le résultat de la porte de qualité**. Vous aurez besoin de ces instructions pour **modifier la tâche « Préparer la configuration de l’analyse » sur le pipeline YAML fourni à l’étape précédente**.
 
-18. Une fois le pipeline modifié, cliquez sur **Exécuter**.
+1. Une fois le pipeline modifié, cliquez sur **Exécuter**.
 
     ![Pipeline CI Sonar](images/sonar-pipeline.png)
 
-19. Vous devrez peut-être redéfinir la **Visibilité** du projet Azure DevOps sur **Privé** pour que les agents puissent exécuter le pipeline (Paramètres du projet > Vue d’ensemble)
+1. Vous devrez peut-être redéfinir la **Visibilité** du projet Azure DevOps sur **Privé** pour que les agents puissent exécuter le pipeline (Paramètres du projet > Vue d’ensemble)
 
-20. Dans **Azure DevOps Pipelines > Pipelines**, cliquez sur le pipeline récemment créé et renommez-le en **eshoponweb-sonar-ci**.
+1. Dans **Azure DevOps Pipelines > Pipelines**, cliquez sur le pipeline récemment créé et renommez-le en **eshoponweb-sonar-ci**.
 
     ![Renommer le pipeline](images/sonar-rename.png)
 
@@ -175,22 +175,22 @@ Dans cette tâche, vous allez vérifier les résultats du pipeline.
 
     > **Remarque** : vous n’aurez pas encore d’informations sur la porte de qualité (Aucun), car nous ne l’avons pas encore configurée dans SonarCloud.
 
-2. Dans l’onglet **Extensions**, cliquez sur le **Rapport détaillé SonarCloud**. Un nouvel onglet de navigateur affichant le rapport sur votre page de projet SonarCloud s’ouvre automatiquement.
+1. Dans l’onglet **Extensions**, cliquez sur le **Rapport détaillé SonarCloud**. Un nouvel onglet de navigateur affichant le rapport sur votre page de projet SonarCloud s’ouvre automatiquement.
 
     > **Remarque** : vous pouvez également accéder à votre projet SonarCloud.
 
-3. Vérifiez que le rapport n’inclut pas les résultats de la porte de qualité et notez la raison de leur absence.
+1. Vérifiez que le rapport n’inclut pas les résultats de la porte de qualité et notez la raison de leur absence.
 
-    > **Remarque** : pour pouvoir voir le résultat de la porte de qualité, après avoir exécuté le premier rapport, nous devons définir une **Nouvelle définition de code**. Les exécutions de pipeline suivantes incluront ainsi des résultats de la porte de qualité. **La porte de qualité par défaut s’assure qu’il n’y a pas de nouvelle vulnérabilité/nouveau bogue dans le code, en ignorant les existants. Vous pouvez créer vos propres portes de qualité personnalisées.**
+    > **Remarque** : Pour pouvoir voir le résultat des critères de qualité, après l’exécution du premier rapport, nous devons définir une **nouvelle définition de code**. Les exécutions de pipeline suivantes incluront ainsi des résultats de la porte de qualité. **La porte de qualité par défaut s’assure qu’il n’y a pas de nouvelle vulnérabilité/nouveau bogue dans le code, en ignorant les existants. Vous pouvez créer vos propres portes de qualité personnalisées.**
 
-4. Cliquez sur **Définir la nouvelle définition de code**, puis sélectionnez **Version précédente**.
+1. Cliquez sur **Définir la nouvelle définition de code**, puis sélectionnez **Version précédente**.
 
     ![Rapport SonarCloud](images/sonar-qg.png)
 
-5. Basculez vers le navigateur web dans le **portail Azure DevOps** avec l’exécution de build la plus récente, cliquez sur **Exécuter nouveau** puis, dans le volet **Exécuter le pipeline**, cliquez sur **Exécuter**.
-6. Dans le volet d’exécution de build, passez en revue le contenu de l’onglet **Résumé**, puis cliquez sur l’en-tête de l’onglet **Extensions**.
-7. Dans l’onglet **Extensions**, cliquez sur le **Rapport détaillé SonarCloud**. Un nouvel onglet de navigateur affichant le rapport sur votre page de projet SonarCloud s’ouvre automatiquement.
-8. Vérifiez que le rapport et l’onglet de l’**extension**  Azure DevOps inclut désormais le **résultat de la porte de qualité**.
+1. Basculez vers le navigateur web dans le **portail Azure DevOps** avec l’exécution de build la plus récente, cliquez sur **Exécuter nouveau** puis, dans le volet **Exécuter le pipeline**, cliquez sur **Exécuter**.
+1. Dans le volet d’exécution de build, passez en revue le contenu de l’onglet **Résumé**, puis cliquez sur l’en-tête de l’onglet **Extensions**.
+1. Dans l’onglet **Extensions**, cliquez sur le **Rapport détaillé SonarCloud**. Un nouvel onglet de navigateur affichant le rapport sur votre page de projet SonarCloud s’ouvre automatiquement.
+1. Vérifiez que le rapport et l’onglet de l’**extension**  Azure DevOps inclut désormais le **résultat de la porte de qualité**.
 
     ![Porte de qualité passée](images/qg-passed.png)
 
@@ -217,10 +217,10 @@ Dans cette tâche, vous allez analyser des rapports SonarCloud.
     | **Duplications** | La décoration des duplications indique quelles parties du code source sont dupliquées. |
     | **Points d’accès de sécurité** | Code sensible à la sécurité qui nécessite une révision manuelle pour évaluer s’il existe ou non une vulnérabilité. |
 
-2. Cliquez sur le nombre désignant le nombre de **bogues**. Le contenu de l’onglet **Problèmes** s’affiche automatiquement.
-3. Sur le côté droit de l’onglet **Problèmes**, cliquez pour ouvrir les bogues. Lisez la description et les informations fournies pour analyser et résoudre le bogue.
+1. Cliquez sur le nombre désignant le nombre de **bogues**. Le contenu de l’onglet **Problèmes** s’affiche automatiquement.
+1. Sur le côté droit de l’onglet **Problèmes**, cliquez pour ouvrir les bogues. Lisez la description et les informations fournies pour analyser et résoudre le bogue.
 
-4. Pointez avec le pointeur de la souris sur les lignes rouges verticales entre le code et les numéros de ligne pour identifier les lacunes dans la couverture du code.
+1. Pointez avec le pointeur de la souris sur les lignes rouges verticales entre le code et les numéros de ligne pour identifier les lacunes dans la couverture du code.
 
     > **Remarque** : notre exemple de projet est très petit et ne comporte pas de données historiques. Il existe toutefois des milliers de [projets publics sur SonarCloud](https://sonarcloud.io/explore/projects) qui comportent des résultats plus intéressants et réalistes.
 
@@ -238,10 +238,10 @@ Dans cet exercice, vous allez configurer l’intégration des demandes de tirage
 Dans cette tâche, vous allez configurer l’intégration des demandes de tirage dans SonarCloud en affectant un jeton d’accès personnel Azure DevOps à votre projet SonarCloud.
 
 1. Basculez vers la fenêtre du navigateur web affichant le projet **eShopOnWeb** dans **SonarCloud**.
-2. Dans la page du tableau de bord du projet, cliquez sur l’icône de l’onglet **Administration** puis, dans le menu déroulant, cliquez sur **Paramètres généraux**.
-3. Dans la page **Paramètres généraux**, cliquez sur **Demandes de tirage**.
-4. Dans la section **Général** des paramètres **Demandes de tirage**, dans la liste déroulante **Fournisseur**, sélectionnez **Azure DevOps Services**, puis cliquez sur **Enregistrer**.
-5. Dans la section **Intégration à Azure DevOps Services** des paramètres **Demandes de tirage**, dans la zone de texte **Jeton d’accès personnel**, collez le jeton d’accès personnel Azure DevOps précédemment généré, puis cliquez sur **Enregistrer**.
+1. Dans la page du tableau de bord du projet, cliquez sur l’icône de l’onglet **Administration** puis, dans le menu déroulant, cliquez sur **Paramètres généraux**.
+1. Dans la page **Paramètres généraux**, cliquez sur **Demandes de tirage**.
+1. Dans la section **Général** des paramètres **Demandes de tirage**, dans la liste déroulante **Fournisseur**, sélectionnez **Azure DevOps Services**, puis cliquez sur **Enregistrer**.
+1. Dans la section **Intégration à Azure DevOps Services** des paramètres **Demandes de tirage**, dans la zone de texte **Jeton d’accès personnel**, collez le jeton d’accès personnel Azure DevOps précédemment généré, puis cliquez sur **Enregistrer**.
 
     ![Paramètres de demande de tirage SonarCloud](images/sonar-pr-setup.png)
 
@@ -250,10 +250,10 @@ Dans cette tâche, vous allez configurer l’intégration des demandes de tirage
 Dans cette tâche, vous allez configurer une stratégie de branche Azure DevOps pour l’intégration à SonarCloud.
 
 1. Basculez vers la fenêtre du navigateur web affichant le projet **eShopOnWeb** dans le **portail Azure DevOps**.
-2. Dans la barre de menus verticale située à l’extrême gauche du portail Azure DevOps, cliquez sur **Repos** puis, dans la section **Repos**, cliquez sur **Branches**.
-3. Dans le volet **Branches**, dans la liste des branches, pointez avec le pointeur de la souris sur le bord droit de l’entrée de branche **principale** pour afficher le caractère d’ellipse verticale désignant le menu **Plus d’options**, cliquez dessus puis, dans le menu contextuel, cliquez sur **Stratégies de branche**.
-4. Dans le volet **principale**, à droite de la section **Validation de build**, cliquez sur **+**.
-5. Dans le volet **Ajouter une stratégie de build**, dans la liste déroulante **Pipeline de build**, sélectionnez le pipeline que vous avez créé précédemment dans ce labo, dans la zone de texte **Nom d’affichage**, saisissez **Analyse SonarCloud**, puis cliquez sur **Enregistrer**.
+1. Dans la barre de menus verticale située à l’extrême gauche du portail Azure DevOps, cliquez sur **Repos** puis, dans la section **Repos**, cliquez sur **Branches**.
+1. Dans le volet **Branches**, dans la liste des branches, pointez avec le pointeur de la souris sur le bord droit de l’entrée de branche **principale** pour afficher le caractère d’ellipse verticale désignant le menu **Plus d’options**, cliquez dessus puis, dans le menu contextuel, cliquez sur **Stratégies de branche**.
+1. Dans le volet **principale**, à droite de la section **Validation de build**, cliquez sur **+**.
+1. Dans le volet **Ajouter une stratégie de build**, dans la liste déroulante **Pipeline de build**, sélectionnez le pipeline que vous avez créé précédemment dans ce labo, dans la zone de texte **Nom d’affichage**, saisissez **Analyse SonarCloud**, puis cliquez sur **Enregistrer**.
 
     > **Remarque** : Azure DevOps est maintenant configuré pour déclencher une analyse SonarCloud lorsqu’une demande de tirage (pull request) ciblant la branche **principale** est créée.
 
@@ -264,8 +264,8 @@ Dans cette tâche, vous allez valider l’intégration des demandes de tirage en
 > **Remarque** : vous allez apporter une modification à un fichier dans le référentiel et créer une demande pour déclencher l’analyse SonarCloud.
 
 1. Dans le portail Azure DevOps, dans la barre de menus verticale à gauche, cliquez sur **Repos**. Le volet **Fichiers** s’affiche.
-2. Dans le volet central, dans la hiérarchie des dossiers, accédez au fichier **Program.cs** dans le dossier **src/Web/Services/BasketViewModelService.cs**, puis cliquez sur **Modifier**.
-3. Dans le volet **BasketViewModelService.cs**, ajoutez la méthode vide suivante au code directement avant le dernier « } » :
+1. Dans le volet central, dans la hiérarchie des dossiers, accédez au fichier **Program.cs** dans le dossier **src/Web/Services/BasketViewModelService.cs**, puis cliquez sur **Modifier**.
+1. Dans le volet **BasketViewModelService.cs**, ajoutez la méthode vide suivante au code directement avant le dernier « } » :
 
     ```csharp
     public void Unused(){
@@ -273,15 +273,15 @@ Dans cette tâche, vous allez valider l’intégration des demandes de tirage en
     }
     ```
 
-4. Dans le volet **Program.cs**, cliquez sur **Valider**.
-5. Dans le volet **Valider**, dans la zone de texte **Nom de la branche**, saisissez **branch1**, cochez la case **Créer une demande de tirage**, puis cliquez sur **Valider**.
+1. Dans le volet **Program.cs**, cliquez sur **Valider**.
+1. Dans le volet **Valider**, dans la zone de texte **Nom de la branche**, saisissez **branch1**, cochez la case **Créer une demande de tirage**, puis cliquez sur **Valider**.
 
     ![Valider la demande de tirage](images/sonar-pr-commit.png)
 
-6. Dans le volet **Nouvelle demande de tirage**, sélectionnez **Créer**.
-7. Dans l’onglet **Vue d’ensemble** du volet **Program.cs** mis à jour, surveillez la progression du processus de génération jusqu’à sa fin.
-8. Le pipeline réussit, mais 1 contrôle facultatif échoue.
-9. SonarCloud décorera également votre demande de tirage (pull request) avec des commentaires pour vos pratiques récentes non recommandées. Vous pouvez également consulter le rapport complet dans SonarCloud pour plus d’informations.
+1. Dans le volet **Nouvelle demande de tirage**, sélectionnez **Créer**.
+1. Dans l’onglet **Vue d’ensemble** du volet **Program.cs** mis à jour, surveillez la progression du processus de génération jusqu’à sa fin.
+1. Le pipeline réussit, mais 1 contrôle facultatif échoue.
+1. SonarCloud décorera également votre demande de tirage (pull request) avec des commentaires pour vos pratiques récentes non recommandées. Vous pouvez également consulter le rapport complet dans SonarCloud pour plus d’informations.
 
     ![Échec de la porte de qualité de la demande de tirage (pull request)](images/pr-qg-failed.png)![Décorateur SonarCloud](images/sonar-decorator.png)
 
@@ -292,12 +292,12 @@ Dans cette tâche, vous allez configurer le blocage des demandes de tirage en r�
 > **Remarque** : à ce stade, il est toujours possible de terminer la demande de tirage (pull request) et de valider les modifications correspondantes, même si des contrôles de qualité du code échouent. Vous allez modifier la configuration d’Azure DevOps pour bloquer la validation, sauf si les contrôles de qualité du code appropriés aboutissent.
 
 1. Dans le portail Azure DevOps, dans le coin inférieur gauche, cliquez sur **Paramètres du projet**.
-2. Dans le menu vertical **Paramètres du projet**, dans la section **Repos**, cliquez sur **Référentiels**.
-3. Dans le volet **Tous les dépôts**, cliquez sur **eShopOnWeb**.
-4. Dans le volet **eShopOnWeb**, cliquez sur l’en-tête de l’onglet **Stratégies**.
-5. Dans la liste des **Stratégies**, faites défiler jusqu’à la liste des branches, puis cliquez sur l’entrée représentant la branche **principale**.
-6. Dans le volet **principale**, faites défiler jusqu’à la section **Vérifications d’état**, puis cliquez sur **+**.
-7. Dans le volet **Ajouter une stratégie d’état**, dans la liste déroulante **État à vérifier**, sélectionnez l’entrée **SonarCloud/porte de qualité**, vérifiez que l’option **Condition de stratégie** est définie sur **Obligatoire**, puis cliquez sur **Enregistrer**.
+1. Dans le menu vertical **Paramètres du projet**, dans la section **Repos**, cliquez sur **Référentiels**.
+1. Dans le volet **Tous les dépôts**, cliquez sur **eShopOnWeb**.
+1. Dans le volet **eShopOnWeb**, cliquez sur l’en-tête de l’onglet **Stratégies**.
+1. Dans la liste des **Stratégies**, faites défiler jusqu’à la liste des branches, puis cliquez sur l’entrée représentant la branche **principale**.
+1. Dans le volet **principale**, faites défiler jusqu’à la section **Vérifications d’état**, puis cliquez sur **+**.
+1. Dans le volet **Ajouter une stratégie d’état**, dans la liste déroulante **État à vérifier**, sélectionnez l’entrée **SonarCloud/porte de qualité**, vérifiez que l’option **Condition de stratégie** est définie sur **Obligatoire**, puis cliquez sur **Enregistrer**.
 
     > **Remarque** : à ce stade, les utilisateurs **ne peuvent pas fusionner la demande de tirage (pull request) tant que le contrôle de qualité du code n’a pas réussi**. Cela nécessite que tous les problèmes identifiés par SonarCloud aient été résolus ou marqués comme **confirmés** ou **résolus** dans le projet SonarCloud correspondant.
 

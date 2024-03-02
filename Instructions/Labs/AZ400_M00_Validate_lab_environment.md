@@ -10,12 +10,13 @@ lab:
 
 ## Instructions pour créer une organisation Azure DevOps (vous ne devez effectuer cette opération qu’une seule fois)
 
-### Si vous ne disposez pas d’un abonnement Azure :
+### Commencez ici si vous n’avez pas d’abonnement Azure
+
 1. Obtenez un nouveau **code promotionnel de pass Azure** auprès de l’instructeur ou d’une autre source.
 1. Utilisez une session de navigateur privé pour obtenir un nouveau **compte Microsoft (MSA) personnel** à l’adresse [https://account.microsoft.com](https://account.microsoft.com).
 1. Dans la même session de navigateur, accédez à [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com) pour échanger votre pass Azure via votre compte Microsoft (MSA). Pour plus d’informations, reportez-vous à [Échanger un pass Microsoft Azure](https://www.microsoftazurepass.com/Home/HowTo?Length=5). Suivez les instructions concernant l’échange.
 
-### Commencez ici si vous disposez d’un abonnement Azure :
+### Commencez ici si vous avez un abonnement Azure
 
 1. Ouvrez un navigateur, accédez à [https://portal.azure.com](https://portal.azure.com), puis recherchez **Azure DevOps** en haut de l'écran Portail Azure. Sur la page résultante, cliquez sur **Organisations Azure DevOps**.
 1. Ensuite, cliquez sur le lien intitulé **Mes organisations Azure DevOps** ou accédez directement à [https://aex.dev.azure.com](https://aex.dev.azure.com).
@@ -57,7 +58,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
     - Avancé : Contrôle de version : **Git**
     - Avancé : Processus d’élément de travail : **Scrum**
 
-2. Cliquez sur **Créer**.
+1. Cliquez sur **Créer**.
 
     ![Création d’un projet](images/create-project.png)
 
@@ -65,15 +66,15 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
     ![Importer un référentiel](images/import-repo.png)
 
-2. Le référentiel est organisé de la manière suivante :
+1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 Vous avez terminé les prérequis pour continuer avec chacun des labos du cours AZ-400.
