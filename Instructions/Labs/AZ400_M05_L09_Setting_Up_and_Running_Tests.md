@@ -48,12 +48,12 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **.azure** contient l’infrastructure Bicep & ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep & ARM en tant que modèles de code utilisés dans certains scénarios de labo.
     - Le dossier **.github** contient les définitions de workflow YAML GitHub.
     - Le dossier **src** contient le site web .NET utilisé dans les scénarios de labo.
 
@@ -115,7 +115,7 @@ Vous pouvez remarquer que la tâche Tests unitaires fait déjà partie du pipeli
 
     > Les **tests fonctionnels** sont écrits du point de vue de l’utilisateur, et vérifient que le système répond aux exigences, contrairement aux tests d’intégration qui sont écrits du point de vue du développeur, pour vérifier que certains composants du système fonctionnent correctement ensemble.
 
-16. Cliquez sur **Enregistrer**. Dans le volet **Enregistrer**, cliquez à nouveau sur **Enregistrer** pour valider les modifications directement dans la branche principale.
+1. Cliquez sur **Enregistrer**. Dans le volet **Enregistrer**, cliquez à nouveau sur **Enregistrer** pour valider les modifications directement dans la branche principale.
 
 #### Tâche 4 : vérifier le résumé des tests
 
