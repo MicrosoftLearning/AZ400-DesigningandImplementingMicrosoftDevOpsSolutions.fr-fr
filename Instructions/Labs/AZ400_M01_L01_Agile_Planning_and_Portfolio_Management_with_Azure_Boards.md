@@ -125,7 +125,7 @@ Les éléments de travail jouent un rôle important dans Azure DevOps. Qu’il 
     ![Dans la fenêtre « Tableaux » > « Éléments de travail », cliquez sur « Nouvel élément de travail » > Épopée](images/m1/EShop-WEB-create_epic_v1.png)
 
 1. Dans la zone de texte **Saisir un titre**, tapez **Formation produit**.
-1. Dans le coin supérieur gauche, sélectionnez l’entrée **Non attribué** et, dans la liste déroulante, sélectionnez votre compte d’utilisateur pour affecter le nouvel élément de travail à vous-même.
+1. Dans le coin supérieur gauche, sélectionnez l’entrée **Non attribué** et, dans la liste déroulante, sélectionnez votre compte d’utilisateur pour affecter le nouvel élément de travail à vous-même. Si votre nom n’apparaît pas pour commencer, commencez par le saisir, puis cliquez sur **Rechercher**.
 1. En regard de l’entrée **Zone**, sélectionnez l’entrée **eShopOnWeb** et, dans la liste déroulante, sélectionnez **EShop-WEB**. Cette opération définit la **Zone** sur **eShopOnWeb\EShop-WEB**.
 1. En regard de l’entrée **Itération**, sélectionnez l’entrée **eShopOnWeb** et, dans la liste déroulante, sélectionnez **Sprint 2**. Cela définit l’**Itération** sur **eShopOnWeb\Sprint 2**.
 1. Cliquez sur **Enregistrer** pour finaliser vos modifications. **Ne fermez pas la fenêtre**.
