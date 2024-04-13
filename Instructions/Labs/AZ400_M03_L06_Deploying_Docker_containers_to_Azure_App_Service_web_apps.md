@@ -53,7 +53,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
     - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
@@ -125,7 +125,7 @@ Dans cet exercice, vous allez importer et exécuter le pipeline CI.
 #### Tâche 1 : importer et exécuter le pipeline CI
 
 1. Accédez à **Pipelines > Pipelines**.
-1. Cliquez sur le bouton **Nouveau pipeline**.
+1. Cliquez sur le bouton **Nouveau pipeline** (ou **Créer un pipeline** si vous n’avez pas d’autres pipelines précédemment créés)
 1. Sélectionnez **Azure Repos Git (YAML)**.
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**
@@ -171,10 +171,10 @@ Dans cette tâche, vous allez ajouter une attribution de rôle pour permettre à
     echo $roleName
     ```
 
-1. Après avoir obtenu l’ID du principal de service et le nom du rôle, nous allons créer l’attribution de rôle en exécutant cette commande (remplacez **rg-az400-container-NAME** par le nom de votre groupe de ressources).
+1. Après avoir obtenu l’ID du principal de service et le nom du rôle, nous allons créer l’attribution de rôle en exécutant cette commande (remplacez **&lt;rg-az400-container-NAME&gt;** par le nom de votre groupe de ressources).
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**rg-az400-container-NAME**
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/<rg-az400-container-NAME>
     ```
 
 Vous devez maintenant voir la sortie JSON qui confirme la réussite de l’exécution de la commande.
