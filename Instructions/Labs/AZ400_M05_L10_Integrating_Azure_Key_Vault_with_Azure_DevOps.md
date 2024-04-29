@@ -13,7 +13,6 @@ lab:
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://learn.microsoft.com/azure/devops/server/compatibility).
 
 - **Configurez une organisation Azure DevOps :** si vous ne disposez pas encore d’une organisation Azure DevOps que vous pouvez utiliser pour ce labo, créez-en une conformément aux instructions disponibles dans [Créer une organisation ou une collection de projets](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
-
 - Identifier un abonnement Azure existant ou en créer un.
 
 ## Présentation du labo
@@ -61,7 +60,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
     - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
@@ -137,7 +136,7 @@ Dans cette tâche, vous allez importer une définition de pipeline YAML CI exist
 
 1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-ci-dockercompose.yml**, puis cliquez sur **Continuer**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Sélectionnez la branche : **principale**, indiquez le chemin d’accès suivant **/.ado/eshoponweb-ci-dockercompose.yml**, puis cliquez sur **Continuer**.
 
     ![Sélectionner un pipeline](images/select-ci-container-compose.png)
 
@@ -235,7 +234,7 @@ Dans cette tâche, vous allez importer un pipeline CD, le personnaliser et l’e
 
 1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-cd-aci.yml**, puis cliquez sur **Continuer**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Sélectionnez la branche : **principale**, indiquez le chemin d’accès suivant **/.ado/eshoponweb-cd-aci.yml**, puis cliquez sur **Continuer**.
 
 1. Dans la définition de pipeline YAML, personnalisez :
 

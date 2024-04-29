@@ -52,9 +52,9 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
     - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 #### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
 
@@ -75,7 +75,7 @@ Commençons par importer le pipeline CI nommé [eshoponweb-ci.yml](https://gith
 1. Sélectionnez **Azure Repos Git (YAML)**.
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**.
-1. Sélectionnez le fichier **/.ado/eshoponweb-ci.yml**, puis cliquez sur **Continuer**.
+1. Sélectionnez la branche **principale** et le fichier **/.ado/eshoponweb-ci.yml**, puis cliquez sur **Continuer**.
 1. Cliquez sur le bouton **Run** (Exécuter) pour exécuter le pipeline.
 1. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension, puis sur l’option **Renommer/Supprimer**. Nommez-le **eshoponweb-ci**, puis cliquez sur **Enregistrer**.
 
@@ -141,7 +141,7 @@ Importons le pipeline CD nommé [eshoponweb-cd-webapp-code.yml](https://github.
 1. Sélectionnez **Azure Repos Git (YAML)**.
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**.
-1. Sélectionnez le fichier **/.ado/eshoponweb-cd-webapp-code.yml**, puis cliquez sur **Continuer**.
+1. Sélectionnez la branche **principale** et le fichier **/.ado/eshoponweb-cd-webapp-code.yml**, puis cliquez sur **Continuer**.
 1. Dans la définition de pipeline YAML, personnalisez :
    - **YOUR-SUBSCRIPTION-ID** en fonction de votre ID d’abonnement Azure.
    - **az400eshop-NAME** remplacez NAME pour le rendre globalement unique.

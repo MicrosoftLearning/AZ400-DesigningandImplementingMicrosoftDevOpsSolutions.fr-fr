@@ -41,7 +41,7 @@ Azure Artifacts facilite la découverte, l’installation et la publication des 
 
 ### Exercice 0 : configurer les prérequis du labo
 
-Dans cet exercice, nous souhaitons vous rappeler de valider les prérequis du lab, d’avoir à la fois une organisation Azure DevOps prête, ainsi que le projet eShopOnWeb créé. Pour plus d’informations, consultez les instructions ci-dessus.
+Dans cet exercice, nous souhaitons vous rappeler que vous devez valider les prérequis du labo, avoir préparé une organisation Azure DevOps et avoir créé le projet eShopOnWeb. Pour plus d’informations, consultez les instructions ci-dessus.
 
 #### Tâche 1 : Configuration de la solution eShopOnWeb dans Visual Studio
 
@@ -110,7 +110,7 @@ Dans cette tâche, vous allez créer et publier un package NuGet personnalisé d
 
     Cochez la case pour **Placer la solution et le projet dans le même répertoire**.
 
-1. Sélectionnez Suivant. Acceptez **.NET 8.0** en tant qu’option Framework.
+1. Sélectionnez Suivant. Acceptez **.NET 8** en tant qu’option Framework.
 1. Confirmez la création du projet en cliquant sur le bouton **Créer** .
 1. Dans l’interface Visual Studio, dans le volet **Explorateur de solutions**, cliquez avec le bouton droit sur **Class1.cs**. Dans le menu contextuel, sélectionnez **Supprimer**, puis, lorsque vous êtes invité à confirmer la suppression, cliquez sur **OK**.
 1. Appuyez sur **Ctrl + Maj + B** ou **cliquez avec le bouton droit sur le projet EShopOnWeb.Shared**, puis sélectionnez **Générer** pour générer le projet.

@@ -55,9 +55,9 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Le référentiel est organisé de la manière suivante :
    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-   - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+   - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-   - Le dossier **src** contient le site web .NET 7 utilisé dans les scénarios de labo.
+   - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 #### Tâche 2 : Créez des ressources Azure
 
