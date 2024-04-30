@@ -71,7 +71,7 @@ Commençons par importer le pipeline de build nommé [eshoponweb-ci-pr.yml](http
 1. Sélectionnez **Azure Repos Git (YAML)**.
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**.
-1. Sélectionnez le fichier **/.ado/eshoponweb-ci-pr.yml**, puis cliquez sur **Continuer**.
+1. Sélectionnez la branche **principale** et le fichier **/.ado/eshoponweb-ci-pr.yml**, puis cliquez sur **Continuer**
 
     La définition de build est composée des tâches suivantes :
     - **DotNet Restore** : avec la restauration des packages NuGet, vous pouvez installer toutes les dépendances de votre projet sans avoir à les stocker dans le contrôle de code source.
@@ -131,7 +131,7 @@ Commençons par importer le pipeline CI nommé [eshoponweb-ci.yml](https://gith
 1. Sélectionnez **Azure Repos Git** (YAML).
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**.
-1. Sélectionnez le fichier **/.ado/eshoponweb-ci.yml**, puis cliquez sur **Continuer**.
+1. Sélectionnez la branche **principale** et le fichier **/.ado/eshoponweb-ci.yml**, puis cliquez sur **Continuer**.
 
     La définition CI se compose des tâches suivantes :
     - **DotNet Restore** : avec la restauration des packages NuGet, vous pouvez installer toutes les dépendances de votre projet sans avoir à les stocker dans le contrôle de code source.

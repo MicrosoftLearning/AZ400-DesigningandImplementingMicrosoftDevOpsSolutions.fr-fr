@@ -125,11 +125,11 @@ Dans cet exercice, vous allez importer et exécuter le pipeline CI.
 #### Tâche 1 : importer et exécuter le pipeline CI
 
 1. Accédez à **Pipelines > Pipelines**.
-1. Cliquez sur le bouton **Nouveau pipeline** (ou **Créer un pipeline** si vous n’avez pas d’autres pipelines précédemment créés)
+1. Cliquez sur le bouton **Nouveau pipeline** (ou **Créer un pipeline** si vous n'avez pas d'autres pipelines précédemment créés)
 1. Sélectionnez **Azure Repos Git (YAML)**.
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**
-1. Sélectionnez le fichier **/.ado/eshoponweb-ci-docker.yml**, puis cliquez sur **Continuer**.
+1. Sélectionnez la branche **principale** et le fichier **/.ado/eshoponweb-ci-docker.yml**, puis cliquez sur **Continuer**
 1. Dans la définition de pipeline YAML, personnalisez :
    - **YOUR-SUBSCRIPTION-ID** avec votre ID d’abonnement Azure.
    - **rg-az400-container-NAME** avec le nom du groupe de ressources qui sera créé par le pipeline (il peut également s’agir d’un groupe de ressources existant).
@@ -188,7 +188,7 @@ Dans cette tâche, vous allez importer et exécuter le pipeline CD.
 1. Sélectionnez **Azure Repos Git (YAML)**.
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**.
-1. Sélectionnez le fichier **/.ado/eshoponweb-cd-webapp-docker.yml**, puis cliquez sur **Continuer**.
+1. Sélectionnez la branche **principale** et le fichier **/.ado/eshoponweb-cd-webapp-docker.ym**, puis cliquez sur **Continuer**
 1. Dans la définition de pipeline YAML, personnalisez :
    - **YOUR-SUBSCRIPTION-ID** avec votre ID d’abonnement Azure.
    - **rg-az400-container-NAME** avec le nom du groupe de ressources défini précédemment dans le labo.
