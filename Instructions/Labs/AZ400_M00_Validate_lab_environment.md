@@ -34,8 +34,6 @@ lab:
 1. Basculez le commutateur sur **Désactivé** pour **Désactiver la création de pipelines de build classiques** et **Désactiver la création de pipelines de mise en production classiques**.
     > Remarque : la définition de **Désactiver la création de pipelines de mise en production classiques** sur **Activé** masque les options de création de pipeline de mise en production classique comme le menu **Mise en production** dans la section **Pipeline** de projets DevOps.
 1. Dans **Paramètres d’organisation**, accédez à la section **Sécurité** et cliquez sur **Stratégies**.
-1. Basculez le commutateur sur **Activé** pour **Accès aux applications tierces via OAuth**.
-    > Remarque : le paramètre OAuth permet d’activer des outils tels que DemoDevOpsGenerator pour inscrire des extensions. Sans cela, plusieurs labos peuvent échouer en raison d’extensions requises manquantes.
 1. Basculez le commutateur sur **Activé** pour **Autoriser les projets publics**.
     > Remarque : les extensions utilisées dans certains labos peuvent nécessiter un projet public pour autoriser l’utilisation de la version gratuite.
 1. **Attendez au moins 3 heures avant d’utiliser les fonctionnalités CI/CD** afin que les nouveaux paramètres soient reflétés dans le back-end. Sinon, vous verrez toujours le message *« Aucun parallélisme hébergé n’a été acheté ou accordé »*.
@@ -73,7 +71,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
     - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
