@@ -105,7 +105,62 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide de Cl
 
 Dans cet exercice, vous allez configurer des pipelines CI/CD en tant que code avec YAML dans Azure DevOps.
 
-#### Tâche 1 : ajouter un build YAML et déployer une définition
+#### Tâche 1 : (à ignorer si elle est terminée) créer une connexion de service pour le déploiement
+
+Dans cette tâche, vous allez créer un principal de service à l’aide d’Azure CLI, ce qui permettra à Azure DevOps de :
+
+- Déployer des ressources sur un abonnement Azure
+- Disposer d’un accès en lecture sur les secrets du coffre de clés créés ultérieurement.
+
+> **Remarque** : si vous disposez déjà d’un principal de service, vous pouvez passer directement à la tâche suivante.
+
+Vous aurez besoin d’un principal de service pour déployer des ressources Azure depuis Azure Pipelines. Étant donné que nous allons récupérer des secrets dans un pipeline, nous devons accorder l’autorisation au service lors de la création du coffre de clés Azure.
+
+Un principal de service est créé automatiquement par Azure Pipelines, lorsque vous vous connectez à un abonnement Azure depuis une définition de pipeline ou lorsque vous créez une nouvelle connexion de service depuis la page des paramètres du projet (option automatique). Vous pouvez également créer manuellement le principal de service à partir du portail ou à l’aide d’Azure CLI, et le réutiliser dans d’autres projets.
+
+1. Sur l’ordinateur de labo, démarrez un navigateur web, accédez au [**portail Azure**](https://portal.azure.com) et connectez-vous avec le compte d’utilisateur qui a le rôle Propriétaire dans l’abonnement Azure que vous utiliserez dans ce labo et le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement.
+1. Dans le portail Azure, ouvrez le volet **Cloud Shell** situé directement à droite de la zone de texte de recherche en haut de la page.
+1. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
+
+   >**Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
+
+1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez les commandes suivantes pour récupérer les valeurs de l’ID d’abonnement Azure et des attributs de nom d’abonnement :
+
+    ```bash
+    az account show --query id --output tsv
+    az account show --query name --output tsv
+    ```
+
+    > **Remarque** : copiez les deux valeurs dans un fichier texte. Vous en aurez besoin plus tard dans ce labo.
+
+1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un principal de service (remplacez **myServicePrincipalName**par une chaîne unique de caractères composés de lettres et de chiffres) et **mySubscriptionID** par votre ID d’abonnement Azure :
+
+    ```bash
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **Remarque** : la commande génère une sortie JSON. Copiez la sortie dans un fichier texte. Vous en aurez besoin plus tard dans ce labo.
+
+1. Ensuite, sur l’ordinateur de labo, démarrez un navigateur web et accédez au projet Azure DevOps **eShopOnWeb**. Cliquez sur **Paramètres du projet > Connexions de service (sous Pipelines)**, puis sur **Nouvelle connexion de service**.
+
+    ![Nouvelle connexion de service](images/new-service-connection.png)
+
+1. Dans le panneau **Nouvelle connexion de service**, sélectionnez **Azure Resource Manager**, puis **Suivant** (vous devrez peut-être faire défiler la page vers le bas).
+
+1. Choisissez ensuite **Principal de service (manuel)**, puis cliquez sur **Suivant**.
+
+1. Renseignez les champs vides à l’aide des informations collectées lors des étapes précédentes :
+    - ID et nom de l’abonnement.
+    - ID du principal de service (appId), clé du principal de service (password) et ID du locataire (tenant).
+    - Dans le champ **Nom de connexion de service**, tapez **azure subs**. Ce nom est référencé dans les pipelines YAML lorsque vous avez besoin d’une connexion de service Azure DevOps pour communiquer avec votre abonnement Azure.
+
+    ![Connexion au service Azure](images/azure-service-connection.png)
+
+1. Cliquez sur **Vérifier et enregistrer**.
+
+#### Tâche 2 : Ajouter une définition de build et de déploiement YAML
 
 Dans cette tâche, vous allez ajouter une définition de build YAML au projet existant.
 
@@ -188,7 +243,7 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 1. Cliquez sur **Afficher l’Assistant** sur le côté droit du portail. Dans la liste des tâches, recherchez et sélectionnez la tâche **Déploiement Azure App Service**.
 1. Dans le volet **Déploiement Azure App Service**, spécifiez les paramètres suivants, puis cliquez sur **Ajouter** :
 
-    - Dans la liste déroulante **Abonnement Azure**, sélectionnez l’abonnement Azure dans lequel vous avez déployé les ressources Azure précédemment dans le labo. Si nécessaire (uniquement lorsque c’est le premier pipeline que vous créez), cliquez sur **Autoriser** et, à l’invite, authentifiez-vous à l’aide du compte d’utilisateur que vous avez utilisé pendant le déploiement des ressources Azure.
+    - Dans la liste déroulante **Abonnement Azure**, sélectionnez la connexion de service que vous venez de créer.
     - Vérifiez que **Type d’App Service** pointe vers Application web sur Windows.
     - Dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web que vous avez déployée précédemment dans le labo (**az400eshoponweb...).
     - Dans la zone de texte **Package ou dossier**, **mettez à jour** la valeur par défaut sur `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
@@ -203,7 +258,7 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
         - task: AzureRmWebAppDeployment@4
           inputs:
             ConnectionType: 'AzureRM'
-            azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+            azureSubscription: 'SERVICE CONNECTION NAME'
             appType: 'webApp'
             WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
