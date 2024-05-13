@@ -100,7 +100,7 @@ Chaque nouveau projet est configuré avec une équipe par défaut, dont le nom c
 
 1. Toujours dans le volet **Paramètres du projet / Tableaux / Configuration d’équipe**, en haut du volet, sélectionnez l’onglet **Zones**. Vous y trouverez une zone générée automatiquement avec le nom correspondant au nom de l’équipe.
 
-![Dans Zones, sélectionnez eShopOnWeb\EShop-Web.](images/m1/EShop-WEB-areas_v1.png)
+    ![Dans Zones, sélectionnez eShopOnWeb\EShop-Web.](images/m1/EShop-WEB-areas_v1.png)
 
 1. Cliquez sur les points de suspension (...) en regard de l’entrée **zone par défaut** et, dans la liste déroulante, sélectionnez **Inclure les sous-zones**.
 
@@ -137,7 +137,7 @@ Les éléments de travail jouent un rôle important dans Azure DevOps. Qu’il 
     > **Remarque** : le formulaire d’élément de travail inclut tous les paramètres d’élément de travail appropriés. Il s’agit notamment des détails sur les personnes qui lui sont affectées, de son état au regard de nombreux paramètres, ainsi que de toutes les informations et l’historique concernant sa gestion, ce depuis sa création. L’un des domaines clés sur lesquels se concentrer est le **Travail associé**. Nous allons découvrir l’une des façons d’ajouter une fonctionnalité à cette épopée.
 
 1. Dans la section **Travail associé** en bas à droite, sélectionnez l’entrée **Ajouter un lien** et, dans la liste déroulante, sélectionnez **Nouvel élément**.
-1. Dans le volet **Ajouter un lien**, dans la liste déroulante **Type de lien**, sélectionnez **Enfant**. Ensuite, dans la liste déroulante **Type d’élément de travail**, sélectionnez **Fonctionnalité**, dans la zone de texte **Titre**, tapez **Tableau de bord de formation**, puis cliquez sur **OK**.
+1. Dans le volet **Ajouter un lien**, dans la liste déroulante **Type de lien**, sélectionnez **Enfant**. Ensuite, dans la liste déroulante **Type d’élément de travail**, sélectionnez **Fonctionnalité**, dans la zone de texte **Titre**, tapez le **tableau de bord Formation**.
 
     ![Incluez le titre « Tableau de bord de formation » et cliquez sur « OK ».](images/m1/EShop-WEB-create_child_feature.png)
 
@@ -145,7 +145,7 @@ Les éléments de travail jouent un rôle important dans Azure DevOps. Qu’il 
 
 1. Cliquez sur **Ajouter un lien** pour enregistrer l’élément Enfant. Dans le panneau (Nouvelle fonctionnalité) **Tableau de bord d’entraînement**, cliquez sur **Enregistrer et fermer**.
 
-![Épopée avec élément enfant lié](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
+    ![Épopée avec élément enfant lié](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
 1. Dans le volet de navigation verticale du portail Azure DevOps, dans la liste des éléments **Boards**, sélectionnez **Tableaux**.
 1. Dans le volet **Tableaux**, sélectionnez l’entrée **Tableaux EShop-WEB**. Le tableau de l’équipe correspondante s’ouvre alors.
@@ -232,17 +232,17 @@ Le backlog de sprint doit contenir toutes les informations dont l’équipe a be
 
 1. Sélectionnez l’onglet **Capacité** de la vue **Sprints**.
 
-![Affichage des capacités du sprint](images/m1/EShop-WEB-capacity_v1.png)
+    ![Affichage des capacités du sprint](images/m1/EShop-WEB-capacity_v1.png)
 
-    > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
+    > **Remarque** : cette vue vous permet de définir les activités qu’un utilisateur peut entreprendre et à quel niveau de capacité.
 
 1. Sous l’onglet **Capacité** de l’affichage **Sprints**, cliquez sur **+Ajouter un utilisateur** et sélectionnez votre compte d’utilisateur. Pour cet utilisateur, définissez le champ **Activité** sur **Développement** et, dans la zone de texte **Capacité par jour**, tapez **1**.
 
     > **Remarque** : cela représente 1 heure de travail de développement par jour. Notez que vous pouvez ajouter des activités supplémentaires à chaque utilisateur, dans le cas où leurs tâches ne se limitent pas au développement.
 
-![Définir la capacité de développement pour un utilisateur](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+    ![Définir la capacité de développement pour un utilisateur](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
 
-    > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
+    > **Remarque** : Supposons que vous allez également prendre des vacances. Ce qui doit également être ajouté à la vue de capacité.
 
 1. Sous l’onglet **Capacité** de la vue **Sprints**, directement à côté de l’entrée représentant votre compte d’utilisateur, dans la colonne **Jours de congé**, cliquez sur l’entrée **0 jour**. Un panneau dans lequel vous pouvez définir vos jours de congé s’affiche alors.
 1. Dans le panneau affiché, utilisez la vue Calendrier pour définir vos vacances sur cinq jours ouvrés pendant le sprint actuel (au cours des trois prochaines semaines) et, une fois que vous avez terminé, cliquez sur **OK**.
@@ -376,7 +376,7 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
 
     > **Remarque** : l’étape **AQ approuvée** a maintenant des colonnes **En cours** et **Terminé**. Vous pouvez également cliquer sur le symbole d’information (avec la lettre **i** dans un cercle) en regard de l’en-tête de colonne pour lire la **Définition de terminé**.
 
-![Fractionner des colonnes pour Approuvé par l’assurance qualité](images/m1/EShop-WEB-qa_2columns_v1.png)
+    ![Fractionner des colonnes pour Approuvé par l’assurance qualité](images/m1/EShop-WEB-qa_2columns_v1.png)
 
 1. Dans le panneau **Tableaux**, cliquez sur l’icône d’engrenage **Configurer les paramètres du tableau** (juste à droite de l’icône d’entonnoir).
 

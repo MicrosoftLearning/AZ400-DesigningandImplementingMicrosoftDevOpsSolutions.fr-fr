@@ -63,7 +63,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
     - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
@@ -101,7 +101,7 @@ Dans cette tâche, vous allez créer et déclencher un pipeline de build CI dan
 
 1. Dans la fenêtre **Où se trouve votre code ?**, sélectionnez **Azure Repos Git (YAML)**, puis sélectionnez le référentiel **eShopOnWeb**.
 
-1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Indiquez le chemin **/.ado/eshoponweb-ci-mend.yml**, puis cliquez sur **Continuer**.
+1. Dans la section **Configurer**, choisissez **Fichier YAML Azure Pipelines existant**. Sélectionnez la branche : **principale**, indiquez le chemin d’accès suivant **/.ado/eshoponweb-ci-mend.yml**, puis cliquez sur **Continuer**.
 
     ![Sélectionner un pipeline](images/select-pipeline.png)
 
