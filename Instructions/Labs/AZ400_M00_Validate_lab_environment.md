@@ -32,10 +32,14 @@ lab:
 1. Une fois que l’écran affiche l’ID d’abonnement Azure lié en haut, modifiez le nombre de **travaux parallèles payants** pour **MS Hosted CI/CD** de 0 à **1**. Cliquez ensuite sur le bouton **ENREGISTRER** en bas.
 1. Dans **Paramètres d’organisation**, accédez à la section **Pipelines** et cliquez sur **Paramètres**.
 1. Basculez le commutateur sur **Désactivé** pour **Désactiver la création de pipelines de build classiques** et **Désactiver la création de pipelines de mise en production classiques**.
+
     > Remarque : la définition de **Désactiver la création de pipelines de mise en production classiques** sur **Activé** masque les options de création de pipeline de mise en production classique comme le menu **Mise en production** dans la section **Pipeline** de projets DevOps.
+
 1. Dans **Paramètres d’organisation**, accédez à la section **Sécurité** et cliquez sur **Stratégies**.
 1. Basculez le commutateur sur **Activé** pour **Autoriser les projets publics**.
+
     > Remarque : les extensions utilisées dans certains labos peuvent nécessiter un projet public pour autoriser l’utilisation de la version gratuite.
+
 1. **Attendez au moins 3 heures avant d’utiliser les fonctionnalités CI/CD** afin que les nouveaux paramètres soient reflétés dans le back-end. Sinon, vous verrez toujours le message *« Aucun parallélisme hébergé n’a été acheté ou accordé »*.
 
 ## Instructions pour créer l’exemple de projet Azure DevOps (vous ne devez effectuer cette opération qu’une seule fois)
