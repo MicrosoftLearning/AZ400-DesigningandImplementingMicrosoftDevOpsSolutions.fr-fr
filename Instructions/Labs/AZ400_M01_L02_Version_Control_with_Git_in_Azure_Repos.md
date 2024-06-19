@@ -127,7 +127,7 @@ Dans cette tâche, vous allez parcourir le processus de clonage d’un référen
     > **Remarque** : pour afficher toutes les commandes pertinentes, vous pouvez commencer par taper **Git**.
 
 1. Dans la zone de texte **Fournir l’URL du référentiel ou choisir une source de référentiel**, collez l’URL du clone du référentiel que vous avez copiée précédemment dans cette tâche, puis appuyez sur la touche **Entrée**.
-1. Dans la boîte de dialogue **Sélectionner un dossier**, accédez au lecteur C:, créez un dossier nommé **Git**, sélectionnez-le, puis cliquez sur **Sélectionner l’emplacement du référentiel**.
+1. Dans la boîte de dialogue **Sélectionner un dossier**, accédez au lecteur C:, créez un dossier nommé **Git**, sélectionnez-le, puis cliquez sur **Sélectionner en tant que destination du référentiel**.
 1. À l’invite, connectez-vous à votre compte Azure DevOps.
 1. Une fois le processus de clonage terminé, à l’invite, dans Visual Studio Code, cliquez sur **Ouvrir** pour ouvrir le référentiel cloné.
 
@@ -255,8 +255,8 @@ Dans cette tâche, vous allez créer une branche à l’aide de Visual Studio 
 
     ![Créer une branche](images/create-branch.png)
 
+1. Dans la zone de texte **Sélectionner une référence à partir de laquelle créer la branche**, sélectionnez **primaire** comme branche de référence.
 1. Dans la zone de texte **Nom de la branche**, tapez **dev** pour spécifier la nouvelle branche et appuyez sur **Entrée**.
-1. Dans la zone de texte **Sélectionner une référence pour créer la branche ‘dev’ à partir de**, sélectionnez **main** comme branche de référence.
 
     > **Remarque** : vous êtes alors automatiquement redirigé vers la branche **dev**.
 

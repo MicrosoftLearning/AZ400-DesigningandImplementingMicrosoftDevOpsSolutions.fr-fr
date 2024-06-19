@@ -165,7 +165,7 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 1. Dans la liste des projets, cliquez sur la vignette représentant votre projet **eShopOnWeb**.
 1. Dans le volet **eShopOnWeb**, dans le volet de navigation vertical situé à gauche, dans la section **Pipelines**, cliquez sur **Pipelines**.
 1. Dans l’onglet **Récent** du volet **Pipelines**, sélectionnez **eShopOnWeb**, puis, dans le volet **eShopOnWeb**, sélectionnez **Modifier**.
-1. Dans le volet de modification **eShopOnWeb**, dans le pipeline YAML existant, remplacez la ligne 13, qui indique `vmImage: windows-latest` désignant le pool d’agents cible, par le contenu suivant, désignant le nouveau pool d’agents autohébergés :
+1. Dans le volet de modification **eShopOnWeb**, dans le pipeline YAML existant, remplacez la ligne 13, qui indique `vmImage: ubuntu-latest` désignant le pool d’agents cible, par le contenu suivant, désignant le nouveau pool d’agents autohébergés :
 
     ```yaml
     name: az400m03l03a-pool
@@ -173,7 +173,7 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
     - Agent.Name -equals az400m03-vm0
     ```
 
-    > **AVERTISSEMENT** : prenez garde aux copier/coller. Vérifiez que vous disposez de la même mise en retrait que ci-dessus.
+    > **AVERTISSEMENT** : Soyez prudent avec le copier-coller, vérifiez que vous avez le même retrait que celui illustré ci-dessus.
 
     ![Syntaxe du pool YAML](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
@@ -186,7 +186,7 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 1. Arrêtez et supprimez le service d’agent en exécutant `.\config.cmd remove` dans l’invite de commandes.
 1. Supprimez le pool d’agents.
 1. Révoquez le jeton PAT.
-1. Annulez les modifications apportées au fichier **eshoponweb-ci-pr.yml**. Pour cela, accédez au fichier à partir de Repos/.ado/eshoponweb-ci-pr.yml, sélectionnez **Modifier**, supprimez les lignes 13-15 (extrait du pool d’agents), puis rétablissez le paramètre d’origine `vmImage: windows-latest`. (En effet, vous utiliserez le même exemple de fichier de pipeline dans un prochain exercice de labo.)
+1. Annulez les modifications apportées au fichier **eshoponweb-ci-pr.yml**. Pour cela, accédez au fichier à partir de Repos/.ado/eshoponweb-ci-pr.yml, sélectionnez **Modifier**, supprimez les lignes 13-15 (extrait du pool d’agents), puis rétablissez le paramètre d’origine `vmImage: ubuntu-latest`. (En effet, vous utiliserez le même exemple de fichier de pipeline dans un prochain exercice de labo.)
 
 ![Rétablir les paramètres vmImage du pool de pipelines](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
