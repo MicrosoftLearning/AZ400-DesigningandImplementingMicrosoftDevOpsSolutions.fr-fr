@@ -109,7 +109,7 @@ Dans cette tâche, vous allez créer un module de modèle **storage.bicep** qui 
 
    ![Validation du fichier](./images/m06/commit.png)
 
-1. Ensuite, placez votre souris sur le dossier bicep, cliquez sur l’icône de sélection, puis sélectionnez **Nouveau** et **Fichier**. Entrez le nom **storage.bicep** et cliquez sur **Créer**.
+1. Placez ensuite votre souris sur le dossier `Infra` et cliquez sur l’icône des points de suspension, puis sélectionnez **Nouveau** et **Fichier**. Entrez le nom **storage.bicep** et cliquez sur **Créer**.
 
    ![Nouveau menu Fichier](./images/m06/newfile.png)
 
