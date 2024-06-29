@@ -67,7 +67,11 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
-#### Tâche 2 : Créez des ressources Azure
+1. Accédez à **Dépôts > Branches**.
+1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
+1. Cliquez sur **Définir comme branche par défaut**.
+
+#### Tâche 3 : Créer des ressources Azure
 
 Dans cette tâche, vous allez créer une application web Azure à l’aide de Cloud Shell dans le portail Azure.
 

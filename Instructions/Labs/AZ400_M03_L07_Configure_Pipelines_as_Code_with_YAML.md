@@ -59,6 +59,10 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
+1. Accédez à **Dépôts > Branches**.
+1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
+1. Cliquez sur **Définir comme branche par défaut**.
+
 #### Tâche 2 : Créez des ressources Azure
 
 Dans cette tâche, vous allez créer une application web Azure à l’aide du portail Azure.
@@ -197,7 +201,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
 1. L’extrait de code ajouté doit ressembler à ce qui suit :
 
    ```yaml
-   - task: DownloadBuildArtifacts@0
+   - task: DownloadBuildArtifacts@1
      inputs:
        buildType: "current"
        downloadType: "single"
@@ -386,7 +390,7 @@ Les pipelines YAML en tant que code n’ont pas de portes de mise en production/
            runOnce:
              deploy:
                steps:
-                 - task: DownloadBuildArtifacts@0
+                 - task: DownloadBuildArtifacts@1
                    inputs:
                      buildType: "current"
                      downloadType: "single"
