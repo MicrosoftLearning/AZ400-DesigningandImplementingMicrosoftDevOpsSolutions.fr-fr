@@ -70,6 +70,12 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
     - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
     - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
+#### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
+
+1. Accédez à **Dépôts > Branches**.
+1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
+1. Cliquez sur **Définir comme branche par défaut**.
+
 #### Tâche 3 : configurer Git et Visual Studio Code
 
 Dans cette tâche, vous allez installer et configurer Git et Visual Studio Code, avec notamment la configuration de l’assistance des informations d’identification Git pour stocker en toute sécurité les informations d’identification Git utilisées pour communiquer avec Azure DevOps. Si vous avez déjà implémenté ces prérequis, vous pouvez passer directement à la tâche suivante.

@@ -57,6 +57,12 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
     - Le dossier **.github** contient les définitions de workflow YAML GitHub.
     - Le dossier **src** contient le site web .NET utilisé dans les scénarios de labo.
 
+#### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
+
+1. Accédez à **Dépôts > Branches**.
+1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
+1. Cliquez sur **Définir comme branche par défaut**.
+
 ### Exercice 1 : configurer des tests dans le pipeline CI
 
 Dans cet exercice, vous allez configurer des tests dans le pipeline CI.
