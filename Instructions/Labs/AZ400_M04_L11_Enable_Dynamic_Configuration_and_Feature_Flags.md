@@ -191,7 +191,7 @@ Si vous souhaitez savoir comment les implémenter dans votre application, consul
 Pour vous assurer que votre site web accède à App Configuration, vous devez mettre à jour sa configuration.
 
 1. Revenez à votre application web.
-1. Dans la section **Paramètres**, cliquez sur **Configuration**.
+1. Dans la section **Paramètres**, cliquez sur **Variables d’environnement**.
 1. Ajoutez deux nouveaux paramètres d’application :
     - Premier paramètre d’application
         - **Nom :** UseAppConfig
@@ -200,7 +200,7 @@ Pour vous assurer que votre site web accède à App Configuration, vous devez m
         - **Nom :** AppConfigEndpoint
         - **Valeur :***valeur enregistrée/copiée précédemment à partir du point de terminaison App Configuration. Elle doit ressembler à <https://appcs-NAME-REGION.azconfig.io>*
 
-1. Cliquez sur **Ok**, puis **enregistrez** et attendez que les paramètres soient mis à jour.
+1. Cliquez sur **Appliquer**, puis sur **Confirmer** et attendez que les paramètres soient mis à jour.
 1. Accédez à **Vue d’ensemble**, puis cliquez sur **Parcourir**.
 1. À ce stade, vous ne constaterez aucune modification dans le site web, car App Configuration ne contient pas de données. C’est ce que vous allez faire dans les tâches suivantes.
 
