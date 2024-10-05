@@ -279,25 +279,25 @@ Le backlog de sprint doit contenir toutes les informations dont l’équipe a be
 
 1. Dans la section **Critères de règle**, sélectionnez **+ Ajouter une clause**, puis dans la liste déroulante **Champ**, sélectionnez **Activité**, dans la liste déroulante **Opérateur**, sélectionnez **=** et, dans la liste déroulante **Valeur**, sélectionnez **Développement**.
 
-    ![Fenêtre « Paramètres », vérifiez que tous les champs contiennent des informations](images/m1/EShop-WEB-styles_v1.png)
+    ![Fenêtre « Paramètres », vérifiez que tous les champs contiennent des informations](images/m1/EShop-WEB-styles_v2.png)
 
     > **Remarque** : cette opération définit toutes les cartes affectées à des activités de **Développement** en vert.
 
     ![Styles de tâches de sprint](images/m1/EShop-WEB-sprint-green_v1.png)
 
-1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Retards de traitement**.
+1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Général**, puis, sous la section **Backlog**, affichez et configurez les niveaux de navigation.
 
-    > **Remarque** : les entrées de cet onglet vous permettent de définir les niveaux disponibles pour la navigation. Les épopées ne sont pas incluses par défaut, mais vous pouvez le modifier.
+    > **Remarque** : les épopées ne sont pas incluses par défaut, mais vous pouvez le modifier.
 
-1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Jours de travail**.
+1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Général**, puis, sous la section **Jours de travail**, indiquez les jours de travail de l’équipe.
 
-    > **Remarque** : les entrées de cet onglet vous permettent de spécifier les **Jours de travail** suivis par l’équipe. Cela s’applique aux calculs de capacité et d’avancement.
+    > **Remarque** : cela s’applique aux calculs de capacité et d’avancement.
 
-1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Travailler avec des bogues**.
+1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Général**, puis, sous la section **Travailler avec des bogues**, indiquez comment vous gérez les bogues dans les backlogs et les tableaux.
 
     > **Remarque** : les entrées de cet onglet vous permettent de spécifier la façon dont les bogues sont présentés sur le tableau.
 
-1. Dans le panneau **Paramètres**, cliquez sur **Enregistrer et fermer** pour enregistrer la règle de style.
+1. Dans le panneau **Paramètres**, cliquez sur **Enregistrer** pour enregistrer et fermer la règle de style.
 
     > **Remarque** : la tâche associée à **Développement** est désormais verte et très facile à identifier.
 
