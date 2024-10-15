@@ -190,6 +190,8 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 ### Exercice 3 : supprimer les ressources du labo
 
 1. Arrêtez et supprimez le service d’agent en exécutant `.\config.cmd remove` dans l’invite de commandes.
+   - Vous serez invité à entrer à nouveau votre jeton d’accès personnel pour supprimer votre agent de votre organisation.
+   - Si vous n’avez plus le jeton d’accès personnel, vous pouvez régénérer celui que vous avez créé initialement dans l’exercice 2 de la tâche 1 de l’étape 2.
 1. Supprimez le pool d’agents.
 1. Révoquez le jeton PAT.
 1. Annulez les modifications apportées au fichier **eshoponweb-ci-pr.yml**. Pour cela, accédez au fichier à partir de Repos/.ado/eshoponweb-ci-pr.yml, sélectionnez **Modifier**, supprimez les lignes 13-15 (extrait du pool d’agents), puis rétablissez le paramètre d’origine `vmImage: ubuntu-latest`. (En effet, vous utiliserez le même exemple de fichier de pipeline dans un prochain exercice de labo.)
