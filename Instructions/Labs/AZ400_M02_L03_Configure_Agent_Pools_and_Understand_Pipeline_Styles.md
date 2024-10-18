@@ -86,9 +86,10 @@ Dans cette tâche, vous allez créer un pipeline YAML Azure DevOps basé sur un
 
    - Une étape unique : Build
    - Un seul travail : Build
-   - 3 tâches dans le travail de build :
+   - 4 tâches dans le travail de build :
    - Dotnet Restore
    - Dotnet Build
+   - Dotnet Test
    - Dotnet Publish
 
 1. Dans le volet **Passer en revue le fichier YAML de votre pipeline**, cliquez sur le symbole caret pointant vers le bas en regard du bouton **Exécuter**, puis sur **Enregistrer**.
@@ -196,7 +197,7 @@ Dans cette tâche, vous allez configurer votre machine virtuelle de labo en tant
 1. Révoquez le jeton PAT.
 1. Annulez les modifications apportées au fichier **eshoponweb-ci-pr.yml**. Pour cela, accédez au fichier à partir de Repos/.ado/eshoponweb-ci-pr.yml, sélectionnez **Modifier**, supprimez les lignes 13-15 (extrait du pool d’agents), puis rétablissez le paramètre d’origine `vmImage: ubuntu-latest`. (En effet, vous utiliserez le même exemple de fichier de pipeline dans un prochain exercice de labo.)
 
-![Rétablir les paramètres vmImage du pool de pipelines](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
+![Rétablir les paramètres vmImage du pool de pipelines](images/m3/eshoponweb-ci-pr-vmimage_v2.png)
 
 ## Révision
 

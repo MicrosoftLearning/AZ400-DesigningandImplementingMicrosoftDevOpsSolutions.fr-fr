@@ -38,11 +38,11 @@ Dans ce labo, vous allez découvrir comment implémenter un workflow GitHub Act
 Dans cet exercice, vous allez importer le code de référentiel [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existant dans votre propre référentiel privé GitHub.
 
 Le référentiel est organisé de la manière suivante :
-    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
-    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
+- Le dossier **.ado** contient des pipelines YAML Azure DevOps.
+- Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+- Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
+- **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
+- Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 #### Tâche 1 : créer un référentiel public dans GitHub et importer eShopOnWeb
 
