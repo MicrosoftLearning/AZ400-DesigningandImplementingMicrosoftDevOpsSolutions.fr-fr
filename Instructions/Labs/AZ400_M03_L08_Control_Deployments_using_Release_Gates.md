@@ -160,15 +160,12 @@ Dans cette tâche, vous allez créer deux applications web Azure représentant l
    | Groupe de ressources | **az400m04l09-RG**                                                                    |
    | Nom           | Nom de l’application web DevTest que vous avez enregistrée dans la tâche précédente                     |
    | Région         | Même région Azure sur laquelle vous avez déployé les applications web plus tôt dans la tâche précédente |
-   | Mode ressource  | **Classique**                                                                           |
-
-   > **Remarque** : ignorez le message de dépréciation. Cela est nécessaire pour éviter les défaillances de la tâche Activer l’intégration continue DevOps que vous utiliserez plus loin dans ce labo.
 
 1. Cliquez sur **Vérifier + créer**, puis sur **Créer**.
 1. Attendez la fin du processus de provisionnement.
 1. Dans le portail Azure, accédez au groupe de ressources **az400m04l09-RG** que vous avez créé dans la tâche précédente.
 1. Dans la liste des ressources, cliquez sur l’application web **DevTest**.
-1. Dans la page de l’application web **DevTest**, dans le menu vertical de gauche, dans la section **Paramètres**, cliquez sur **Application Insights**.
+1. Dans la page de l’application web **DevTest**, dans le menu vertical de gauche, dans la section **Surveillance**, cliquez sur **Application Insights**.
 1. Dans le panneau **Application Insights**, sélectionnez **Activer Application Insights**.
 1. Dans la section **Modifier votre ressource**, cliquez sur l’option **Sélectionner une ressource existante**. Dans la liste des ressources existantes, sélectionnez la ressource Application Insight nouvellement créée, cliquez sur **Appliquer** et, lorsque vous y êtes invité, cliquez sur **Oui**.
 1. Attendez que la modification prenne effet.
@@ -177,7 +174,7 @@ Dans cette tâche, vous allez créer deux applications web Azure représentant l
 
 1. Dans la même option de menu **Paramètres** / **Application Insights** de l’application web, sélectionnez **Afficher les données Application Insights**. Le panneau Application Insights s’ouvre dans le portail Azure.
 1. Dans le panneau des ressources Application Insights, dans la section **Surveillance**, cliquez sur **Alertes**, puis sur **Créer > règle d’alerte**.
-1. Dans le panneau **Sélectionner un signal**, dans la zone de texte **Rechercher par nom de signal**, tapez **Demandes**. Dans la liste des résultats, sélectionnez **Demandes ayant échoué**.
+1. Dans le panneau **Créer une règle d’alerte**, dans la section **Condition**, cliquez sur le lien **Afficher tous les signaux** et saisissez **Demandes**. Dans la liste des résultats, sélectionnez **Demandes ayant échoué**.
 1. Dans le panneau **Créer une règle d’alerte**, dans la section **Condition**, laissez le **Seuil** défini sur **Statique**, validez les autres paramètres par défaut comme suit :
 
    - Type d’agrégation : Count
