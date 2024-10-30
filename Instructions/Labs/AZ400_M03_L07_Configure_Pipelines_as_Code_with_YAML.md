@@ -6,8 +6,6 @@ lab:
 
 # Configuration de pipelines en tant que code avec YAML
 
-## Manuel de labo de l’étudiant
-
 ## Configuration de laboratoire requise
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
@@ -28,13 +26,13 @@ De nombreuses équipes préfèrent définir leurs pipelines de build et de mise 
 
 - Configurer les pipelines CI/CD en tant que code avec YAML dans Azure DevOps
 
-## Durée estimée : 60 minutes
+## Durée estimée : 45 minutes
 
 ## Instructions
 
 ### Exercice 0 : configurer les prérequis du labo
 
-Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se composent d’un nouveau projet Azure DevOps avec un référentiel basé sur [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
+Dans cet exercice, vous allez configurer les prérequis du labo.
 
 #### Tâche 1 : (passer si terminée) créer et configurer le projet d’équipe
 
@@ -42,15 +40,15 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb_MultiSt
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Donnez au projet le nom **eShopOnWeb_MultiStageYAML** et conservez les valeurs par défaut des autres champs. Cliquez sur **Créer**.
 
-   ![Création d’un projet](images/create-project.png)
+   ![Capture d’écran du volet de création d’un nouveau projet.](images/create-project.png)
 
 #### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb_MultiStageYAML** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb_MultiStageYAML** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un référentiel**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL https://github.com/MicrosoftLearning/eShopOnWeb.git, puis cliquez sur **Importer** :
 
-   ![Importer un référentiel](images/import-repo.png)
+   ![Capture d’écran du volet Importer un référentiel.](images/import-repo.png)
 
 1. Le référentiel est organisé de la manière suivante :
    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
@@ -59,11 +57,11 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
-1. Accédez à **Dépôts > Branches**.
+1. Accédez à **Dépôts > Branches**.
 1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
 1. Cliquez sur **Définir comme branche par défaut**.
 
-#### Tâche 2 : Créez des ressources Azure
+#### Tâche 3 : Créer des ressources Azure
 
 Dans cette tâche, vous allez créer une application web Azure à l’aide du portail Azure.
 
@@ -73,7 +71,7 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide du po
 
    > **Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
 
-   > **Remarque :** pour obtenir la liste des régions et leur alias, exécutez la commande suivante à partir de l’invite Bash Azure Cloud Shell :
+   > **Remarque :** pour obtenir la liste des régions et leurs alias, exécutez la commande suivante à partir de Bash - Azure Cloud Shell :
 
    ```bash
    az account list-locations -o table
@@ -86,14 +84,14 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide du po
    ```
 
    ```bash
-   RESOURCEGROUPNAME='az400m05l11-RG'
+   RESOURCEGROUPNAME='az400m03l07-RG'
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
 1. Créez un plan App Service Windows en exécutant la commande suivante :
 
    ```bash
-   SERVICEPLANNAME='az400m05l11-sp1'
+   SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
 
@@ -151,7 +149,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
      jobs:
        - job: Deploy
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          steps:
    ```
 
@@ -195,7 +193,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
 1. Indiquez les paramètres suivantes pour cette tâche :
    - Télécharger les artefacts produits par : **Build actuelle**
    - Type de téléchargement : **Artefact spécifique**
-   - Nom de l’artefact : **sélectionnez « Site web » dans la liste** (ou **tapez « Site web »** directement s’il n’apparaît pas automatiquement dans cette liste).
+   - Nom de l’artefact : **sélectionnez « site web » dans la liste** (ou **saisissez directement « `Website` »** s’il n’apparaît pas automatiquement dans cette liste)
    - Répertoire de destination : **$(Build.ArtifactStagingDirectory)**
 1. Cliquez sur **Ajouter**.
 1. L’extrait de code ajouté doit ressembler à ce qui suit :
@@ -297,7 +295,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
     jobs:
     - job: Deploy
       pool:
-        vmImage: 'windows-2019'
+        vmImage: 'windows-latest'
       steps:
       - task: DownloadBuildArtifacts@0
         inputs:
@@ -316,7 +314,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
 
    ```
 
-#### Tâche 4 : passer en revue le site déployé
+#### Tâche 3 : examiner le site déployé
 
 1. Revenez à la fenêtre du navigateur web qui affiche le portail Azure et accédez au panneau affichant les propriétés de l’application web Azure.
 1. Dans le panneau de l’application web Azure, cliquez sur **Vue d’ensemble**, puis, dans le panneau Vue d’ensemble, cliquez sur **Parcourir** pour ouvrir votre site dans un nouvel onglet de navigateur web.
@@ -333,11 +331,10 @@ Les pipelines YAML en tant que code n’ont pas de portes de mise en production/
 1. À partir du projet Azure DevOps **eShopOnWeb_MultiStageYAML**, accédez à **Pipelines**.
 1. Sous le menu Pipelines à gauche, sélectionnez **Environnements**.
 1. Cliquez sur **Créer un environnement**.
-1. Dans le volet **Nouvel environnement**, ajoutez un nom pour l’environnement, à savoir **approvals**.
+1. Dans le volet **Nouvel environnement**, ajoutez un nom pour l’environnement, appelé **`approvals`**.
 1. Sous **Ressources**, sélectionnez **Aucune**.
 1. Confirmez les paramètres en appuyant sur le bouton **Créer**.
-1. Une fois l’environnement créé, cliquez sur les points de suspension (...) en regard du bouton « Ajouter une ressource ».
-1. Sélectionnez **Approbations et contrôles**.
+1. Une fois l’environnement créé, sélectionnez l’onglet **Approbations et contrôles** dans le nouvel environnement **approbations**.
 1. Dans **Ajouter votre premier contrôle**, sélectionnez **Approbations**.
 1. Ajoutez le nom de votre compte d’utilisateur Azure DevOps dans le champ **Approbateurs**.
 
@@ -360,12 +357,12 @@ Les pipelines YAML en tant que code n’ont pas de portes de mise en production/
      - job: Deploy
        environment: approvals
        pool:
-         vmImage: "windows-2019"
+         vmImage: "windows-latest"
    ```
 
 1. Comme l’environnement est un paramètre spécifique d’une phase de déploiement, il ne peut pas être utilisé par des « travaux ». Par conséquent, nous devons apporter des modifications supplémentaires à la définition de travail actuelle.
 1. À la ligne **60**, renommez « - job: Deploy » en **- deployment: Deploy**.
-1. Ensuite, sous la ligne **63** (vmImage: Windows-2019), ajoutez une nouvelle ligne vide.
+1. Ensuite, sous la ligne **63** (vmImage: windows-latest), ajoutez une nouvelle ligne vide.
 1. Collez l’extrait de code YAML suivant :
 
    ```yaml
@@ -385,7 +382,7 @@ Les pipelines YAML en tant que code n’ont pas de portes de mise en production/
        - deployment: Deploy
          environment: approvals
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          strategy:
            runOnce:
              deploy:
@@ -420,30 +417,8 @@ Les pipelines YAML en tant que code n’ont pas de portes de mise en production/
 
    > **Remarque :** bien que cet exemple utilise uniquement les approbations, sachez que les autres vérifications telles qu’Azure Monitor, l’API REST, etc., peuvent être utilisées de manière similaire.
 
-### Exercice 3 : supprimer les ressources du labo Azure
-
-Dans cet exercice, vous allez supprimer les ressources Azure approvisionnées dans ce labo pour éviter des frais inattendus.
-
-> **Remarque** : N’oubliez pas de supprimer toutes les nouvelles ressources Azure que vous n’utilisez plus. La suppression des ressources inutilisées vous évitera d’encourir des frais inattendus.
-
-#### Tâche 1 : supprimer les ressources du labo Azure
-
-Dans cette tâche, vous allez utiliser Azure Cloud Shell pour supprimer les ressources Azure approvisionnées dans ce labo pour éviter des frais inutiles.
-
-1. Dans le Portail Azure, ouvrez la session shell **Bash** dans le volet **Cloud Shell**.
-1. Listez tous les groupes de ressources créés dans les labos de ce module en exécutant la commande suivante :
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].name" --output tsv
-   ```
-
-1. Supprimez tous les groupes de ressources que vous avez créés dans les labos de ce module en exécutant la commande suivante :
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Remarque** : La commande s’exécute de façon asynchrone (comme déterminé par le paramètre --no-wait). Par conséquent, vous serez en mesure d’exécuter une autre commande Azure CLI immédiatement après au cours de la même session Bash, mais la suppression réelle du groupe de ressources prendra quelques minutes.
+   > [!IMPORTANT]
+   > N’oubliez pas de supprimer les ressources créées dans le portail Azure pour éviter les modifications inutiles.
 
 ## Révision
 

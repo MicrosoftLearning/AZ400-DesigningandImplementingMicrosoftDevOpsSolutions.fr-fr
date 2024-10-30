@@ -6,8 +6,6 @@ lab:
 
 # Implémenter GitHub Actions pour CI/CD
 
-## Manuel de labo de l’étudiant
-
 ## Configuration de laboratoire requise
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
@@ -33,7 +31,7 @@ Dans ce labo, vous allez découvrir comment implémenter un workflow GitHub Act
 
 ## Instructions
 
-### Exercice 0 : importer eShopOnWeb dans votre référentiel GitHub
+### Exercice 1 : importer eShopOnWeb dans votre référentiel GitHub
 
 Dans cet exercice, vous allez importer le code de référentiel [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existant dans votre propre référentiel privé GitHub.
 
@@ -50,11 +48,11 @@ Dans cette tâche, vous allez créer un référentiel GitHub public vide et impo
 
 1. À partir de l’ordinateur de labo, démarrez un navigateur web, accédez au [site web GitHub](https://github.com/), connectez-vous à l’aide de votre compte, puis cliquez sur **Nouveau** pour créer un référentiel.
 
-    ![Créer un référentiel](images/github-new.png)
+    ![Capture d’écran du bouton Créer un nouveau référentiel.](images/github-new.png)
 
 1. Dans la page **Créer un référentiel**, cliquez sur le lien **Importer un référentiel** (sous le titre de la page).
 
-    > REMARQUE : vous pouvez également ouvrir le site web d’importation directement à l’adresse <https://github.com/new/import>.
+    > **Remarque **: vous pouvez également ouvrir le site web d’import directement à l’adresse <https://github.com/new/import>.
 
 1. Dans la page **Importer votre projet dans GitHub** :
 
@@ -69,9 +67,9 @@ Dans cette tâche, vous allez créer un référentiel GitHub public vide et impo
 
 1. Dans la page du dépôt, accédez à **Paramètres**, cliquez sur **Actions > Général** et choisissez l’option **Autoriser toutes les actions et tous les workflows réutilisables**. Cliquez sur **Save**(Enregistrer).
 
-    ![Activer GitHub Actions](images/enable-actions.png)
+    ![Capture d’écran de l’activation de l’option GitHub Actions.](images/enable-actions.png)
 
-### Exercice 1 : configurer votre référentiel GitHub et l’accès à Azure
+### Exercice 2 : configurer votre référentiel GitHub et l’accès à Azure
 
 Dans cet exercice, vous allez créer un principal de service Azure pour autoriser GitHub à accéder à votre abonnement Azure à partir de GitHub Actions. Vous allez également configurer le workflow GitHub qui génèrera, testera et déploiera votre site web sur Azure.
 
@@ -79,20 +77,21 @@ Dans cet exercice, vous allez créer un principal de service Azure pour autorise
 
 Dans cette tâche, vous allez créer le principal de service Azure utilisé par GitHub pour déployer les ressources souhaitées. En guise d’alternative, vous pouvez également utiliser [OpenID Connect dans Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure), comme mécanisme d’authentification sans secret.
 
-1. Sur votre ordinateur de labo, ouvrez le portail Azure (https://portal.azure.com/)dans une fenêtre de navigateur.
+1. Sur votre ordinateur de labo, ouvrez le portail Azure (<https://portal.azure.com/>) dans une fenêtre de navigateur.
 1. Dans le portail, recherchez les **Groupes de ressources** et cliquez dessus.
 1. Cliquez sur **+ Créer** pour créer un groupe de ressources pour l’exercice.
-1. Sous l’onglet **Créer un groupe de ressources**, attribuez le nom suivant à votre groupe de ressources : **rg-eshoponweb-NAME** (remplacez NAME par un alias unique). Cliquez sur **Vérifier + créer > Créer**.
+1. Sous l’onglet **Créer un groupe de ressources**, attribuez le nom suivant à votre groupe de ressources : **rg-eshoponweb-NAME** (remplacez NAME par un alias unique). Cliquez sur **Vérifier + Créer > Créer**.
 1. Dans le portail Azure, ouvrez **Cloud Shell** (à côté de la barre de recherche).
 
-    > REMARQUE : si c’est la première fois que vous ouvrez Cloud Shell, vous devez configurer le [stockage persistant](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)
+    > **Remarque** : si c’est la première fois que vous ouvrez Cloud Shell, vous devez configurer le [stockage persistant](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage).
 
 1. Vérifiez que le terminal s’exécute en mode **Bash** et exécutez la commande suivante, en remplaçant **SUBSCRIPTION-ID** et **RESOURCE-GROUP** par vos propres identificateurs (les deux sont disponibles dans la page **Vue d’ensemble** du groupe de ressources) :
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
-    > REMARQUE : assurez-vous de saisir ou de coller ces éléments sous la forme d’une seule ligne.
-    > REMARQUE : cette commande crée un principal de service avec un accès Contributeur au groupe de ressources créé précédemment. De cette façon, nous nous assurons que GitHub Actions aura uniquement les autorisations nécessaires pour interagir exclusivement avec ce groupe de ressources (et non avec le reste de l’abonnement)
+    > **Remarque** : assurez-vous de saisir ou de coller ces éléments sous la forme d’une seule ligne.
+
+    > **Remarque** : cette commande crée un principal de service avec un accès Contributeur au groupe de ressources créé précédemment. De cette façon, nous nous assurons que GitHub Actions aura uniquement les autorisations nécessaires pour interagir exclusivement avec ce groupe de ressources (et non avec le reste de l’abonnement)
 
 1. La commande génère un objet JSON que vous utiliserez ultérieurement comme secret GitHub pour le workflow. Copiez le JSON. Le JSON contient les identificateurs utilisés pour s’authentifier auprès d’Azure dans le nom d’une identité Microsoft Entra (principal de service).
 
@@ -106,7 +105,7 @@ Dans cette tâche, vous allez créer le principal de service Azure utilisé par 
         }
     ```
 
-1. Vous devez également exécuter la commande suivante pour inscrire le fournisseur de ressources au **Azure App Service** que vous allez déployer ultérieurement :
+1. (Ignorer si inscription déjà effectuée) Vous devez également exécuter la commande suivante pour inscrire le fournisseur de ressources au **Azure App Service** que vous allez déployer ultérieurement :
 
    ```bash
    az provider register --namespace Microsoft.Web
@@ -142,15 +141,15 @@ Dans cette tâche, vous allez passer en revue l’exécution du flux de travail 
 1. Dans une fenêtre de navigateur, revenez à votre référentiel GitHub **eShopOnWeb**.
 1. Dans la page du référentiel, accédez à **Actions**, vous verrez la configuration du flux de travail avant l’exécution. Cliquez dessus.
 
-    ![Workflow GitHub en cours](images/gh-actions.png)
+    ![Capture d’écran du workflow GitHub en cours.](images/gh-actions.png)
 
 1. Attendez la fin de l’exécution du workflow. Dans le **Résumé**, vous pouvez voir les deux travaux de workflow, l’état et les artefacts conservés à partir de l’exécution. Vous pouvez cliquer dans chaque travail pour passer en revue les journaux.
 
-    ![Workflow réussi](images/gh-action-success.png)
+    ![Capture d’écran du message indiquant que le workflow s’est terminé avec succès.](images/gh-action-success.png)
 
 1. Dans une fenêtre de navigateur, retournez au portail Azure (<https://portal.azure.com/>). Ouvrez le groupe de ressources créé précédemment. Vous verrez que GitHub Actions, à l’aide d’un modèle bicep, a créé un Plan Azure App Service + App Service. Vous pouvez voir le site web publié en ouvrant App Service et en cliquant sur **Parcourir**.
 
-    ![Parcourir WebApp](images/browse-webapp.png)
+    ![Capture d’écran du bouton parcourir WebApp.](images/browse-webapp.png)
 
 #### (Facultatif) Tâche 4 : ajouter une approbation manuelle avant le déploiement à l’aide d’Environnements GitHub
 
@@ -162,39 +161,23 @@ Dans cette tâche, vous allez utiliser des environnements GitHub pour demander u
 1. Dans la page du référentiel, accédez à **Paramètres**, ouvrez **Environnements**, puis cliquez sur **Nouvel environnement**.
 1. Attribuez-lui le nom **Développement**, puis cliquez sur **Configurer l’environnement**.
 
-    > Remarque : si un environnement appelé **Développement** existe déjà dans la liste **Environnements**, ouvrez sa configuration en cliquant sur le nom de l’environnement.  
+    > **Remarque** : si un environnement appelé **Développement** existe déjà dans la liste **Environnements**, ouvrez sa configuration en cliquant sur le nom de l’environnement.  
 
 1. Dans l’onglet **Configurer le développement**, cochez l’option **Réviseurs requis** et votre compte GitHub en tant que réviseur. Cliquez sur **Enregistrer les règles de protection**.
-1. À présent, testez la règle de protection. Dans la page du référentiel, accédez à **Actions**, cliquez sur le workflow **eShopOnWeb Build and Test**, puis sur **Exécuter le workflowflux > Exécuter le workflow** pour exécuter manuellement.
+1. À présent, testez la règle de protection. Dans la page du référentiel, accédez à **Actions**, cliquez sur le workflow **eShopOnWeb Build and Test**, puis sur **Exécuter le workflow > Exécuter le workflow** pour exécuter manuellement.
 
-    ![déclencher manuellement le workflow](images/gh-manual-run.png)
+    ![Capture d’écran du workflow de déclenchement manuel.](images/gh-manual-run.png)
 
 1. Cliquez sur l’exécution démarrée du workflow et attendez que le travail **buildandtest** se termine. Une demande de révision s’affiche lorsque le travail de **déploiement** est atteint.
 
 1. Cliquez sur **Réviser les déploiements**, cochez **Développement**, puis cliquez sur **Approuver et déployer**.
 
-    ![approbation](images/gh-approve.png)
+    ![Capture d’écran de l’approbation des actions.](images/gh-approve.png)
 
 1. Le workflow suit l’exécution du travail de **déploiement** et se termine.
 
-### Exercice 2 : supprimer les ressources du labo Azure
-
-Dans cet exercice, vous allez utiliser Azure Cloud Shell pour supprimer les ressources Azure provisionnées dans ce labo afin d’éviter des frais inutiles.
-
-1. Dans le Portail Azure, ouvrez la session shell **Bash** dans le volet **Cloud Shell**.
-1. Listez tous les groupes de ressources créés dans les labos de ce module en exécutant la commande suivante :
-
-    ```sh
-    az group list --query "[?starts_with(name,'rg-eshoponweb')].name" --output tsv
-    ```
-
-1. Supprimez tous les groupes de ressources que vous avez créés dans les labos de ce module en exécutant la commande suivante :
-
-    ```sh
-    az group list --query "[?starts_with(name,'rg-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    >**Remarque** : La commande s’exécute de façon asynchrone (comme déterminé par le paramètre --no-wait). Par conséquent, vous serez en mesure d’exécuter une autre commande Azure CLI immédiatement après au cours de la même session Bash, mais la suppression réelle du groupe de ressources prendra quelques minutes.
+> [!IMPORTANT]
+> N’oubliez pas de supprimer les ressources créées dans le portail Azure pour éviter les frais inutiles.
 
 ## Révision
 

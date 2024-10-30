@@ -6,8 +6,6 @@ lab:
 
 # Gestion des packages avec Azure Artifacts
 
-## Manuel de labo de l’étudiant
-
 ## Configuration de laboratoire requise
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
@@ -41,9 +39,38 @@ Azure Artifacts facilite la découverte, l’installation et la publication des 
 
 ### Exercice 0 : configurer les prérequis du labo
 
-Dans cet exercice, nous souhaitons vous rappeler que vous devez valider les prérequis du labo, avoir préparé une organisation Azure DevOps et avoir créé le projet eShopOnWeb. Pour plus d’informations, consultez les instructions ci-dessus.
+Dans cet exercice, vous allez configurer les prérequis du labo.
 
-#### Tâche 1 : Configuration de la solution eShopOnWeb dans Visual Studio
+#### Tâche 1 : (passer si terminée) créer et configurer le projet d’équipe
+
+Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à utiliser par plusieurs labos.
+
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Attribuez au projet le nom **eShopOnWeb** et conservez les valeurs par défaut des autres champs. Cliquez sur **Créer**.
+
+    ![Capture d’écran du volet de création d’un projet.](images/create-project.png)
+
+#### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
+
+Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
+
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Repos > Fichiers**, **Importer un référentiel**. Cliquez sur **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
+
+    ![Capture d’écran du volet Importer un référentiel.](images/import-repo.png)
+
+1. Le référentiel est organisé de la manière suivante :
+    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM sous forme de modèles de code utilisés dans certains scénarios de labo.
+    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
+
+#### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
+
+1. Accédez à **Repos > Branches**.
+1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
+1. Cliquez sur **Définir comme branche par défaut**.
+
+#### Tâche 4 : configurer la solution eShopOnWeb dans Visual Studio
 
 Dans cette tâche, vous allez configurer Visual Studio pour préparer le labo.
 
@@ -76,7 +103,7 @@ Dans cette tâche, vous allez créer un flux et vous y connecter.
 
     > **Remarque** : ce flux est une collection de packages NuGet disponibles pour les utilisateurs de l’organisation et s’ajoutera au flux NuGet public en tant qu’homologue. Le scénario de ce labo se concentre sur le flux de travail pour l’utilisation d’Azure Artifacts, de sorte que les décisions réelles prises en matière d’architecture et de développement sont purement utilisées à titre d’illustrations.  Ce flux inclut des fonctionnalités courantes qui peuvent être partagées entre les projets de cette organisation.
 
-1. Dans le volet **Créer un flux**, dans la zone de texte **Nom**, tapez **eShopOnWebShared**, dans la section **Étendue**, sélectionnez l’option **Organisation**, laissez les autres paramètres avec leurs valeurs par défaut, puis cliquez sur **Créer**.
+1. Dans le volet **Créer un flux**, dans la zone de texte **Nom**, tapez **`eShopOnWebShared`**, dans la section **Étendue**, sélectionnez l’option **Organisation**, laissez les autres paramètres avec leurs valeurs par défaut, puis cliquez sur **Créer**.
 
     > **Remarque** : les utilisateurs qui souhaitent se connecter à ce flux NuGet doivent configurer leur environnement.
 
@@ -129,7 +156,7 @@ Dans cette tâche, vous allez créer et publier un package NuGet personnalisé d
     dotnet pack .\eShopOnWeb.Shared.csproj
     ```
 
-    > **Remarque** : La commande **dotnet pack** génère le projet et crée un package NuGet dans le dossier **bin\Release**.
+    > **Remarque** : La commande **dotnet pack** génère le projet et crée un package NuGet dans le dossier **bin\Release**. Si vous n’avez pas de dossier **Release**, vous pouvez utiliser le dossier **Debug** à la place.
 
     > **Remarque** : ignorez les avertissements affichés dans la fenêtre **Administrateur : Windows PowerShell**.
 
@@ -228,7 +255,7 @@ Lorsque vous avez créé le flux de packages Azure DevOps Artifacts, par concept
 
 1. Accédez au portail Azure DevOps, accédez à **Artifacts**, puis sélectionnez le flux **eShopOnWebShared**.
 1. Cliquez sur **Rechercher des sources en amont**.
-1. Dans la fenêtre **Accéder à un package en amont**, sélectionnez **NuGet** comme type de package, puis entrez **Newtonsoft.Json** dans le champ de recherche.
+1. Dans la fenêtre **Accéder à un package en amont**, sélectionnez **NuGet** comme type de package, puis entrez **`Newtonsoft.Json`** dans le champ de recherche.
 1. Confirmez l’opération en appuyant sur le bouton **Rechercher**.
 1. Cela renvoie la liste de tous les packages Newtonsoft.Json avec les différentes versions disponibles.
 1. Cliquez sur la **flèche gauche** pour revenir au flux **eShopOnWebShared**.
