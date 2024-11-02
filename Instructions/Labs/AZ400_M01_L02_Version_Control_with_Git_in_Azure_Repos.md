@@ -6,15 +6,13 @@ lab:
 
 # Gestion de versions avec Git dans Azure Repos
 
-## Manuel de labo de l’étudiant
-
 ## Configuration de laboratoire requise
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
 
 - **Configurez une organisation Azure DevOps :** si vous ne disposez pas encore d’une organisation Azure DevOps que vous pouvez utiliser pour ce labo, créez-en une conformément aux instructions disponibles dans [Créer une organisation ou une collection de projets](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
-- Si Git 2.29.2 ou version ultérieure n’est pas installé, démarrez un navigateur web, accédez à la [page de téléchargement de Git pour Windows](https://gitforwindows.org/) et installez-le.
+- Si Git 2.47.0 ou version ultérieure n’est pas encore installé, lancez un navigateur web, accédez à la [page de téléchargement de Git pour Windows](https://gitforwindows.org/), téléchargez-le, puis installez-le.
 - Si Visual Studio Code n’est pas encore installé, à partir de la fenêtre du navigateur web, accédez à la [page de téléchargement de Visual Studio Code](https://code.visualstudio.com/), téléchargez-le et installez-le.
 - Si vous n’avez pas encore installé l’extension Visual Studio C#, dans la fenêtre du navigateur web, accédez à la [page d’installation de l’extension C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) et installez-la.
 
@@ -39,7 +37,7 @@ Dans ce labo, vous allez apprendre à établir un dépôt Git local, qui peut fa
 - Passer en revue l’historique des modifications.
 - Utiliser des branches à l’aide de Visual Studio Code.
 
-## Durée estimée : 60 minutes
+## Durée estimée : 45 minutes
 
 ## Instructions
 
@@ -47,36 +45,7 @@ Dans ce labo, vous allez apprendre à établir un dépôt Git local, qui peut fa
 
 Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se composent d’un nouveau projet Azure DevOps avec un référentiel basé sur [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Tâche 1 : (passer si terminée) créer et configurer le projet d’équipe
-
-Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à utiliser par plusieurs labos.
-
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Donnez au projet le nom **eShopOnWeb**, puis choisissez **Scrum** dans la liste déroulante **Processus d’élément de travail**. Cliquez sur **Créer**.
-
-    ![Création d’un projet](images/create-project.png)
-
-#### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
-
-Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
-
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
-
-    ![Importer un référentiel](images/import-repo.png)
-
-1. Le référentiel est organisé de la manière suivante :
-    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
-    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
-
-#### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
-
-1. Accédez à **Dépôts > Branches**.
-1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
-1. Cliquez sur **Définir comme branche par défaut**.
-
-#### Tâche 3 : configurer Git et Visual Studio Code
+#### Tâche 1 : configurer Git et Visual Studio Code
 
 Dans cette tâche, vous allez installer et configurer Git et Visual Studio Code, avec notamment la configuration de l’assistance des informations d’identification Git pour stocker en toute sécurité les informations d’identification Git utilisées pour communiquer avec Azure DevOps. Si vous avez déjà implémenté ces prérequis, vous pouvez passer directement à la tâche suivante.
 
@@ -99,9 +68,40 @@ Dans cette tâche, vous allez installer et configurer Git et Visual Studio Cod
     git config --global user.email <johndoe@example.com>
     ```
 
+#### Tâche 2 : (ignorez-la si vous l’avez déjà effectuée) créer et configurer le projet d’équipe
+
+Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à utiliser par plusieurs labos.
+
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Donnez au projet le nom **eShopOnWeb**, puis choisissez **Scrum** dans la liste déroulante **Processus d’élément de travail**. Cliquez sur **Créer**.
+
+    ![Capture d’écran du panneau Créer un nouveau projet.](images/create-project.png)
+
+#### Tâche 3 : (ignorez-la si vous l’avez déjà effectuée) importer le référentiel Git eShopOnWeb
+
+Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
+
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
+
+    ![Capture d’écran du panneau Importer un référentiel.](images/import-repo.png)
+
+1. Le référentiel est organisé de la manière suivante :
+    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
+    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
+    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
+
+#### Tâche 4 : (ignorez-la si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
+
+1. Accédez à **Dépôts > Branches**.
+1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
+1. Cliquez sur **Définir comme branche par défaut**.
+
 ### Exercice 1 : cloner un référentiel existant
 
-Dans cet exercice, vous utilisez Visual Studio Code pour cloner le référentiel Git que vous avez provisionné dans le cadre de l’exercice précédent.
+Dans cet exercice, vous allez utiliser Visual Studio Code pour valider les modifications apportées à la branche **principale** du référentiel **eShopOnWeb**.
+
+> **Remarque** : la branche **principale** est la branche par défaut dans le référentiel **eShopOnWeb** et est la branche que vous utiliserez pour le reste du labo.
 
 #### Tâche 1 : cloner un référentiel existant
 
@@ -112,7 +112,7 @@ Dans cette tâche, vous allez parcourir le processus de clonage d’un référen
 
 1. Dans le coin supérieur droit du volet du référentiel **eShopOnWeb**, cliquez sur **Cloner**.
 
-    ![Cloner le référentiel Git](images/clone-repo.png)
+    ![Capture d’écran du clone de référentiel Git.](images/clone-repo.png)
 
     > **Remarque** : l’obtention d’une copie locale d’un référentiel Git est appelée *clonage*. Chaque outil de développement standard prend en charge cette fonctionnalité et sera en mesure de se connecter à Azure Repos pour extraire la dernière source avec laquelle travailler.
 
@@ -128,7 +128,7 @@ Dans cette tâche, vous allez parcourir le processus de clonage d’un référen
 
 1. À l’invite de la palette de commandes, exécutez la commande **Git : Cloner**.
 
-    ![Palette de commandes de VS Code](images/vscode-command.png)
+    ![Capture d’écran de la palette de commandes de VS Code.](images/vscode-command.png)
 
     > **Remarque** : pour afficher toutes les commandes pertinentes, vous pouvez commencer par taper **Git**.
 
@@ -166,9 +166,9 @@ Dans cette tâche, vous allez utiliser Visual Studio Code pour valider les modif
 
 1. Appuyez sur **Ctrl+S** pour enregistrer les modifications.
 1. Dans la fenêtre Visual Studio Code, sélectionnez l’onglet **CONTRÔLE DE CODE SOURCE** pour vérifier que Git a reconnu la dernière modification apportée au fichier résidant dans le clone local du dépôt Git.
-1. Avec l’onglet **CONTRÔLE DE CODE SOURCE** sélectionné, en haut du volet, dans la zone de texte, tapez **My commit** comme message de validation et appuyez sur **Ctrl+Entrée** pour le valider localement.
+1. Avec l’onglet **CONTRÔLE DE CODE SOURCE** sélectionné, en haut du volet, dans la zone de texte, saisissez **`My commit`** comme message de validation et appuyez sur **Ctrl+Entrée** pour le valider localement.
 
-    ![Première validation](images/first-commit.png)
+    ![Capture d’écran de la première validation.](images/first-commit.png)
 
 1. Si vous êtes invité à effectuer une phase automatique de vos modifications et à les valider directement, cliquez sur **Always**.
 
@@ -184,7 +184,7 @@ Dans cette tâche, vous allez utiliser le portail Azure DevOps pour passer en r
 1. Dans le volet de navigation vertical du portail Azure DevOps, dans la section **Référentiels**, sélectionnez **Commits**.
 1. Vérifiez que votre commit apparaît en haut de la liste.
 
-    ![Commits de référentiel ADO](images/ado-commit.png)
+    ![Capture d’écran des validations du référentiel ADO.](images/ado-commit.png)
 
 #### Tâche 3 : changements indexés
 
@@ -208,9 +208,9 @@ Dans cette tâche, vous allez explorer l’utilisation des changements indexés 
 
     > **Remarque** : cette opération ne modifie que le fichier **Program.cs**, en le préparant pour le commit sans **Constants.cs**.
 
-1. Avec l’onglet **CONTRÔLE DE CODE SOURCE** sélectionné, en haut de celui-ci, dans la zone de texte, tapez **Commentaires ajoutés** comme message de commit.
+1. Avec l’onglet **CONTRÔLE DE CODE SOURCE** sélectionné, en haut du volet, dans la zone de texte, saisissez **`Added comments`** comme message de validation.
 
-    ![Changements indexés](images/staged-changes.png)
+    ![Capture d’écran des modifications indexées.](images/staged-changes.png)
 
 1. En haut de l’onglet **CONTRÔLE DE CODE SOURCE**, cliquez sur le symbole de points de suspension, dans le menu déroulant, sélectionnez **Valider** et dans le menu en cascade, sélectionnez **Commits indexés**.
 1. Dans le coin inférieur gauche de la fenêtre Visual Studio Code, cliquez sur le bouton **Synchroniser les modifications** pour synchroniser les modifications validées avec le serveur et, si vous y êtes invité, cliquez sur **OK** pour envoyer et extraire des commits vers et depuis **origin/main**.
@@ -231,7 +231,7 @@ Dans cette tâche, vous allez parcourir l’historique des commits à l’aide d
 
 1. Dans l’onglet **Contrôle de code source** de la fenêtre Visual Studio Code, sélectionnez **Constants.cs**, qui représente la version non intermédiaire du fichier.
 
-    ![Comparaison des fichiers](images/file-comparison.png)
+    ![Capture d’écran de la comparaison des fichiers.](images/file-comparison.png)
 
     > **Remarque** : une vue de comparaison vous permet de localiser facilement les modifications que vous avez apportées. Dans ce cas, il s’agit juste d’un commentaire.
 
@@ -239,7 +239,7 @@ Dans cette tâche, vous allez parcourir l’historique des commits à l’aide d
 1. Faites défiler vers le bas jusqu’à l’entrée **Mon commit** (envoyée auparavant) et placez le pointeur de la souris dessus pour faire apparaître les points de suspension à droite.
 1. Cliquez sur les points de suspension et dans le menu déroulant, sélectionnez **Parcourir les fichiers**, puis examinez les résultats.
 
-    ![Commit Browser](images/commit-browse.png)
+    ![Capture d’écran de la navigation des validations.](images/commit-browse.png)
 
     > **Remarque** : cette vue représente l’état de la source correspondant au commit et vous permet de passer en revue et de télécharger chacun des fichiers sources.
 
@@ -259,10 +259,10 @@ Dans cette tâche, vous allez créer une branche à l’aide de Visual Studio 
 1. Dans l’onglet **CONTRÔLE DE CODE SOURCE**, dans le coin inférieur gauche de la fenêtre Visual Studio Code, cliquez sur **main**.
 1. Dans la fenêtre contextuelle, sélectionnez **+ Créer une branche à partir de...**.
 
-    ![Créer une branche](images/create-branch.png)
+    ![Capture d’écran de l’option Créer une branche.](images/create-branch.png)
 
 1. Dans la zone de texte **Sélectionner une référence à partir de laquelle créer la branche**, sélectionnez **primaire** comme branche de référence.
-1. Dans la zone de texte **Nom de la branche**, tapez **dev** pour spécifier la nouvelle branche et appuyez sur **Entrée**.
+1. Dans la zone de texte **Nom de la branche**, saisissez **`dev`** pour spécifier la nouvelle branche et appuyez sur **Entrée**.
 
     > **Remarque** : vous êtes alors automatiquement redirigé vers la branche **dev**.
 
@@ -278,22 +278,22 @@ Git garde la trace de la branche sur laquelle vous travaillez et s’assure que,
 1. Placez le pointeur de la souris sur l’entrée de branche **dev** pour afficher le symbole des points de suspension sur le côté droit.
 1. Cliquez sur les points de suspension et dans le menu contextuel, sélectionnez **Supprimer la branche**, puis, lorsque vous êtes invité à confirmer l’opération, cliquez sur **Supprimer**.
 
-    ![Supprimer la branche](images/delete-branch.png)
+    ![Capture d’écran de l’option Supprimer la branche.](images/delete-branch.png)
 
 1. Revenez à la fenêtre **Visual Studio Code** et, dans l’onglet **CONTRÔLE DE CODE SOURCE**, dans le coin inférieur gauche de la fenêtre Visual Studio Code, cliquez sur l’entrée **dev**. Vous affichez ainsi les branches existantes dans la partie supérieure de la fenêtre Visual Studio Code.
 1. Vérifiez qu’il existe maintenant deux branches **dev**.
 1. Accédez au navigateur web affichant l’onglet **Mine** de **Branches**
 1. Dans l’onglet **Mine** du volet **Branches**, sélectionnez l’onglet **Toutes**.
-1. Dans l’onglet **Toutes** du volet **Branches**, dans la zone de texte **Rechercher le nom de la branche**, tapez **dev**.
+1. Dans l’onglet **Toutes** du volet **Branches**, dans la zone de texte **Rechercher le nom de la branche**, saisissez **`dev`**.
 1. Passez en revue la section **Branches supprimées** contenant l’entrée représentant la branche nouvellement supprimée.
 1. Dans la section **Branches supprimées**, placez le pointeur de la souris sur l’entrée de branche **développement** pour afficher le symbole de points de suspension sur le côté droit.
 1. Cliquez sur les points de suspension dans le menu contextuel, puis sélectionnez **Restaurer la branche**.
 
-    ![restaurer la branche](images/restore-branch.png)
+    ![Capture d’écran de l’option Restaurer la branche.](images/restore-branch.png)
 
     > **Remarque** : vous pouvez utiliser cette fonctionnalité pour restaurer une branche supprimée, dans la mesure où vous connaissez son nom exact.
 
-#### Tâche 4 : stratégies de branche
+#### Tâche 3 : stratégies de branche
 
 Dans cette tâche, vous allez utiliser le portail Azure DevOps pour ajouter des stratégies à la branche principale et autoriser uniquement les modifications à l’aide de demandes de tirage conformes aux stratégies définies. Vous souhaitez vous assurer que les modifications apportées à une branche sont vérifiées avant d’être fusionnées.
 
@@ -303,14 +303,14 @@ Par souci de simplicité, nous allons travailler directement sur l’éditeur de
 1. Sous l’onglet **Exploiter** du volet **Branches**, pointez sur l’entrée de branche **principale** pour afficher le symbole de points de suspension sur le côté droit.
 1. Cliquez sur les points de suspension, puis, dans le menu contextuel, sélectionnez **Stratégies de branche**.
 
-    ![Stratégies de branche](images/branch-policies.png)
+    ![Capture d’écran de l’option Stratégies de branche.](images/branch-policies.png)
 
 1. Sous l’onglet **principal** des paramètres du référentiel, activez l’option **Exiger un nombre minimal de réviseurs**. Ajoutez **1** réviseur, puis activez la case **Autoriser les demandeurs à approuver leurs propres changements** (car vous êtes le seul utilisateur de votre projet pour le labo).
 1. Dans l’onglet **principal** des paramètres du référentiel, activez l’option **Rechercher des éléments de travail liés** et conservez l’option **Obligatoire**.
 
-    ![Paramètres de stratégie](images/policy-settings.png)
+    ![Capture d’écran des paramètres de stratégie.](images/policy-settings.png)
 
-#### Tâche 5 : tester la stratégie de branche
+#### Tâche 4 : tester une stratégie de branche
 
 Dans cette tâche, vous allez utiliser le portail Azure DevOps pour tester la stratégie et créer votre première demande de tirage.
 
@@ -324,11 +324,11 @@ Dans cette tâche, vous allez utiliser le portail Azure DevOps pour tester la s
 
 1. Cliquez sur **Commit > Commit**. Un avertissement s’affiche : les modifications apportées à la branche principale ne peuvent être effectuées qu’à l’aide d’une demande de tirage.
 
-    ![Commit refusé par la stratégie](images/policy-denied.png)
+    ![Capture d’écran de la validation refusée de la stratégie.](images/policy-denied.png)
 
 1. Cliquez sur **Annuler** pour ignorer le commit.
 
-#### Tâche 6 : traitement des demandes de tirage
+#### Tâche 5 : utilisation des demandes de tirage (pull requests)
 
 Dans cette tâche, vous allez utiliser le portail Azure DevOps pour créer une demande de tirage (pull request), à l’aide de la branche de **développement** pour fusionner une modification dans la branche **principale** protégée. Un élément de travail Azure DevOps sera lié aux modifications pour pouvoir suivre le travail en attente avec l’activité de code.
 
@@ -344,7 +344,7 @@ Dans cette tâche, vous allez utiliser le portail Azure DevOps pour créer une 
 1. Cliquez sur **Valider > Valider** (laissez le message de validation par défaut). Cette fois, la validation fonctionne et la branche de **développement** n’a aucune stratégie.
 1. Un message s’affiche et vous invite à créer une demande de tirage (car votre branche de **développement** est maintenant en avance dans les modifications, par rapport à la branche **principale**). Cliquez sur **Créer une demande de tirage**.
 
-    ![Créer une demande de tirage (pull request)](images/create-pr.png)
+    ![Capture d’écran de l’option Créer une demande de tirage (pull request).](images/create-pr.png)
 
 1. Sous l’onglet **Nouvelle demande de tirage (pull request)**, conservez les valeurs par défaut, puis cliquez sur **Créer**.
 1. La demande de tirage affiche certaines exigences en échec/en attente, en fonction des stratégies appliquées à notre branche **principale** cible.
@@ -353,7 +353,7 @@ Dans cette tâche, vous allez utiliser le portail Azure DevOps pour créer une 
 
 1. Dans les options de droite, cliquez sur le bouton **+** en regard des **Éléments de travail**. Liez l’élément de travail créé précédemment à la demande de tirage en cliquant dessus. L’une des exigences change alors d’état.
 
-    ![Lier l’élément de travail](images/link-wit.png)
+    ![Capture d’écran de la liaison de l’élément de travail.](images/link-wit.png)
 
 1. Ouvrez ensuite l’onglet **Fichiers** pour passer en revue les modifications proposées. Dans une demande de tirage plus complète, vous pouvez passer en revue les fichiers un par un (marqués comme révisés) et ouvrir des commentaires pour les lignes qui ne sont pas claires (pointez la souris sur le numéro de ligne pour publier un commentaire).
 1. Revenez à l’onglet **Vue d’ensemble**, puis, en haut à droite, cliquez sur **Approuver**. Toutes les exigences passent au vert. Vous pouvez maintenant cliquer sur **Terminer**.
@@ -364,13 +364,13 @@ Dans cette tâche, vous allez utiliser le portail Azure DevOps pour créer une 
 
 1. Cliquez sur **Terminer la fusion**.
 
-#### Tâche 7 : appliquer des balises
+#### Tâche 6 : appliquer des balises
 
 L’équipe produit a décidé que la version actuelle du site doit être publiée sous la forme v1.1.0-beta.
 
 1. Dans le volet de navigation vertical du portail Azure DevOps, dans la section **Référentiels**, sélectionnez **Balises**.
 1. Dans le volet **Balises**, cliquez sur **Nouvelle balise**.
-1. Dans le panneau **Créer une balise**, dans la zone de texte **Nom**, tapez **v1.1.0-beta**. Dans la liste déroulante **Basé sur**, laissez l’entrée **primaire** sélectionnée. Dans la zone de texte **Description**, tapez **Version bêta v1.1.0**, puis cliquez sur **Créer**.
+1. Dans le panneau **Créer une balise**, dans la zone de texte **Nom**, saisissez **`v1.1.0-beta`**. Dans la liste déroulante **Basé sur**, laissez l’entrée **principale** sélectionnée. Dans la zone de texte **Description**, saisissez **`Beta release v1.1.0`**, puis cliquez sur **Créer**.
 
     > **Remarque** : vous avez maintenant balisé le référentiel à cette version (le dernier commit est lié à la balise). Vous pouvez baliser des commits à de nombreuses fins et Azure DevOps offre la possibilité de les modifier et de les supprimer, ainsi que de gérer leurs autorisations.
 
@@ -382,15 +382,15 @@ Lorsque vous parcourez les différents labos de cours dans l’ordre dans lequel
 1. Sous l’onglet **M’appartenant** du volet **Branches **, placez le pointeur de la souris sur l’entrée de branche **principale** pour afficher le symbole de sélection (...) sur le côté droit.
 1. Cliquez sur les points de suspension, puis, dans le menu contextuel, sélectionnez **Stratégies de branche**.
 
-    ![Paramètres de stratégie](images/policy-settings.png)
+    ![Capture d’écran des paramètres de stratégie.](images/policy-settings.png)
 
 1. Sous l’onglet **principal** des paramètres du référentiel, désactivez l’option **Demander un nombre minimal de réviseurs**.
 1. Sous l’onglet **principal** des paramètres du référentiel, désactivez l’option **Rechercher les éléments de travail liés**.
 
-    ![Stratégies de branche](images/branch-policies.png)
+    ![Capture d’écran des stratégies de branche.](images/branch-policies.png)
 
 1. Vous avez maintenant désactivé/supprimé les stratégies de branche pour la branche principale.
 
 ## Révision
 
-Dans ce labo, vous avez utilisé le portail Azure DevOps pour gérer les branches et les référentiels.
+Dans ce labo, vous avez appris à utiliser Git pour le contrôle de version dans Azure Repos.

@@ -6,8 +6,6 @@ lab:
 
 # Configurer et exécuter des tests fonctionnels
 
-## Manuel de labo de l’étudiant
-
 ## Configuration de laboratoire requise
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
@@ -30,11 +28,11 @@ Une fois ce labo terminé, vous pourrez configurer un pipeline CI pour une appli
 - Tests d’intégration
 - Tests fonctionnels
 
-## Durée estimée : 60 minutes
+## Durée estimée : 20 minutes
 
 ## Instructions
 
-### Exercice 0 : configurer les prérequis du labo
+### Exercice 0 : (ignorer si terminé) configurer les prérequis du labo.
 
 Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se composent d’un nouveau projet Azure DevOps avec un référentiel basé sur [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -48,7 +46,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un dépôt**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer un référentiel**. Cliquez sur **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
@@ -59,7 +57,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 
 #### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
 
-1. Accédez à **Dépôts > Branches**.
+1. Accédez à **Dépôts > Branches**.
 1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
 1. Cliquez sur **Définir comme branche par défaut**.
 
@@ -73,7 +71,7 @@ Dans cette tâche, vous allez ajouter la définition de build YAML qui sera util
 
 Commençons par importer le pipeline CI nommé [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Accédez à **Pipelines > Pipelines**.
+1. Accédez à **Pipelines > Pipelines**.
 1. Cliquez sur le bouton **Nouveau pipeline**.
 1. Sélectionnez **Azure Repos Git** (YAML).
 1. Sélectionnez le référentiel **eShopOnWeb**.
@@ -123,7 +121,7 @@ Vous pouvez remarquer que la tâche Tests unitaires fait déjà partie du pipeli
 
 1. Cliquez sur **Enregistrer**. Dans le volet **Enregistrer**, cliquez à nouveau sur **Enregistrer** pour valider les modifications directement dans la branche principale.
 
-#### Tâche 4 : vérifier le résumé des tests
+#### Tâche 3 : vérifier le résumé des tests
 
 1. Cliquez sur **Exécuter** puis, dans l’onglet **Exécuter le pipeline**, cliquez à nouveau sur **Exécuter**.
 
@@ -131,13 +129,13 @@ Vous pouvez remarquer que la tâche Tests unitaires fait déjà partie du pipeli
 
 1. Une fois terminé, l’onglet **Test** s’affiche dans le cadre de l’exécution du pipeline. Cliquez dessus pour vérifier le résumé. Il se présente comme indiqué ci-dessous :
 
-    ![Résumé des tests](images/AZ400_M05_L09_Tests_Summary.png)
+    ![Capture d’écran du résumé des tests.](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. Pour plus d’informations, au bas de la page, le tableau affiche une liste des différents tests d’exécution.
 
-    >**Remarque** : si le tableau est vide, vous devez réinitialiser les filtres pour avoir tous les détails sur l’exécution des tests.
+    > **Remarque** : si le tableau est vide, vous devez réinitialiser les filtres pour avoir tous les détails sur l’exécution des tests.
 
-    ![Tableau des tests](images/AZ400_M05_L09_Tests_Table.png)
+    ![Capture d’écran du tableau des tests.](images/AZ400_M05_L09_Tests_Table.png)
 
 ## Révision
 

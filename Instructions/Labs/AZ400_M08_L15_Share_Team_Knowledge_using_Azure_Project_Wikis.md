@@ -6,8 +6,6 @@ lab:
 
 # Partage les connaissances de l’équipe avec un wiki de projet Azure
 
-## Manuel de labo de l’étudiant
-
 ## Configuration de laboratoire requise
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
@@ -32,10 +30,6 @@ Dans ce labo, vous allez créer et configurer un wiki dans Azure DevOps, ce qui 
 
 ## Instructions
 
-### Exercice 0 : configurer les prérequis du labo
-
-Dans cet exercice, nous souhaitons vous rappeler que vous devez valider les prérequis du labo, avoir préparé une organisation Azure DevOps et avoir créé le projet eShopOnWeb. Pour plus d’informations, consultez les instructions ci-dessus.
-
 ### Exercice 1 : publier du code en tant que wiki
 
 Dans cet exercice, vous allez publier un référentiel Azure DevOps en tant que wiki et gérer le wiki publié.
@@ -51,7 +45,7 @@ Dans cette tâche, vous allez publier une branche d’un référentiel Azure Dev
 1. Dans le menu vertical situé sur le côté gauche, cliquez sur **Référentiels**, dans la section supérieure du volet **Fichiers**, vérifiez que le référentiel **eShopOnWeb** est sélectionné (choisissez-le dans la liste déroulante située en haut avec l’icône Git). Dans la liste déroulante de branche (en haut de « Fichiers » avec l’icône de branche), sélectionnez **main** et passez en revue le contenu de la branche principale.
 1. À gauche du volet **Fichiers**, dans la liste de la hiérarchie de dossiers et de fichiers du référentiel, développez le dossier **src** et accédez au sous-dossier **Web > wwwroot > images**. Dans le sous-dossier **Images**, recherchez l’entrée **brand.png**, pointez avec le pointeur de la souris sur son extrémité droite pour afficher le symbole de points de suspension verticaux (trois points) représentant le menu **Plus**, puis cliquez sur **Télécharger** pour télécharger le fichier **brand.png** dans le dossier **Downloads** local sur votre ordinateur de labo.
 
-    >**Remarque** : vous utiliserez cette image dans l’exercice suivant de ce labo.
+    > **Remarque** : vous utiliserez cette image dans l’exercice suivant de ce labo.
 
 1. Nous allons stocker les fichiers sources Wiki dans un dossier distinct dans la structure de dossiers actuelle Référentiels. Dans **Dépôts**, sélectionnez **Fichiers**. Notez le titre du référentiel **eShopOnWeb** au-dessus de la structure de dossiers. **Sélectionnez les points de suspension (3 points)**, choisissez **Nouveau / Dossier**, puis indiquez **Documents** comme titre du nouveau dossier. Comme un référentiel ne vous permet pas de créer un dossier vide, indiquez **READ.ME** comme nouveau nom de fichier.
 1. Confirmez la création du dossier et du fichier en **appuyant sur le bouton Créer**.
@@ -66,9 +60,9 @@ Dans cette tâche, vous allez publier une branche d’un référentiel Azure Dev
     | Dossier | **/Documents** |
     | Nom du wiki | **eShopOnWeb (Documents)** |
 
-    >**Remarque** : cette opération ouvre automatiquement la section Wiki et publie **l’éditeur**, où vous pouvez fournir un titre de page wiki, ainsi qu’ajouter le contenu réel. Vous êtes invité à utiliser le format MarkDown, mais utilisez le ruban pour vous aider dans le cadre de la syntaxe MarkDown.
+    > **Remarque** : cette opération ouvre automatiquement la section Wiki et publie **l’éditeur**, où vous pouvez fournir un titre de page wiki, ainsi qu’ajouter le contenu réel. Vous êtes invité à utiliser le format MarkDown, mais utilisez le ruban pour vous aider dans le cadre de la syntaxe MarkDown.
 
-1. Dans le champ **Titre** de la page wiki, entrez « Welcome to our Online Retail Store! ».
+1. Dans le champ **Titre** de la page wiki, entrez « `Welcome to our Online Retail Store!` ».
 
 1. Dans le corps de la page wiki, collez le texte suivant :
 
@@ -131,11 +125,11 @@ Dans cet exercice, vous allez créer et gérer un wiki de projet.
 Dans cette tâche, vous allez créer un wiki de projet et y ajouter un diagramme Mermaid et une image.
 
 1. Sur votre ordinateur de labo, dans le portail Azure DevOps affichant le **volet Wiki** du projet **EShopOnweb**, une fois le contenu du wiki **eShopOnWeb (Documents)** sélectionné, en haut du volet, cliquez sur l’en-tête de liste déroulante **eShopOnWeb (Documents)** (icône de flèche vers le bas), puis, dans la liste déroulante, sélectionnez **Créer un wiki de projet**.
-1. Dans la zone de texte **Titre de la page**, tapez **Conception de projet**.
+1. Dans la zone de texte **Titre de page**, entrez **`Project Design`**.
 1. Placez le curseur dans le corps de la page, cliquez sur l’icône la plus à gauche dans la barre d’outils représentant le paramètre d’en-tête, puis, dans la liste déroulante, cliquez sur **En-tête 1**. Cette opération ajoute automatiquement le caractère de hachage (**#**) au début de la ligne.
-1. Directement après le nouveau caractère **#** ajouté, tapez **Authentification et Autorisation**, puis appuyez sur la touche **Entrée**.
+1. Directement après le nouveau caractère **#** ajouté, entrez **`Authentication and Authorization`**, puis appuyez sur la touche **Entrée**.
 1. Cliquez sur l’icône la plus à gauche dans la barre d’outils représentant le paramètre d’en-tête, puis, dans la liste déroulante, cliquez sur **En-tête 2**. Cette opération ajoute automatiquement le caractère de hachage (**##**) au début de la ligne.
-1. Directement après le nouveau caractère **##** ajouté, tapez **Flux d’autorisation Azure DevOps OAuth 2.0**, puis appuyez sur la touche **Entrée**.
+1. Directement après le nouveau caractère **##** ajouté, entrez **`Azure DevOps OAuth 2.0 Authorization Flow`**, puis appuyez sur la touche **Entrée**.
 1. **Copiez et collez** le code suivant pour insérer un diagramme Mermaid sur votre wiki.
 
     ```text
@@ -157,37 +151,37 @@ Dans cette tâche, vous allez créer un wiki de projet et y ajouter un diagramme
     :::
     ```
 
-    >**Remarque** : pour plus d’informations sur la syntaxe Mermaid, consultez la page de [présentation de Mermaid](https://mermaid-js.github.io/mermaid/#/).
+    > **Remarque** : pour plus d’informations sur la syntaxe Mermaid, consultez la page de [présentation de Mermaid](https://mermaid-js.github.io/mermaid/#/).
 
 1. À droite du volet de l’éditeur, dans le volet d’aperçu, cliquez sur **Charger le diagramme**, puis passez en revue les résultats.
 
-    >**Remarque** : la sortie doit ressembler à l’organigramme qui montre comment [autoriser l’accès aux API REST avec OAuth 2.0](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/oauth).
+    > **Remarque** : la sortie doit ressembler à l’organigramme qui montre comment [autoriser l’accès aux API REST avec OAuth 2.0](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/oauth).
 
 1. Dans le coin supérieur droit du volet de l’éditeur, cliquez sur l’accent circonflexe vers le bas en regard du bouton **Enregistrer**, puis, dans le menu déroulant, cliquez sur **Enregistrer avec le message de révision**.
-1. Dans la boîte de dialogue **Enregistrer la page**, tapez **Section Authentification et autorisation avec diagramme Mermaid OAuth 2.0**, puis cliquez sur **Enregistrer**.
+1. Dans la boîte de dialogue **Enregistrer la page**, entrez **`Authentication and authorization section with the OAuth 2.0 Mermaid diagram`** et cliquez sur **Enregistrer**.
 1. Dans le volet de l’éditeur **Conception de projet**, placez le curseur à la fin de l’élément Mermaid que vous avez ajouté précédemment dans cette tâche, appuyez sur la touche **Entrée** pour ajouter une ligne supplémentaire, cliquez sur l’icône la plus à gauche dans la barre d’outils représentant le paramètre d’en-tête, puis, dans la liste déroulante, cliquez sur **En-tête 2**. Cette opération ajoute automatiquement le caractère de hachage double (**##**) au début de la ligne.
-1. Directement après le nouveau caractère **##** ajouté, tapez **Interface utilisateur**, puis appuyez sur la touche **Entrée**.
+1. Directement après le nouveau caractère **##** ajouté, entrez **`User Interface`**, puis appuyez sur la touche **Entrée**.
 1. Dans le volet de l’éditeur **Conception de projet**, dans la barre d’outils, cliquez sur l’icône de trombone représentant l’action **Insérer un fichier**, dans la boîte de dialogue **Ouvrir**, accédez au dossier **Downloads**, sélectionnez le fichier **Brand.png** que vous avez téléchargé dans l’exercice précédent, puis cliquez sur **Ouvrir**.
 1. Dans le volet de l’éditeur **Conception de projet**, passez en revue le volet d’aperçu et vérifiez que l’image est correctement affichée.
 1. Dans le coin supérieur droit du volet de l’éditeur, cliquez sur l’accent circonflexe vers le bas en regard du bouton **Enregistrer**, puis, dans le menu déroulant, cliquez sur **Enregistrer avec le message de révision**.
-1. Dans la boîte de dialogue **Enregistrer la page**, tapez **Section de l’interface utilisateur avec l’image eShopOnWeb**, puis cliquez sur **Enregistrer**.
+1. Dans la boîte de dialogue **Enregistrer la page**, entrez **`User Interface section with the eShopOnWeb image`** et cliquez sur **Enregistrer**.
 1. Dans le volet de l’éditeur, dans le coin supérieur droit, cliquez sur **Fermer**.
 
 #### Tâche 2 : gérer un wiki de projet
 
 Dans cette tâche, vous allez gérer le nouveau wiki de projet.
 
->**Remarque** : vous commencerez par rétablir la modification la plus récente de la page wiki.
+> **Remarque** : vous commencerez par rétablir la modification la plus récente de la page wiki.
 
 1. Sur votre ordinateur de labo, dans le portail Azure DevOps affichant le **volet Wiki** du projet **eShopOnWeb**, une fois le contenu du wiki **Conception de projet** sélectionné, dans le coin supérieur droit, cliquez sur le symbole des points de suspension verticaux, puis, dans le menu déroulant, cliquez sur **Afficher les révisions**.
 1. Dans le volet **Révisions**, cliquez sur l’entrée représentant la modification la plus récente.
 1. Dans le volet résultant, passez en revue la comparaison entre la version précédente et la version actuelle du document, cliquez sur **Rétablir**, lorsque vous êtes invité à confirmer l’opération, cliquez à nouveau sur **Rétablir**, puis cliquez sur **Afficher la page**.
 1. Dans le volet **Conception de projet**, vérifiez que la modification a été rétablie.
 
-    >**Remarque** : vous allez à présent ajouter une autre page au wiki de projet et la définir comme page d’accueil du wiki.
+    > **Remarque** : vous allez à présent ajouter une autre page au wiki de projet et la définir comme page d’accueil du wiki.
 
 1. Dans le volet **Conception de projet**, dans le coin inférieur gauche, cliquez sur **+ Nouvelle page**.
-1. Dans le volet de l’éditeur de page, dans la zone de texte **Titre de la page**, tapez **Vue d’ensemble Conception de projet**, cliquez sur **Enregistrer**, puis sur **Fermer**.
+1. Dans le volet de l’éditeur de page, dans la zone de texte **Titre de page**, entrez **`Project Design Overview`**, cliquez sur **Enregistrer**, puis sur **Fermer**.
 1. Dans le volet répertoriant les pages du wiki de projet **Conception de projet**, recherchez l’entrée **Vue d’ensemble Conception de projet**, sélectionnez-la avec le pointeur de la souris, puis faites-la glisser sur l’entrée de page **Conception de projet**.
 1. Confirmez les modifications apportées en appuyant sur le bouton **Déplacer** dans la fenêtre qui s’affiche.
 1. Vérifiez que l’entrée **Vue d’ensemble Conception de projet** est affichée comme page de niveau supérieur avec l’icône d’accueil qui la désigne comme page d’accueil du wiki.
