@@ -48,7 +48,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Donnez au projet le nom **eShopOnWeb**, puis choisissez **Scrum** dans la liste déroulante **Processus d’élément de travail**. Cliquez sur **Créer**.
 
-    ![Capture d’écran du volet de création d’un projet.](images/create-project.png)
+    ![Capture d’écran du volet de création d’un nouveau projet.](images/create-project.png)
 
 #### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
 
@@ -56,7 +56,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Repos > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
-    ![Capture d’écran du bouton Importer un référentiel.](images/import-repo.png)
+    ![Capture d’écran du panneau Importer un référentiel.](images/import-repo.png)
 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.

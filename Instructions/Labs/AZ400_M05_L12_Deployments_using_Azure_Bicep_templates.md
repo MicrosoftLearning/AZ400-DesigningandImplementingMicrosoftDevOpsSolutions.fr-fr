@@ -33,7 +33,7 @@ Dans ce labo, vous allez créer un modèle Azure Bicep et le modulariser en uti
 
 ## Instructions
 
-### Exercice 0 : (ignorer si terminé) configurer les prérequis du labo
+### Exercice 0 : (ignorez-le si vous l’avez déjà effectué) configurer les prérequis du labo
 
 Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se composent d’un nouveau projet Azure DevOps avec un référentiel basé sur [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -43,7 +43,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Attribuez au projet le nom **eShopOnWeb** et conservez les valeurs par défaut des autres champs. Cliquez sur **Créer**.
 
-    ![Capture d’écran du volet de création d’un projet.](images/create-project.png)
+    ![Capture d’écran du volet de création d’un nouveau projet.](images/create-project.png)
 
 #### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
 
@@ -62,7 +62,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 
 #### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
 
-1. Accédez à **Repos > Branches**.
+1. Accédez à **Repos > Branches**.
 1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
 1. Cliquez sur **Définir comme branche par défaut**.
 

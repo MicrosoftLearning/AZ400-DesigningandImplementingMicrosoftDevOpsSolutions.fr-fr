@@ -37,7 +37,7 @@ Dans ce labo, vous allez voir comment intégrer Azure Key Vault à Azure Pipelin
 
 ## Instructions
 
-### Exercice 0 : (ignorer si terminé) configurer les prérequis du labo
+### Exercice 0 : (ignorez-le si vous l’avez déjà effectué) configurer les prérequis du labo
 
 Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se composent d’un nouveau projet Azure DevOps avec un référentiel basé sur [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -47,7 +47,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Attribuez au projet le nom **eShopOnWeb** et conservez les valeurs par défaut des autres champs. Cliquez sur **Créer**.
 
-    ![Capture d’écran du volet de création d’un projet.](images/create-project.png)
+    ![Capture d’écran du volet de création d’un nouveau projet.](images/create-project.png)
 
 #### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
 
@@ -55,7 +55,7 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Repos > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
-    ![Capture d’écran du volet Importer un référentiel.](images/import-repo.png)
+    ![Capture d’écran du panneau Importer un référentiel.](images/import-repo.png)
 
 1. Le référentiel est organisé de la manière suivante :
     - Le dossier **.ado** contient des pipelines YAML Azure DevOps.

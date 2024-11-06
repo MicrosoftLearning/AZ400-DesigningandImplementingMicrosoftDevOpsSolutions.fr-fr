@@ -31,7 +31,7 @@ lab:
 
 ## Instructions
 
-### Exercice 0 : (ignorer si terminé) configurer les prérequis du labo
+### Exercice 0 : (ignorez-le si vous l’avez déjà effectué) configurer les prérequis du labo
 
 Dans cet exercice, vous allez configurer les prérequis pour le labo, qui se composent d’un nouveau projet Azure DevOps avec un référentiel basé sur [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
