@@ -121,7 +121,7 @@ Dans cette tâche, vous allez créer deux applications web Azure représentant l
    > **Remarque** : les emplacements possibles sont disponibles en exécutant la commande suivante. Utilisez le **Nom** sur `<region>` : `az account list-locations -o table`
 
    ```bash
-   REGION='centralus'
+   REGION='<region>'
    RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
