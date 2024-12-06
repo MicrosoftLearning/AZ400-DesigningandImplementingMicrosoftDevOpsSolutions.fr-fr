@@ -283,7 +283,7 @@ Le backlog de sprint doit contenir toutes les informations dont l’équipe a be
 
 1. Dans la section **Critères de règle**, dans la liste déroulante **Champ**, sélectionnez **Activité**. Dans la liste déroulante **Opérateur**, sélectionnez **=** puis, dans la liste déroulante **Valeur**, sélectionnez **Développement**.
 
-    ![Capture d’écran des paramètres de style du tableau.](images/m1/EShop-WEB-styles_v2.jpg)
+    ![Capture d’écran des paramètres de style du tableau.](images/m1/EShop-WEB-styles_v2.JPG)
 
 1. Cliquez sur **Enregistrer** pour enregistrer les paramètres et fermer les paramètres.
 

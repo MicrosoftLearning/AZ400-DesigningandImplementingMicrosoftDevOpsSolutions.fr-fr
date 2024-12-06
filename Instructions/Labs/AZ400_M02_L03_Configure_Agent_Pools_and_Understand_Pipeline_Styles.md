@@ -216,7 +216,7 @@ Dans cet exercice, vous allez créer une machine virtuelle Azure et l’utiliser
    - Acceptez le dossier de travail de l’agent par défaut (_work).
    - Entrez **Y** pour configurer l’agent pour qu’il s’exécute en tant que service.
    - Entrez **Y** pour activer SERVICE_SID_TYPE_UNRESTRICTED pour le service de l’agent.
-   - Entrez **NT AUTHORITY\SYSTEM** pour définir le contexte de sécurité du service.
+   - Entrez **`NT AUTHORITY\SYSTEM`** pour définir le contexte de sécurité du service.
 
    > [!IMPORTANT]
    > En général, vous devez suivre le principe du privilège minimum lors de la configuration du contexte de sécurité du service.

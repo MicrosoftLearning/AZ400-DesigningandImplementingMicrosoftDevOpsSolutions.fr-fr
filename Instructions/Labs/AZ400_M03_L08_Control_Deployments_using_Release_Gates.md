@@ -147,7 +147,7 @@ Dans cette tâche, vous allez créer deux applications web Azure représentant l
 
 #### Tâche 2 : configurer une ressource Application Insights
 
-1. Dans le portail Azure, utilisez la zone de texte **Rechercher des ressources, services et documents** en haut de la page pour rechercher **Application Insights**, puis, dans la liste des résultats, sélectionnez **Application Insights**.
+1. Dans le portail Azure, utilisez la zone de texte **Rechercher des ressources, services et documents** en haut de la page pour rechercher **`Application Insights`**, puis, dans la liste des résultats, sélectionnez **Application Insights**.
 1. Dans le volet **Application Insights**, sélectionnez **+ Créer**.
 1. Sous l’onglet **Informations de base** du panneau **Application Insights**, spécifiez les paramètres suivants (laissez les valeurs par défaut des autres paramètres) :
 
@@ -203,9 +203,9 @@ Dans cette tâche, vous allez configurer les tâches de mise en production dans 
 1. Cliquez sur **Nouveau pipeline**.
 1. Dans la fenêtre **Sélectionner un modèle**, **choisissez****Déploiement d’Azure App Service** (Déployer votre application sur Azure App Service. Choisissez l’application web parmi Windows, Linux, des conteneurs, des applications de fonction ou WebJobs) sous la **liste proposée** des modèles.
 1. Cliquez sur **Appliquer**.
-1. Dans la fenêtre **Étape** qui s’affiche, modifiez le nom par défaut de l’étape « Étape 1 » en **DevTest**. Fermez la fenêtre contextuelle à l’aide du bouton **X**. Vous êtes maintenant dans l’éditeur graphique du pipeline de mise en production, montrant l’étape DevTest.
-1. En haut de la page, renommez le pipeline actuel de **Nouveau pipeline de mise en production** en **eshoponweb-cd**.
-1. Pointez la souris sur l’étape DevTest puis cliquez sur le bouton**Cloner** pour copier l’étape DevTest vers une étape supplémentaire. Nommez cette étape **Production**.
+1. Dans la fenêtre **Étape** qui s’affiche, modifiez le nom par défaut de l’étape « Étape 1 » en **`DevTest`**. Fermez la fenêtre contextuelle à l’aide du bouton **X**. Vous êtes maintenant dans l’éditeur graphique du pipeline de mise en production, montrant l’étape DevTest.
+1. En haut de la page, renommez le pipeline actuel de **Nouveau pipeline de mise en production** en **`eshoponweb-cd`**.
+1. Pointez la souris sur l’étape DevTest puis cliquez sur le bouton**Cloner** pour copier l’étape DevTest vers une étape supplémentaire. Nommez cette étape **`Production`**.
 
    > **Remarque** : le pipeline contient désormais deux étapes nommées **DevTest** et **Production**.
 

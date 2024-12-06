@@ -113,7 +113,7 @@ Dans cette tâche, vous allez créer le principal de service Azure utilisé par 
 
 1. Dans une fenêtre de navigateur, revenez à votre référentiel GitHub **eShopOnWeb**.
 1. Dans la page du référentiel, accédez à **Paramètres**, cliquez sur **Secrets et variables > Actions**. Cliquez sur **Nouveau secret de référentiel**.
-    - Nom : **AZURE_CREDENTIALS**
+    - Nom : **`AZURE_CREDENTIALS`**
     - Secret : **collez l’objet JSON précédemment copié ** (GitHub peut conserver plusieurs secrets sous le même nom, utilisés par l’action [azure/login](https://github.com/Azure/login))
 
 1. Cliquez sur **Ajouter un secret**. À présent, GitHub Actions pourra référencer le principal de service à l’aide du secret du référentiel.
@@ -159,7 +159,7 @@ Dans cette tâche, vous allez utiliser des environnements GitHub pour demander u
 1. Dans la section du travail **deploy**, vous trouverez une référence à un **environnement** appelé **Development**. Les [environnements](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) utilisés par GitHub ajoutent des règles de protection (et des secrets) pour vos cibles.
 
 1. Dans la page du référentiel, accédez à **Paramètres**, ouvrez **Environnements**, puis cliquez sur **Nouvel environnement**.
-1. Attribuez-lui le nom **Développement**, puis cliquez sur **Configurer l’environnement**.
+1. Attribuez-lui le nom **`Development`**, puis cliquez sur **Configurer l’environnement**.
 
     > **Remarque** : si un environnement appelé **Développement** existe déjà dans la liste **Environnements**, ouvrez sa configuration en cliquant sur le nom de l’environnement.  
 
