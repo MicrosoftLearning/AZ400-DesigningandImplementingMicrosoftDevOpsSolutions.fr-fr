@@ -47,7 +47,7 @@ Dans cette tâche, vous allez publier une branche d’un référentiel Azure Dev
 
     > **Remarque** : vous utiliserez cette image dans l’exercice suivant de ce labo.
 
-1. Nous allons stocker les fichiers sources Wiki dans un dossier distinct dans la structure de dossiers actuelle Référentiels. Dans **Dépôts**, sélectionnez **Fichiers**. Notez le titre du référentiel **eShopOnWeb** au-dessus de la structure de dossiers. **Sélectionnez les points de suspension (3 points)**, choisissez **Nouveau / Dossier**, puis indiquez **Documents** comme titre du nouveau dossier. Comme un référentiel ne vous permet pas de créer un dossier vide, indiquez **READ.ME** comme nouveau nom de fichier.
+1. Nous allons stocker les fichiers sources Wiki dans un dossier distinct dans la structure de dossiers actuelle Référentiels. Dans **Dépôts**, sélectionnez **Fichiers**. Notez le titre du référentiel **eShopOnWeb** au-dessus de la structure de dossiers. **Sélectionnez les points de suspension (3 points)**, choisissez **Nouveau / Dossier**, puis indiquez **`Documents`** comme nom du nouveau dossier. Comme un référentiel ne vous permet pas de créer un dossier vide, indiquez **`READ.ME`** comme nom du nouveau fichier.
 1. Confirmez la création du dossier et du fichier en **appuyant sur le bouton Créer**.
 1. Le fichier READ.ME s’ouvre en mode d’affichage intégré. Étant donné qu’il est stocké « en tant que code », vous devez **valider** les modifications apportées en cliquant sur le bouton **Valider**. Dans la fenêtre de validation, confirmez à nouveau en appuyant sur **Valider**.
 1. Dans le menu vertical Azure DevOps sur le côté gauche, cliquez sur **Vue d’ensemble**, dans la section **Vue d’ensemble**, sélectionnez **Wiki**, puis **Publier du code en tant que Wiki*.
@@ -58,7 +58,7 @@ Dans cette tâche, vous allez publier une branche d’un référentiel Azure Dev
     | Référentiel | **eShopOnWeb** |
     | Branche | **main** |
     | Dossier | **/Documents** |
-    | Nom du wiki | **eShopOnWeb (Documents)** |
+    | Nom du wiki | **`eShopOnWeb (Documents)`** |
 
     > **Remarque** : cette opération ouvre automatiquement la section Wiki et publie **l’éditeur**, où vous pouvez fournir un titre de page wiki, ainsi qu’ajouter le contenu réel. Vous êtes invité à utiliser le format MarkDown, mais utilisez le ruban pour vous aider dans le cadre de la syntaxe MarkDown.
 
@@ -173,7 +173,7 @@ Dans cette tâche, vous allez gérer le nouveau wiki de projet.
 
 > **Remarque** : vous commencerez par rétablir la modification la plus récente de la page wiki.
 
-1. Sur votre ordinateur de labo, dans le portail Azure DevOps affichant le **volet Wiki** du projet **eShopOnWeb**, une fois le contenu du wiki **Conception de projet** sélectionné, dans le coin supérieur droit, cliquez sur le symbole des points de suspension verticaux, puis, dans le menu déroulant, cliquez sur **Afficher les révisions**.
+1. Sur votre ordinateur de labo, dans le portail Azure DevOps affichant le **volet Wiki** du projet **eShopOnWeb**, avec le contenu du wiki **Conception de projet** sélectionné, dans le coin supérieur droit, cliquez sur le symbole de points de suspension verticaux, puis, dans le menu déroulant, cliquez sur **Afficher les révisions**.
 1. Dans le volet **Révisions**, cliquez sur l’entrée représentant la modification la plus récente.
 1. Dans le volet résultant, passez en revue la comparaison entre la version précédente et la version actuelle du document, cliquez sur **Rétablir**, lorsque vous êtes invité à confirmer l’opération, cliquez à nouveau sur **Rétablir**, puis cliquez sur **Afficher la page**.
 1. Dans le volet **Conception de projet**, vérifiez que la modification a été rétablie.

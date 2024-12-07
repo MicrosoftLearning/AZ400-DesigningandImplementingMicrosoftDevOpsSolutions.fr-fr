@@ -322,7 +322,7 @@ Les deux tests rapides ont été réalisés et nous allons à présent les peauf
 1. D’autres valeurs indiquées ci-dessous. Plusieurs d’entre elles sont représentées à l’aide des vues de graphiques et graphiques linéaires du tableau de bord.
 1. Prenez quelques minutes pour **comparer les résultats** des deux tests simulés entre eux et **identifier l’impact** d’un plus grand nombre d’utilisateurs sur les performances d’App Service.
 
-### Exercice 2 : Automatiser un test de charge avec intégration continue et livraison continue (CI/CD) dans Azure Pipelines
+### Exercice 3 : automatiser un test de charge avec intégration continue et livraison continue (CI/CD) dans Azure Pipelines
 
 Commencez par automatiser les tests de charge dans le Test de charge Azure en l’ajoutant à un pipeline CI/CD. Après avoir exécuté un test de charge dans le portail Azure, vous exportez les fichiers de configuration et configurez un pipeline CI/CD dans Azure Pipelines (des fonctionnalités similaires existent pour GitHub Actions).
 
@@ -397,7 +397,7 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
           inputs:
             azureSubscription: 'AZURE DEMO SUBSCRIPTION'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
-            resourceGroup: 'az400m05l11-RG'
+            resourceGroup: 'az400m08l14-RG'
             loadTestResource: 'eShopOnWebLoadTesting'
             loadTestRunName: 'ado_run'
             loadTestRunDescription: 'load testing from ADO'
@@ -430,7 +430,7 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
     Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
     Uploaded test plan for the test
     Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m05l11-rg%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
+    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
     TestRun completed
     
     -------------------Summary ---------------
@@ -474,7 +474,7 @@ Dans cette tâche, vous allez utiliser des critères d’échec de test de charg
 
     ```text
     Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m05l11-rg%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
+    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
     TestRun completed
     
     -------------------Summary ---------------
