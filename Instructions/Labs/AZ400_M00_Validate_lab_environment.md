@@ -13,7 +13,6 @@ En préparation des labos, il est essentiel que votre environnement soit correct
 - **Configurer un abonnement Azure :** si vous n’avez pas encore d’abonnement Azure, créez-en un en suivant les instructions de cette page ou consultez [https://azure.microsoft.com/free](https://azure.microsoft.com/free) pour vous abonner gratuitement.
 
 - **Configurez une organisation Azure DevOps :** si vous ne disposez pas encore d’une organisation Azure DevOps que vous pouvez utiliser pour les labos, créez-en une conformément aux instructions sur cette page ou sur [Créer une organisation ou une collection de projets](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
-  
 - Page de téléchargement de [Git pour Windows](https://gitforwindows.org/). L’application sera installée dans le cadre des prérequis de ce labo.
 
 - [Visual Studio Code](https://code.visualstudio.com/). Cela sera installé dans le cadre des prérequis de ce labo.
@@ -38,13 +37,13 @@ En préparation des labos, il est essentiel que votre environnement soit correct
 
 1. Dans la zone de liste déroulante de gauche, choisissez **Répertoire par défaut**, au lieu de **Compte Microsoft**.
 
-1. Si vous recevez l’invite (*« Nous avons besoin de quelques détails supplémentaires »*, indiquez votre nom, votre adresse de messagerie et votre emplacement, puis cliquez sur **Continuer**.
+1. Si vous recevez l’invite (_« Nous avons besoin de quelques détails supplémentaires »_, indiquez votre nom, votre adresse de messagerie et votre emplacement, puis cliquez sur **Continuer**.
 
 1. Une fois de retour dans `https://aex.dev.azure.com`, si vous avez sélectionné **Répertoire par défaut**, cliquez sur le bouton bleu **Créer une organisation**.
 
-1. Acceptez les *conditions d’utilisation* en cliquant sur **Continuer**.
+1. Acceptez les _conditions d’utilisation_ en cliquant sur **Continuer**.
 
-1. Si vous recevez l’invite (*« Vous avez presque terminé »)*, laissez le nom de l’organisation Azure DevOps par défaut (il doit s’agir d’un nom global unique) et choisissez un emplacement d’hébergement proche de vous dans la liste.
+1. Si vous recevez l’invite (_« Vous avez presque terminé »)_, laissez le nom de l’organisation Azure DevOps par défaut (il doit s’agir d’un nom global unique) et choisissez un emplacement d’hébergement proche de vous dans la liste.
 
 1. Une fois que l’organisation nouvellement créée s’ouvre dans **Azure DevOps**, sélectionnez **Paramètres de l’organisation** dans le coin inférieur gauche.
 
@@ -54,7 +53,7 @@ En préparation des labos, il est essentiel que votre environnement soit correct
 
 1. Une fois que l’écran affiche l’ID d’abonnement Azure lié sur la partie supérieure, modifiez le nombre de **travaux parallèles payés** pour **CI/CD hébergé par MS** de 0 à **1**. Sélectionnez ensuite le bouton **ENREGISTRER** au bas de l’écran.
 
-   > **Note** : vous pouvez **attendre quelques minutes avant d’utiliser les capacités CI/CD** afin que les nouveaux paramètres soient reflétés dans le serveur principal. Sinon, vous verrez toujours le message *« Aucun parallélisme hébergé n’a été acheté ou accordé ».*
+   > **Note** : vous pouvez **attendre quelques minutes avant d’utiliser les capacités CI/CD** afin que les nouveaux paramètres soient reflétés dans le serveur principal. Sinon, vous verrez toujours le message _« Aucun parallélisme hébergé n’a été acheté ou accordé »._
 
 1. Dans **Paramètres d’organisation**, accédez à la section **Pipelines** et cliquez sur **Paramètres**.
 
@@ -81,6 +80,7 @@ Tout d’abord, vous allez créer un projet Azure DevOps **eShopOnWeb** à utili
 1. Ouvrez votre navigateur et accédez à votre organisation Azure DevOps.
 
 1. Sélectionnez l’option **Nouveau projet** et utilisez les paramètres suivants :
+
    - nom : **eShopOnWeb**
    - Visibilité : **Privé**
    - Avancé : Contrôle de version : **Git**
@@ -112,7 +112,7 @@ Tout d’abord, vous allez créer un projet Azure DevOps **eShopOnWeb** à utili
    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
-1. Laissez ouverte la fenêtre du navigateur web.  
+1. Laissez ouverte la fenêtre du navigateur web.
 
 1. Accédez à **Repos > Branches**.
 
@@ -136,20 +136,23 @@ Vous devez créer une connexion de service dans Azure DevOps, ce qui vous permet
 
    ![Capture d’écran du bouton de création d’une connexion de service.](images/new-service-connection.png)
 
-1. Dans le volet **Nouvelle connexion de service**, sélectionnez **Azure Resource Manager**, puis **Suivant** (Il peut être nécessaire de faire défiler l’écran vers le bas).
+1. Dans le panneau **Nouvelle connexion de service**, sélectionnez **Azure Resource Manager**, puis **Suivant** (vous devrez peut-être faire défiler la page vers le bas).
 
-1. Sélectionnez **Fédération d’identité de charge de travail (automatique)** et **Suivant**.
+1. Sélectionnez **Inscription d’application (automatique)** dans la dropbox **Type d’identité**.
 
-   > **Note** : vous pouvez également utiliser la **fédération d’identité de charge de travail (manuelle)** si vous préférez configurer manuellement la connexion de service. Suivez les étapes de la [documentation Azure DevOps](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure) pour créer manuellement la connexion de service.
+1. Sélectionnez **Fédération des identités de charge de travail** et **Abonnement** sous le **niveau Étendue**.
+
+   > **Remarque** : vous pouvez également utiliser l’**inscription d’application ou l’identité managée (manuelle)** si vous préférez configurer manuellement la connexion de service. Suivez les étapes de la [documentation Azure DevOps](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure) pour créer manuellement la connexion de service.
 
 1. Renseignez les champs vides à l’aide des informations suivantes :
-    - **Abonnement**: Sélectionnez votre abonnement Azure.
-    - **Groupe de ressources** : sélectionnez le groupe de ressources dans lequel vous souhaitez déployer les ressources des services. Si vous n’avez pas de groupe de ressources, vous pouvez en créer un dans le portail Azure en suivant les instructions dans [Gérer les groupes de ressources Azure à l’aide du portail Azure](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
-    - **Nom de la connexion de service** : entrez **`azure subs`**. Ce nom sera référencé dans les pipelines YAML lors de l’accès à votre abonnement Azure.
+
+   - **Abonnement**: Sélectionnez votre abonnement Azure.
+   - **Groupe de ressources** : sélectionnez le groupe de ressources dans lequel vous souhaitez déployer les ressources des services. Si vous n’avez pas de groupe de ressources, vous pouvez en créer un dans le portail Azure en suivant les instructions dans [Gérer les groupes de ressources Azure à l’aide du portail Azure](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   - **Nom de la connexion de service** : entrez **`azure subs`**. Ce nom sera référencé dans les pipelines YAML lors de l’accès à votre abonnement Azure.
 
 1. Vérifiez que l’option **Accorder une autorisation d’accès à tous les pipelines** est décochée et sélectionnez **Enregistrer**.
 
-   > **Note :** l’option **Accorder une autorisation d’accès à tous les pipelines** n’est pas recommandée pour les environnements de production. Elle est utilisée uniquement dans ce labo pour simplifier la configuration du pipeline.
+   > **Remarque :** l’option **Accorder une autorisation d’accès à tous les pipelines** n’est pas recommandée pour les environnements de production. Elle est utilisée uniquement dans ce labo pour simplifier la configuration du pipeline.
 
    > **Note** : si vous voyez un message d’erreur indiquant que vous n’avez pas les autorisations nécessaires pour créer une connexion de service, réessayez ou configurez la connexion de service manuellement.
 

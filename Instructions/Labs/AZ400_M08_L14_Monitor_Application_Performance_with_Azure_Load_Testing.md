@@ -48,22 +48,22 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps. Cliquez sur **Nouveau projet**. Donnez au projet le nom **eShopOnWeb**, puis choisissez **Scrum** dans la liste déroulante **Processus d’élément de travail**. Cliquez sur **Créer**.
 
-    ![Capture d’écran du volet de création d’un nouveau projet.](images/create-project.png)
+   ![Capture d’écran du volet de création d’un nouveau projet.](images/create-project.png)
 
 #### Tâche 2 : (passer si terminée) importer le référentiel Git eShopOnWeb
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Repos > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Repos > Fichiers**, **Importer**. Dans la fenêtre **Importer un référentiel Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
 
-    ![Capture d’écran du panneau Importer un référentiel.](images/import-repo.png)
+   ![Capture d’écran du panneau Importer un référentiel.](images/import-repo.png)
 
 1. Le référentiel est organisé de la manière suivante :
-    - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
-    - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
-    - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
-    - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
-    - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
+   - Le dossier **.ado** contient des pipelines YAML Azure DevOps.
+   - Conteneur de dossiers **.devcontainer** configuré pour le développement à l’aide de conteneurs (localement dans VS Code ou GitHub Codespaces).
+   - Le dossier **infra** contient l’infrastructure Bicep&ARM en tant que modèles de code utilisés dans certains scénarios de labo.
+   - **Définitions de workflow GitHub YAML du conteneur de dossiers .github**.
+   - Le dossier **src** contient le site web .NET 8 utilisé dans les scénarios de labo.
 
 #### Tâche 3 : (à ignorer si vous l’avez déjà effectuée) définir la branche principale en tant que branche par défaut
 
@@ -78,32 +78,33 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide de Cl
 1. À partir de l’ordinateur de labo, lancez un navigateur web et accédez au [**portail Azure**](https://portal.azure.com), puis connectez-vous.
 1. Dans le portail Azure, dans la barre d’outils, cliquez sur l’icône **Cloud Shell** située juste à droite de la zone de texte de recherche.
 1. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
-    > **Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
+
+   > **Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
 
 1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un groupe de ressources (remplacez l’espace réservé `<region>` par le nom de la région Azure la plus proche de vous, par exemple « eastus »).
 
-    ```bash
-    RESOURCEGROUPNAME='az400m08l14-RG'
-    LOCATION='<region>'
-    az group create --name $RESOURCEGROUPNAME --location $LOCATION
-    ```
+   ```bash
+   RESOURCEGROUPNAME='az400m08l14-RG'
+   LOCATION='<region>'
+   az group create --name $RESOURCEGROUPNAME --location $LOCATION
+   ```
 
 1. Créez un plan App Service Windows en exécutant la commande suivante :
 
-    ```bash
-    SERVICEPLANNAME='az400l14-sp'
-    az appservice plan create --resource-group $RESOURCEGROUPNAME \
-        --name $SERVICEPLANNAME --sku B3
-    ```
+   ```bash
+   SERVICEPLANNAME='az400l14-sp'
+   az appservice plan create --resource-group $RESOURCEGROUPNAME \
+       --name $SERVICEPLANNAME --sku B3
+   ```
 
 1. Créez une application web avec un nom unique.
 
-    ```bash
-    WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
-    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
-    ```
+   ```bash
+   WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
+   az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
+   ```
 
-    > **Remarque** : notez le nom de l’application web. Vous en aurez besoin plus tard dans ce labo.
+   > **Remarque** : notez le nom de l’application web. Vous en aurez besoin plus tard dans ce labo.
 
 ### Exercice 1 : configurer des pipelines CI/CD en tant que code avec YAML dans Azure DevOps
 
@@ -116,7 +117,7 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 1. Revenez au volet **Pipelines** du hub **Pipelines**.
 1. Cliquez sur **Nouveau pipeline** (ou Créer un pipeline s’il s’agit du premier pipeline que vous créez).
 
-    > **Remarque** : nous allons utiliser l’Assistant pour créer une définition de pipeline YAML basée sur notre projet.
+   > **Remarque** : nous allons utiliser l’Assistant pour créer une définition de pipeline YAML basée sur notre projet.
 
 1. Dans le volet **Où se trouve votre code ?**, cliquez sur l’option **Azure Repos Git (YAML)**.
 1. Dans le volet **Sélectionner un référentiel**, cliquez sur **eShopOnWeb**.
@@ -124,109 +125,108 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 1. **Sélectionnez** toutes les lignes du pipeline de démarrage, puis supprimez-les.
 1. **Copiez** le pipeline de modèle complet ci-dessous, sachant que vous devez apporter des modifications aux paramètres **avant d’enregistrer** les modifications :
 
-    ```yml
-    
-    #Template Pipeline for CI/CD
-    # trigger:
-    # - main
+   ```yml
+   #Template Pipeline for CI/CD
+   # trigger:
+   # - main
 
-    resources:
-      repositories:
-        - repository: self
-          trigger: none
+   resources:
+     repositories:
+       - repository: self
+         trigger: none
 
-    stages:
-    - stage: Build
-      displayName: Build .Net Core Solution
-      jobs:
-      - job: Build
-        pool:
-          vmImage: ubuntu-latest
-        steps:
-        - task: DotNetCoreCLI@2
-          displayName: Restore
-          inputs:
-            command: 'restore'
-            projects: '**/*.sln'
-            feedsToUse: 'select'
+   stages:
+     - stage: Build
+       displayName: Build .Net Core Solution
+       jobs:
+         - job: Build
+           pool:
+             vmImage: ubuntu-latest
+           steps:
+             - task: DotNetCoreCLI@2
+               displayName: Restore
+               inputs:
+                 command: "restore"
+                 projects: "**/*.sln"
+                 feedsToUse: "select"
 
-        - task: DotNetCoreCLI@2
-          displayName: Build
-          inputs:
-            command: 'build'
-            projects: '**/*.sln'
+             - task: DotNetCoreCLI@2
+               displayName: Build
+               inputs:
+                 command: "build"
+                 projects: "**/*.sln"
 
-        - task: DotNetCoreCLI@2
-          displayName: Publish
-          inputs:
-            command: 'publish'
-            publishWebProjects: true
-            arguments: '-o $(Build.ArtifactStagingDirectory)'
+             - task: DotNetCoreCLI@2
+               displayName: Publish
+               inputs:
+                 command: "publish"
+                 publishWebProjects: true
+                 arguments: "-o $(Build.ArtifactStagingDirectory)"
 
-        - task: PublishBuildArtifacts@1
-          displayName: Publish Artifacts ADO - Website
-          inputs:
-            pathToPublish: '$(Build.ArtifactStagingDirectory)'
-            artifactName: Website
+             - task: PublishBuildArtifacts@1
+               displayName: Publish Artifacts ADO - Website
+               inputs:
+                 pathToPublish: "$(Build.ArtifactStagingDirectory)"
+                 artifactName: Website
 
-    - stage: Deploy
-      displayName: Deploy to an Azure Web App
-      jobs:
-      - job: Deploy
-        pool:
-          vmImage: 'windows-2019'
-        steps:
-        - task: DownloadBuildArtifacts@1
-          inputs:
-            buildType: 'current'
-            downloadType: 'single'
-            artifactName: 'Website'
-            downloadPath: '$(Build.ArtifactStagingDirectory)'
-
-    ```
+     - stage: Deploy
+       displayName: Deploy to an Azure Web App
+       jobs:
+         - job: Deploy
+           pool:
+             vmImage: "windows-2019"
+           steps:
+             - task: DownloadBuildArtifacts@1
+               inputs:
+                 buildType: "current"
+                 downloadType: "single"
+                 artifactName: "Website"
+                 downloadPath: "$(Build.ArtifactStagingDirectory)"
+   ```
 
 1. Définissez le curseur sur une nouvelle ligne à la fin de la définition YAML. **Veillez à positionner le curseur au niveau de la tâche précédente**.
 
-    > **Remarque** : il s’agit de l’emplacement où les nouvelles tâches sont ajoutées.
+   > **Remarque** : il s’agit de l’emplacement où les nouvelles tâches sont ajoutées.
 
 1. Cliquez sur **Afficher l’Assistant** sur le côté droit du portail. Dans la liste des tâches, recherchez et sélectionnez la tâche **Déploiement Azure App Service**.
 1. Dans le volet **Déploiement Azure App Service**, spécifiez les paramètres suivants, puis cliquez sur **Ajouter** :
 
-    - Dans la liste déroulante **Abonnement Azure**, sélectionnez la connexion de service que vous venez de créer.
-    - Vérifiez que **Type d’App Service** pointe vers Application web sur Windows.
-    - Dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web que vous avez déployée précédemment dans le labo (**az400eshoponweb...).
-    - Dans la zone de texte **Package ou dossier**, **mettez à jour** la valeur par défaut sur `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-    - Développez **Paramètres d’application et de configuration**, puis, dans la zone de texte Paramètres d’application, ajoutez les paires clé-valeur suivantes : `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`.
+   - Dans la liste déroulante **Abonnement Azure**, sélectionnez la connexion de service que vous venez de créer.
+   - Vérifiez que **Type d’App Service** pointe vers Application web sur Windows.
+   - Dans la liste déroulante **Nom d’App Service**, sélectionnez le nom de l’application web que vous avez déployée précédemment dans le labo (\*\*az400eshoponweb...).
+   - Dans la zone de texte **Package ou dossier**, **mettez à jour** la valeur par défaut sur `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
+   - Développez **Paramètres d’application et de configuration**, puis, dans la zone de texte Paramètres d’application, ajoutez les paires clé-valeur suivantes : `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`.
+
 1. Confirmez les paramètres du volet Assistant en cliquant sur le bouton **Ajouter**.
 
-    > **Remarque** : cette opération ajoute automatiquement la tâche de déploiement à la définition du pipeline YAML.
+   > **Remarque** : cette opération ajoute automatiquement la tâche de déploiement à la définition du pipeline YAML.
 
 1. L’extrait de code ajouté à l’éditeur doit ressembler à ce qui suit et refléter votre nom pour les paramètres azureSubscription et WebappName :
 
-    ```yml
-        - task: AzureRmWebAppDeployment@4
-          inputs:
-            ConnectionType: 'AzureRM'
-            azureSubscription: 'SERVICE CONNECTION NAME'
-            appType: 'webApp'
-            WebAppName: 'az400eshoponWeb369825031'
-            packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-            AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
-    ```
+   ```yml
+   - task: AzureRmWebAppDeployment@4
+     inputs:
+       ConnectionType: "AzureRM"
+       azureSubscription: "SERVICE CONNECTION NAME"
+       appType: "webApp"
+       WebAppName: "az400eshoponWeb369825031"
+       packageForLinux: "$(Build.ArtifactStagingDirectory)/**/Web.zip"
+       AppSettings: "-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development"
+   ```
 
-    > **Remarque** : le paramètre **packageForLinux** est trompeur dans le contexte de ce labo, mais il est valide pour Windows ou Linux.
+   > **Remarque** : le paramètre **packageForLinux** est trompeur dans le contexte de ce labo, mais il est valide pour Windows ou Linux.
 
 1. Avant d’enregistrer les mises à jour dans le fichier yml, donnez-lui un nom plus clair. En haut de la fenêtre yaml-editor figure le nom **EShopOnweb/azure-pipelines-#.yml**. (Où # est un nombre, généralement 1, mais il peut être différent dans votre configuration.) Sélectionnez **ce nom de fichier** et renommez-le en **m08l14-pipeline.yml**.
 
 1. Cliquez sur **Enregistrer**, dans le volet **Enregistrer**, puis cliquez de nouveau sur **Enregistrer** pour valider la modification directement dans la branche principale.
 
-    > **Remarque** : étant donné que notre fichier CI-YAML d’origine n’a pas été configuré pour déclencher automatiquement une nouvelle build, nous devons lancer cette dernière manuellement.
+   > **Remarque** : étant donné que notre fichier CI-YAML d’origine n’a pas été configuré pour déclencher automatiquement une nouvelle build, nous devons lancer cette dernière manuellement.
 
 1. Dans le menu de gauche Azure DevOps, accédez à **Pipelines**, puis sélectionnez à nouveau **Pipelines**. Ensuite, sélectionnez **Tout** pour ouvrir toutes les définitions de pipeline, pas seulement les définitions récentes.
 
-    > **Remarque** : si vous avez conservé tous les pipelines précédents des exercices de labo précédents, il est possible que ce nouveau pipeline ait réutilisé un nom de séquence **eShopOnWeb (#)** par défaut pour le pipeline, comme illustré dans la capture d’écran ci-dessous. Sélectionnez un pipeline (comme celui avec le numéro de séquence le plus élevé), sélectionnez Modifier et vérifiez qu’il pointe vers le fichier de code m08l14-pipeline.yml.
+   > **Remarque** : si vous avez conservé tous les pipelines précédents des exercices de labo précédents, il est possible que ce nouveau pipeline ait réutilisé un nom de séquence **eShopOnWeb (#)** par défaut pour le pipeline, comme illustré dans la capture d’écran ci-dessous. Sélectionnez un pipeline (comme celui avec le numéro de séquence le plus élevé), sélectionnez Modifier et vérifiez qu’il pointe vers le fichier de code m08l14-pipeline.yml.
 
-    ![Capture d’écran d’Azure Pipelines avec eShopOnWeb en cours d’exécution.](images/m3/eshoponweb-m9l16-pipeline.png)
+   ![Capture d’écran d’Azure Pipelines avec eShopOnWeb en cours d’exécution.](images/m3/eshoponweb-m9l16-pipeline.png)
 
 1. Confirmez l’exécution de ce pipeline en cliquant sur **Exécuter** à partir du volet qui s’affiche et en cliquant une fois de plus sur **Exécuter**.
 1. Notez les 2 phases différentes affichées, **Générer la solution .NET Core** et **Déployer sur Azure Web App**.
@@ -236,9 +236,9 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 
 1. Une fois que l’étape de déploiement souhaite commencer, vous êtes invité à utiliser les **autorisations nécessaires**, ainsi qu’une barre orange indiquant :
 
-    ```text
-    This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
-    ```
+   ```text
+   This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
+   ```
 
 1. Cliquez sur **Affichage**.
 1. Dans le volet **En attente d’examen**, cliquez sur **Autoriser**.
@@ -255,6 +255,8 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 
 Dans cet exercice, vous allez déployer une ressource de test de charge Azure dans Azure et configurer différents scénarios de test de charge pour votre Azure App Service en cours d’exécution.
 
+> **Important** : le Test de charge Azure est un **service payant**. Vous entraînez des coûts pour l’exécution de tests de charge. Veillez à supprimer les ressources une fois que vous avez terminé le labo pour éviter d’entraîner des coûts supplémentaires. Pour chaque « Ressource de test de charge » active pendant une partie d’un mois, vous serez facturé les frais mensuels et avez accès à 50 VUH inclus. Pour plus d’informations, consultez la [page de la tarification du Test de charge Azure](https://azure.microsoft.com/pricing/details/load-testing).
+
 #### Tâche 1 : déployer Test de charge Azure
 
 Dans cette tâche, vous allez déployer une nouvelle ressource de Test de charge Azure dans votre abonnement Azure.
@@ -264,19 +266,20 @@ Dans cette tâche, vous allez déployer une nouvelle ressource de Test de charge
 1. Dans les résultats de la recherche, sélectionnez **Test de charge Azure** (publié par Microsoft).
 1. Dans la page Test de charge Azure, cliquez sur **Créer** pour démarrer le processus de déploiement.
 1. Dans la page « Créer une ressource de test de charge », fournissez les détails nécessaires au déploiement de la ressource :
+
    - **Abonnement** : sélectionnez votre abonnement Azure.
    - **Groupe de ressources** : sélectionnez le groupe de ressources que vous avez utilisé pour déployer Web App Service dans l’exercice précédent.
    - **Nom :** `eShopOnWebLoadTesting`
    - **Région** : sélectionnez une région proche de vous.
 
-    > **Remarque** : le service Test de charge Azure n’est pas disponible dans toutes les régions Azure.
+   > **Remarque** : le service Test de charge Azure n’est pas disponible dans toutes les régions Azure.
 
 1. Cliquez sur **Examiner et créer** pour valider vos paramètres.
 1. Cliquez sur **Créer** pour confirmer et procéder au déploiement de la ressource Test de charge Azure.
 1. Vous êtes redirigé vers la page « Déploiement en cours ». Patientez quelques minutes jusqu’à la fin du déploiement.
 1. Cliquez sur **Accéder à la ressource** à partir de la page de progression du déploiement pour accéder à la ressource Test de charge Azure **eShopOnWebLoadTesting**.
 
-    > **Remarque** : si vous avez fermé le panneau ou le portail Azure pendant le déploiement de la ressource Test de charge Azure, vous pouvez accéder à la ressource à partir du champ de recherche du portail Azure, de la liste des ressources ou de la liste des ressources consultées récemment.
+   > **Remarque** : si vous avez fermé le panneau ou le portail Azure pendant le déploiement de la ressource Test de charge Azure, vous pouvez accéder à la ressource à partir du champ de recherche du portail Azure, de la liste des ressources ou de la liste des ressources consultées récemment.
 
 #### Tâche 2 : créer des tests de Test de charge Azure
 
@@ -285,6 +288,7 @@ Dans cette tâche, vous allez créer plusieurs tests de Test de charge Azure à 
 1. Dans le panneau de la ressource Test de charge Azure **eShopOnWebLoadTesting**, accédez à **Tests** dans **Tests**. Cliquez sur l’option de menu **+Créer**, puis sélectionnez **Créer un test basé sur une URL**.
 1. Décochez la case **Activer les paramètres avancés** pour afficher les paramètres avancés.
 1. Configurez les paramètres suivants pour créer un test de charge :
+
    - **URL de test** : entrez l’URL de l’instance Azure App Service que vous avez déployée dans l’exercice précédent (az400eshoponweb... azurewebsites.net), **y compris https://**
    - **Spécifier la charge** : utilisateurs virtuels
    - **Nombre d’utilisateurs virtuels** : 50
@@ -296,6 +300,7 @@ Dans cette tâche, vous allez créer plusieurs tests de Test de charge Azure à 
 1. Une fois le test en cours d’exécution, revenez à la page de la ressource Test de charge Azure **eShopOnWebLoadTesting**, puis accédez à **Tests**, sélectionnez **Tests** et consultez un test **Get_eshoponweb...**
 1. Dans le menu du haut, cliquez sur **Créer**, **Créer un test basé sur une URL** pour créer un deuxième test de charge.
 1. Configurez les paramètres suivants pour créer un autre test de charge :
+
    - **URL de test** : Entrez l’URL de l’instance Azure App Service que vous avez déployée dans l’exercice précédent (eShopOnWeb...azurewebsites.net), **y compris https://**
    - **Spécifier la charge** : demandes par seconde (RPS)
    - **Demandes par seconde (RPS)**  : 100
@@ -314,6 +319,7 @@ Les deux tests rapides ont été réalisés et nous allons à présent les peauf
 
 1. À partir de **Test de charge Azure**, accédez à **Tests**. Sélectionnez l’une des définitions de test pour ouvrir une vue plus détaillée en **cliquant** sur l’un des tests. Vous êtes alors redirigé vers la page de test plus détaillée. À partir de là, vous pouvez valider les détails des exécutions réelles, en sélectionnant le **TestRun_mm/jj/aa-hh :hh** dans la liste résultante.
 1. Dans la page **TestRun** détaillée, identifiez le résultat réel de la simulation Test de charge Azure. Voici quelques-unes des valeurs :
+
    - Charge/Total des demandes
    - Durée
    - Temps de réponse (indique le résultat en secondes, reflétant le temps de réponse aux 90e centiles, ce qui signifie que, pour 90 % des demandes, le temps de réponse se trouve dans les résultats donnés)
@@ -362,8 +368,8 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
 1. Le navigateur télécharge un dossier compressé qui contient les fichiers d’entrée de test de charge.
 1. Utilisez n’importe quel outil de compression pour extraire les fichiers d’entrée. Ce dossier contient les fichiers suivants :
 
-   - *config.yaml* : fichier de configuration YAML de test de charge. Vous référencez ce fichier dans la définition du workflow CI/CD.
-   - *quick_test.jmx* : script de test JMeter
+   - _config.yaml_ : fichier de configuration YAML de test de charge. Vous référencez ce fichier dans la définition du workflow CI/CD.
+   - _quick_test.jmx_ : script de test JMeter
 
 1. Commitez tous les fichiers d’entrée extraits vers votre référentiel de contrôle de code source. Pour cela, accédez au **portail Azure DevOps**(<https://aex.dev.azure.com/>), puis au projet DevOps **eShopOnWeb**.
 1. Sélectionnez **Repos**. Dans la structure du dossier du code source, remarquez le sous-dossier **tests**. Notez les points de suspension (…), puis sélectionnez **Nouveau > Dossier**.
@@ -381,6 +387,7 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
 1. Dans le script YAML, accédez à la **ligne 56** et appuyez sur ENTRÉE/RETOUR pour ajouter une nouvelle ligne vide. (Juste avant la phase de déploiement du fichier YAML).
 1. À la ligne 57, sélectionnez l’Assistant des tâches sur le côté droit et recherchez **Test de charge Azure**.
 1. Complétez le volet graphique avec les paramètres corrects de votre scénario :
+
    - Abonnement Azure : sélectionnez l’abonnement où sont exécutées vos ressources Azure.
    - Fichier du test de charge : '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
    - Groupe de ressources du test de charge : le groupe de ressources qui contient vos ressources de test de charge Azure.
@@ -389,29 +396,29 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
    - Description de l’exécution du test de charge : test de charge à partir d’ADO
 
 1. Confirmez l’injection des paramètres en tant qu’extrait de code YAML en cliquant sur **Ajouter**.
-1. Si la mise en retrait de l’extrait de code YAML donne des erreurs (lignes rouges ondulées), corrigez-les en ajoutant 2 espaces ou une tabulation pour positionner correctement l’extrait de code.  
+1. Si la mise en retrait de l’extrait de code YAML donne des erreurs (lignes rouges ondulées), corrigez-les en ajoutant 2 espaces ou une tabulation pour positionner correctement l’extrait de code.
 1. Votre code YAML doit ressembler à l’exemple d’extrait de code suivant :
 
-    ```yml
-         - task: AzureLoadTest@1
-          inputs:
-            azureSubscription: 'AZURE DEMO SUBSCRIPTION'
-            loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
-            resourceGroup: 'az400m08l14-RG'
-            loadTestResource: 'eShopOnWebLoadTesting'
-            loadTestRunName: 'ado_run'
-            loadTestRunDescription: 'load testing from ADO'
-    ```
+   ```yml
+        - task: AzureLoadTest@1
+         inputs:
+           azureSubscription: 'AZURE DEMO SUBSCRIPTION'
+           loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
+           resourceGroup: 'az400m08l14-RG'
+           loadTestResource: 'eShopOnWebLoadTesting'
+           loadTestRunName: 'ado_run'
+           loadTestRunDescription: 'load testing from ADO'
+   ```
 
 1. Sous l’extrait de code YAML inséré, ajoutez une nouvelle ligne vide en appuyant sur les touches ENTRÉE/RETOUR.
 1. Sous cette ligne vide, ajoutez un extrait de code pour la tâche Publier qui indique les résultats de la tâche de test de charge Azure pendant l’exécution du pipeline :
 
-    ```yml
-        - publish: $(System.DefaultWorkingDirectory)/loadTest
-          artifact: loadTestResults
-    ```
+   ```yml
+   - publish: $(System.DefaultWorkingDirectory)/loadTest
+     artifact: loadTestResults
+   ```
 
-1. Si la mise en retrait de l’extrait de code YAML donne des erreurs (lignes rouges ondulées), corrigez-les en ajoutant 2 espaces ou une tabulation pour positionner correctement l’extrait de code.  
+1. Si la mise en retrait de l’extrait de code YAML donne des erreurs (lignes rouges ondulées), corrigez-les en ajoutant 2 espaces ou une tabulation pour positionner correctement l’extrait de code.
 1. Une fois les deux extraits de code ajoutés au pipeline CI/CD, **enregistrez** les modifications.
 1. Une fois enregistrées, cliquez sur **Exécuter** pour déclencher le pipeline.
 1. Confirmez la branche (principale) et cliquez sur le bouton **Exécuter** pour démarrer l’exécution du pipeline.
@@ -420,36 +427,36 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
 1. Pendant l’exécution de la tâche, accédez au **test de charge Azure** dans le portail Azure et découvrez comment le pipeline crée un RunTest nommé **adoloadtest1**. Vous pouvez le sélectionner pour afficher les valeurs de résultat du travail TestRun.
 1. Revenez à la vue Exécution du pipeline CI/CD Azure DevOps, où la **tâche AzureLoadTest** a réussi. Les valeurs résultant du test de charge sont également visibles dans la sortie de journalisation détaillée :
 
-    ```text
-    Task         : Azure Load Testing
-    Description  : Automate performance regression testing with Azure Load Testing
-    Version      : 1.2.30
-    Author       : Microsoft Corporation
-    Help         : https://docs.microsoft.com/azure/load-testing/tutorial-cicd-azure-pipelines#azure-load-testing-task
-    ==============================================================================
-    Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
-    Uploaded test plan for the test
-    Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
-    TestRun completed
-    
-    -------------------Summary ---------------
-    TestRun start time: Mon Jul 24 2023 21:46:26 GMT+0000 (Coordinated Universal Time)
-    TestRun end time: Mon Jul 24 2023 21:51:50 GMT+0000 (Coordinated Universal Time)
-    Virtual Users: 50
-    TestStatus: DONE
-    
-    ------------------Client-side metrics------------
-    
-    Homepage
-    response time        : avg=1359ms min=59ms med=539ms max=16629ms p(90)=3127ms p(95)=5478ms p(99)=13878ms
-    requests per sec     : avg=37
-    total requests       : 4500
-    total errors         : 0
-    total error rate     : 0
-    Finishing: AzureLoadTest
-    
-    ```
+   ```text
+   Task         : Azure Load Testing
+   Description  : Automate performance regression testing with Azure Load Testing
+   Version      : 1.2.30
+   Author       : Microsoft Corporation
+   Help         : https://docs.microsoft.com/azure/load-testing/tutorial-cicd-azure-pipelines#azure-load-testing-task
+   ==============================================================================
+   Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
+   Uploaded test plan for the test
+   Creating and running a testRun for the test
+   View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
+   TestRun completed
+
+   -------------------Summary ---------------
+   TestRun start time: Mon Jul 24 2023 21:46:26 GMT+0000 (Coordinated Universal Time)
+   TestRun end time: Mon Jul 24 2023 21:51:50 GMT+0000 (Coordinated Universal Time)
+   Virtual Users: 50
+   TestStatus: DONE
+
+   ------------------Client-side metrics------------
+
+   Homepage
+   response time         : avg=1359ms min=59ms med=539ms max=16629ms p(90)=3127ms p(95)=5478ms p(99)=13878ms
+   requests per sec      : avg=37
+   total requests        : 4500
+   total errors          : 0
+   total error rate      : 0
+   Finishing: AzureLoadTest
+
+   ```
 
 1. Vous venez d’effectuer un test de charge automatisé dans le cadre d’une exécution de pipeline. Dans dernière tâche, vous allez spécifier des conditions d’échec. Cela signifie que l’étape de déploiement ne sera pas autorisée à démarrer si les performances de l’application web n’atteignent pas un certain seuil.
 
@@ -459,54 +466,54 @@ Dans cette tâche, vous allez utiliser des critères d’échec de test de charg
 
 1. Dans Azure DevOps, accédez au projet eShopOnWeb et ouvrez **Repos**.
 1. Dans Repos, accédez au sous-dossier **/tests/jmeter** créé et utilisé précédemment.
-1. Ouvrez le fichier de test de charge *config.yaml**. Cliquez sur **Modifier** pour autoriser la modification du fichier.
+1. Ouvrez le fichier de test de charge \*config.yaml*. Cliquez sur **Modifier\*\* pour autoriser la modification du fichier.
 1. Remplacez `failureCriteria: []` par l’extrait de code suivant :
 
-    ```text
-    failureCriteria:
-      - avg(response_time_ms) > 300
-      - percentage(error) > 50
-    ```
+   ```text
+   failureCriteria:
+     - avg(response_time_ms) > 300
+     - percentage(error) > 50
+   ```
 
 1. Enregistrez les modifications apportées à config.yaml en cliquant sur **Valider** à deux reprises.
 1. Revenez à **Pipelines** et réexécutez le pipeline **eShopOnWeb**. Après quelques minutes, l’exécution se termine avec un état d’**échec** pour la tâche **AzureLoadTest**.
 1. Ouvrez la vue de journalisation détaillée du pipeline et validez les détails d’**AzureLoadtest**. Un exemple de sortie similaire est présenté ci-dessous :
 
-    ```text
-    Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
-    TestRun completed
-    
-    -------------------Summary ---------------
-    TestRun start time: Mon Jul 24 2023 23:00:31 GMT+0000 (Coordinated Universal Time)
-    TestRun end time: Mon Jul 24 2023 23:06:02 GMT+0000 (Coordinated Universal Time)
-    Virtual Users: 50
-    TestStatus: DONE
-    
-    -------------------Test Criteria ---------------
-    Results          :1 Pass 1 Fail
-    
-    Criteria                     :Actual Value        Result
-    avg(response_time_ms) > 300                       1355.29               FAILED
-    percentage(error) > 50                                                  PASSED
-    
-    
-    ------------------Client-side metrics------------
-    
-    Homepage
-    response time        : avg=1355ms min=58ms med=666ms max=16524ms p(90)=2472ms p(95)=5819ms p(99)=13657ms
-    requests per sec     : avg=37
-    total requests       : 4531
-    total errors         : 0
-    total error rate     : 0
-    ##[error]TestResult: FAILED
-    Finishing: AzureLoadTest
+   ```text
+   Creating and running a testRun for the test
+   View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
+   TestRun completed
 
-    ```
+   -------------------Summary ---------------
+   TestRun start time: Mon Jul 24 2023 23:00:31 GMT+0000 (Coordinated Universal Time)
+   TestRun end time: Mon Jul 24 2023 23:06:02 GMT+0000 (Coordinated Universal Time)
+   Virtual Users: 50
+   TestStatus: DONE
+
+   -------------------Test Criteria ---------------
+   Results           :1 Pass 1 Fail
+
+   Criteria                  :Actual Value        Result
+   avg(response_time_ms) > 300                       1355.29               FAILED
+   percentage(error) > 50                                                  PASSED
+
+
+   ------------------Client-side metrics------------
+
+   Homepage
+   response time         : avg=1355ms min=58ms med=666ms max=16524ms p(90)=2472ms p(95)=5819ms p(99)=13657ms
+   requests per sec      : avg=37
+   total requests        : 4531
+   total errors          : 0
+   total error rate      : 0
+   ##[error]TestResult: FAILED
+   Finishing: AzureLoadTest
+
+   ```
 
 1. Notez que la dernière ligne de la sortie de test de charge indique **##[error]TestResult: FAILED** puisque nous avons défini un **FailCriteria** avec un temps de réponse moyen de > 300 ou avec un pourcentage d’erreur de > 20. Étant donné que nous voyons maintenant un temps de réponse moyen supérieur à 300, la tâche est marquée comme ayant échoué.
 
-    > **Note** : imaginez-vous dans un scénario réel, vous allez valider les performances de votre App Service et, si les performances sont inférieures à un certain seuil, ce qui signifie généralement qu’il y a plus de charge sur l’application web, vous pouvez déclencher un nouveau déploiement vers un service Azure App Service supplémentaire. Comme nous ne pouvons pas contrôler le temps de réponse pour les environnements de labo Azure, nous avons décidé de rétablir la logique pour assurer l’échec.
+   > **Note** : imaginez-vous dans un scénario réel, vous allez valider les performances de votre App Service et, si les performances sont inférieures à un certain seuil, ce qui signifie généralement qu’il y a plus de charge sur l’application web, vous pouvez déclencher un nouveau déploiement vers un service Azure App Service supplémentaire. Comme nous ne pouvons pas contrôler le temps de réponse pour les environnements de labo Azure, nous avons décidé de rétablir la logique pour assurer l’échec.
 
 1. L’état FAILED de la tâche de pipeline reflète en fait une validation réussie (SUCCESS) des critères d’exigences de Test de charge Azure.
 
