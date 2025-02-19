@@ -375,7 +375,7 @@ Afin d’optimiser la capacité d’une équipe à fournir en permanence des log
 
     > **Remarque** : lorsque votre équipe met à jour l’état du travail à mesure qu’il progresse d’une étape à l’autre, il est utile qu’elle se mette d’accord sur la signification du terme **Terminé**. En s’accordant sur la **Définition de « Terminé »** pour chaque colonne Kanban, vous pouvez partager les tâches essentielles à effectuer avant de déplacer un élément dans une phase en aval.
 
-1. Dans l’onglet **Approuvé par l’assurance qualité**, en bas du panneau, dans la zone de texte **Définition de Terminé**, entrez **`Passes \*\*all\*\* tests`**.
+1. Dans l’onglet **Approuvé par l’assurance qualité**, en bas du panneau, dans la zone de texte **Définition de Terminé**, entrez **`Passes **all** tests`**.
 1. Cliquez sur **Enregistrer** pour enregistrer les paramètres et fermer les paramètres.
 
     ![Capture d’écran de la colonne fractionnée des paramètres et de la configuration Définition de Terminé.](images/m1/dd_v1.png)
