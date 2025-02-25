@@ -243,8 +243,8 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
       - repository: self
         trigger: none
 
-   stages:
-   - stage: Build
+  stages:
+  - stage: Build
     displayName: Build .Net Core Solution
     jobs:
     - job: Build

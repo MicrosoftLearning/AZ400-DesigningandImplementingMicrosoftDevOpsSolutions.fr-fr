@@ -168,7 +168,7 @@ La définition de pipeline de build par défaut n’active pas l’intégration 
 
     Étant donné que vous avez activé les stratégies de branche, vous devez passer par une demande de tirage (pull request) pour mettre à jour votre code.
 
-1. Cliquez sur le bouton  **Enregistrer** (et non **Enregistrer et exécuter**) pour enregistrer la définition du pipeline.
+1. Cliquez sur le bouton **Valider et enregistrer** pour valider et enregistrer la définition de pipeline.
 1. Sélectionnez **Créer une branche pour cette validation**.
 1. Conservez le nom de branche par défaut et laissez l’option **Démarrer une demande de tirage** cochée.
 1. Cliquez sur **Save**(Enregistrer).
