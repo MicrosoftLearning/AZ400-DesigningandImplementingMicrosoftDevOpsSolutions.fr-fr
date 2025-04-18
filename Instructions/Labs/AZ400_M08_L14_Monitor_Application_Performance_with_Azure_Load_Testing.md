@@ -378,6 +378,11 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
 1. Dans la **Structure de dossiers**, accédez au sous-dossier **jmeter** nouvellement créé. Cliquez sur les **points de suspension (…)** et sélectionnez **Charger des fichiers**.
 1. À l’aide de l’option **Parcourir**, accédez à l’emplacement du fichier ZIP extrait, puis sélectionnez **config.yaml** et **quick_test.jmx**.
 1. Cliquez sur **Valider** pour confirmer le chargement du fichier dans le contrôle de code source.
+1. Dans les référentiels, accédez au sous-dossier **/tests/jmeter** qui vient d’être créé.
+1. Ouvrez le fichier de test de charge **config.yaml**. Cliquez sur **Modifier** pour autoriser la modification du fichier.
+1. Remplacez les attributs **displayName** et **testId** par la valeur **ado_load_test**.
+
+  ![Capture d’écran du fichier de configuration modifié.](images/config_edit.png)
 
 #### Tâche 4 : mettre à jour le fichier de définition YAML du flux de travail CI/CD
 
@@ -467,7 +472,7 @@ Dans cette tâche, vous allez utiliser des critères d’échec de test de charg
 1. Dans Azure DevOps, accédez au projet eShopOnWeb et ouvrez **Repos**.
 1. Dans Repos, accédez au sous-dossier **/tests/jmeter** créé et utilisé précédemment.
 1. Ouvrez le fichier de test de charge \*config.yaml*. Cliquez sur **Modifier\*\* pour autoriser la modification du fichier.
-1. Remplacez `failureCriteria: []` par l’extrait de code suivant :
+1. Remplacez `failureCriteria: []` si la valeur est présente, sinon ajoutez l’extrait de code suivant :
 
    ```text
    failureCriteria:
