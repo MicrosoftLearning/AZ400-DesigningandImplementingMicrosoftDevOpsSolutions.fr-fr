@@ -65,7 +65,7 @@ Chaque nouveau projet est configuré avec une équipe par défaut, dont le nom c
 
 1. Cliquez sur l’icône d’engrenage étiquetée **Paramètres du projet** située dans le coin inférieur gauche de la page pour ouvrir la page **Paramètres du projet**.
 
-    ![Capture d’écran de la page de paramètres d’Azure DevOps.](images/m1/project_settings_v1.png)
+    ![Capture d’écran de la page de paramètres d’Azure DevOps.](images/m1/project_settings_v1.png) 
 
 1. Dans la section **Général**, sélectionnez l’onglet **Teams**. Il existe déjà une équipe par défaut dans ce projet, **eShopOnWeb Team**, mais vous allez en créer une nouvelle pour ce labo. Cliquez sur **Nouvelle équipe**.
 
@@ -143,13 +143,13 @@ Les éléments de travail jouent un rôle important dans Azure DevOps. Qu’il 
 
     ![Capture d’écran de la création du lien de l’élément de travail.](images/m1/EShop-WEB-create_child_feature.png)
 
-1. Cliquez sur **Ajouter un lien** pour enregistrer l’élément Enfant.
+1. Cliquez sur **Ajouter un lien** pour enregistrer l’élément enfant.
 
     ![Capture d’écran de la zone de travail associée à l’élément de travail.](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
     > **Remarque** : dans le volet **Tableau de bord de formation**, notez que l’affectation, la **Zone** et l’**Itération** possèdent déjà les mêmes valeurs que l’épopée sur laquelle la fonctionnalité est basée. En outre, la fonctionnalité est automatiquement liée à l’élément parent à partir duquel elle a été créée.
 
-1. Dans le panneau (Nouvelle fonctionnalité) **Tableau de bord d’entraînement**, cliquez sur **Enregistrer et fermer**.
+1. Dans le volet **Tableau de bord de formation** (Nouvelle fonctionnalité), cliquez sur **Enregistrer et fermer**.
 
 1. Dans le volet de navigation verticale du portail Azure DevOps, dans la liste des éléments **Boards**, sélectionnez **Tableaux**.
 1. Dans le volet **Tableaux**, sélectionnez l’entrée **Tableaux EShop-WEB**. Le tableau de l’équipe correspondante s’ouvre alors.
@@ -279,9 +279,9 @@ Le backlog de sprint doit contenir toutes les informations dont l’équipe a be
 1. Cliquez sur l’icône **Configurer les paramètres** d’équipe (directement à droite de l’icône en forme d’entonnoir).
 1. Dans le panneau **Paramètres**, sélectionnez l’onglet **Styles**, cliquez sur **+ Ajouter une règle de style**, dans l’étiquette **Nom de la règle**, dans la zone de texte **Nom**, saisissez **`Development`** et, dans la liste déroulante **Couleur**, sélectionnez le rectangle vert.
 
-    > **Remarque** : toutes les cartes sont de couleur verte si elles satisfont les critères de règle définis directement ci-dessous, dans la section **Critères de règle**.
+    > **Note** : toutes les cartes sont de couleur verte si elles satisfont aux critères de règle définie sous le nom de la règle.
 
-1. Dans la section **Critères de règle**, dans la liste déroulante **Champ**, sélectionnez **Activité**. Dans la liste déroulante **Opérateur**, sélectionnez **=** puis, dans la liste déroulante **Valeur**, sélectionnez **Développement**.
+1. Dans la section sous le nom de la règle, dans la liste déroulante **Champ**, sélectionnez **Activité**. Dans la liste déroulante **Opérateur**, sélectionnez**=**. Ensuite, dans la liste déroulante **Valeur**, sélectionnez **Développement**.
 
     ![Capture d’écran des paramètres de style du tableau.](images/m1/EShop-WEB-styles_v2.JPG)
 
@@ -428,7 +428,9 @@ Les tableaux de bord permettent aux équipes de visualiser l’état et de surve
 
 1. Dans le volet **Configuration**, cliquez sur **Fermer** sans apporter de modifications.
 1. De retour dans le volet **Ajouter un widget**, dans la zone de texte **Rechercher**, entrez à nouveau **`sprint`** pour rechercher les widgets existants qui se concentrent sur les sprints. Dans la liste des résultats, sélectionnez **Capacité de sprint**, puis cliquez sur **Ajouter**.
+
     > **Note** : si le widget affiche « Définir la capacité pour utiliser le widget de capacité de sprint », vous pouvez sélectionner le lien **Définir la capacité** pour définir la capacité. Définissez l’activité sur Développement et la capacité sur 1. Cliquez sur **Enregistrer** et revenez au tableau de bord.
+    
 1. Dans l’affichage **Tableau de bord**, en haut du volet, cliquez sur **Modification terminée**.
 
     ![Capture d’écran du tableau de bord avec deux nouveaux widgets.](images/m1/EShop-WEB-finished_dashboard_v1.png)
