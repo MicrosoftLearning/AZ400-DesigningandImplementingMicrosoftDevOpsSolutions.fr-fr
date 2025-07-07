@@ -80,7 +80,7 @@ Dans cette tâche, vous allez créer un projet Azure DevOps **eShopOnWeb** à ut
 
 Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera utilisé par plusieurs labos.
 
-1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL <https://github.com/MicrosoftLearning/eShopOnWeb.git>, puis cliquez sur **Importer** :
+1. Sur votre ordinateur de labo, dans une fenêtre de navigateur, ouvrez votre organisation Azure DevOps et le projet **eShopOnWeb** créé précédemment. Cliquez sur **Dépôts > Fichiers**, **Importer**. Dans la fenêtre **Importer un dépôt Git**, collez l’URL `https://github.com/MicrosoftLearning/eShopOnWeb.git`, puis cliquez sur **Importer** :
 
     ![Capture d’écran du panneau Importer un référentiel.](images/import-repo.png)
 
