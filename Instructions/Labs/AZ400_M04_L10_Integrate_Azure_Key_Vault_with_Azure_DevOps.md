@@ -10,6 +10,8 @@ lab:
 
 - Ce labo nécessite **Microsoft Edge** ou un [navigateur pris en charge par Azure DevOps](https://learn.microsoft.com/azure/devops/server/compatibility).
 
+- **Effectuez la validation de l’environnement du labo :** Avant de commencer ce labo, assurez-vous d’avoir terminé l’étape [Valider l’environnement du labo ](AZ400_M00_Validate_lab_environment.md), qui configure l’organisation Azure DevOps, le projet et la connexion de service nécessaires.
+
 - **Configurez une organisation Azure DevOps :** si vous ne disposez pas encore d’une organisation Azure DevOps que vous pouvez utiliser pour ce labo, créez-en une conformément aux instructions disponibles dans [Créer une organisation ou une collection de projets](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
 - Identifier un abonnement Azure existant ou en créer un.
 
@@ -88,9 +90,9 @@ Dans cette tâche, vous allez importer une définition de pipeline YAML CI exist
 
 1. Dans la définition de pipeline YAML, personnalisez le nom du groupe de ressources en remplaçant **NAME** dans **AZ400-EWebShop-NAME** par une valeur unique et remplacez **YOUR-SUBSCRIPTION-ID** par votre propre ID d’abonnement Azure.
 
-1. Cliquez sur **Enregistrer et exécuter**, puis attendez que l’exécution du pipeline se termine.
+1. Cliquez sur **Enregistrer et exécuter**, puis attendez que l’exécution du pipeline se termine. Vous devrez peut-être cliquer une seconde fois sur **Enregistrer et exécuter** pour finaliser la création et l’exécution du pipeline.
 
-    > **Important** :si le message « Ce pipeline a besoin d’une autorisation d’accès aux ressources pour que cette exécution puisse se poursuivre jusqu’à Docker Compose vers ACI » s’affiche, cliquez sur Afficher, Autoriser et Autoriser à nouveau. Cette opération est nécessaire pour permettre au pipeline de créer la ressource.
+    > **Important** :si le message « Ce pipeline a besoin d’une autorisation d’accès aux ressources pour que cette exécution puisse se poursuivre jusqu’à Docker Compose vers ACI » s’affiche, cliquez sur Afficher, Autoriser et Autoriser à nouveau. Cette opération est nécessaire pour permettre au pipeline de créer la ressource. Vous devez cliquer sur le travail de génération pour afficher le message d’autorisation.
 
     > **Remarque** : la génération peut prendre plusieurs minutes. La définition de build est composée des tâches suivantes :
     - **AzureResourceManagerTemplateDeployment** utilise **bicep** pour déployer une instance Azure Container Registry.
@@ -129,10 +131,10 @@ Pour ce scénario de labo, nous allons utiliser une instance de conteneur Azure 
 
 1. Sous l’onglet **Configuration de l’accès** du panneau **Créer un coffre de clés**, sélectionnez **Stratégie d’accès au coffre**, puis dans la section **Stratégies d’accès**, cliquez sur **+ Créer** pour configurer une nouvelle stratégie.
 
-    > **Remarque** : vous devez sécuriser l’accès à vos coffres de clés en autorisant uniquement les applications et utilisateurs autorisés. Pour accéder aux données du coffre, vous devez fournir des autorisations de lecture (Get/List) au principal de service créé précédemment que vous utiliserez pour l’authentification dans le pipeline.
+    > **Remarque** : vous devez sécuriser l’accès à vos coffres de clés en autorisant uniquement les applications et utilisateurs autorisés. Pour accéder aux données à partir du coffre, vous devez fournir des autorisations de lecture (Get/List) à la connexion de service que vous avez créée pendant la validation de l’environnement du labo pour l’authentification dans le pipeline.
 
     1. Dans le panneau **Autorisations**, sous **Autorisations du secret**, activez les autorisations **Get** et **List**. Cliquez sur **Suivant**.
-    2. Dans le panneau **Principal**, recherchez le **principal de service créé précédemment** en utilisant l’ID ou le nom donné, puis sélectionnez-le dans la liste. Cliquez sur **Suivant**, **Suivant**, **Créer** (stratégie d’accès).
+    2. Dans le panneau **Principal**, recherchez votre **connexion de service d’abonnement Azure** (celle créée lors de la validation de l’environnement du labo, généralement nommée « sous-réseaux Azure »), puis sélectionnez-la dans la liste. Vous trouverez le nom du principal de service dans Azure DevOps sous Paramètres de projet > Connexions de service > sous-réseaux Azure > Gérer le principal de service. Si vous rencontrez une erreur d’autorisation lors de la sélection de l’abonnement Azure, cliquez sur le bouton **Autoriser** qui crée automatiquement la stratégie d’accès pour vous dans le coffre de clés. Cliquez sur **Suivant**, **Suivant**, **Créer** (stratégie d’accès).
     3. Dans le panneau **Vérifier + créer**, cliquez sur **Créer**.
 
 1. Dans le panneau **Créer un coffre de clés**, cliquez sur **Vérifier + créer  > Créer**.
@@ -148,7 +150,7 @@ Pour ce scénario de labo, nous allons utiliser une instance de conteneur Azure 
     | --- | --- |
     | Options de chargement | **Manuel** |
     | Nom | **acr-secret** |
-    | Valeur | Mot de passe d’accès ACR copié dans la tâche précédente |
+    | Valeur du secret | Mot de passe d’accès ACR copié dans la tâche précédente |
 
 #### Tâche 3 : créer un groupe de variables connecté à Azure Key Vault
 
@@ -189,8 +191,8 @@ Dans cette tâche, vous allez importer un pipeline CD, le personnaliser et l’e
     - **** YOUR-ACR.azurecr.io et **ACR-USERNAME** par votre serveur de connexion ACR (ils ont tous les deux besoin du nom ACR, que vous pouvez consulter sur ACR > Clés d’accès).
     - **AZ400-EWebShop-NAME** en fonction du nom du groupe de ressources défini auparavant dans le labo.
 
-1. Cliquez sur **Enregistrer et exécuter**.
-1. Ouvrez le pipeline et attendez que son exécution se termine.
+1. Cliquez sur **Enregistrer et exécuter**. Vous devrez peut-être cliquer une seconde fois sur **Enregistrer et exécuter** pour finaliser la création et l’exécution du pipeline. Vous devez cliquer sur le travail de génération pour afficher les messages d’autorisation.
+1. Ouvrez le pipeline et attendez qu’il s’exécute correctement.
 
     > **Important** :si le message « Ce pipeline a besoin d’une autorisation d’accès aux ressources pour que cette exécution puisse se poursuivre jusqu’à Docker Compose vers ACI » s’affiche, cliquez sur Afficher, Autoriser et Autoriser à nouveau. Cette opération est nécessaire pour permettre au pipeline de créer la ressource.
 
@@ -198,6 +200,8 @@ Dans cette tâche, vous allez importer un pipeline CD, le personnaliser et l’e
     - La tâche **Ressources** prépare la définition pour qu’elle se déclenche automatiquement en fonction de l’achèvement du pipeline CI. Cette opération télécharge également le référentiel pour le fichier bicep.
     - La tâche **Variables (pour l’étape de déploiement)** se connecte au groupe de variables pour utiliser le secret Azure Key Vault **acr-secret**.
     - La tâche **AzureResourceManagerTemplateDeployment** déploie Azure Container Instance (ACI) à l’aide du modèle bicep et fournit les paramètres de connexion ACR pour permettre à ACI de télécharger l’image conteneur créée précédemment à partir d’Azure Container Registry (ACR).
+
+1. Pour vérifier les résultats du déploiement du pipeline, dans le portail Azure, recherchez et sélectionnez le groupe de ressources **AZ400-EWebShop-NAME**. Dans la liste des ressources, vérifiez que l’instance de conteneur **az400eshop** a bien été créée par le pipeline.
 
 1. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux l’identifier. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension, puis sur l’option **Renommer/Supprimer**. Nommez-le **eshoponweb-cd-aci**, puis cliquez sur **Enregistrer**.
 

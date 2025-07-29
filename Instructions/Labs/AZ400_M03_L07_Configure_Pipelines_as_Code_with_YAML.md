@@ -61,6 +61,8 @@ Dans cette tâche, vous allez importer le référentiel Git eShopOnWeb qui sera 
 1. Pointez sur la branche **principale**, puis cliquez sur les points de suspension à droite de la colonne.
 1. Cliquez sur **Définir comme branche par défaut**.
 
+    > **Remarque** : si la branche primaire est déjà sélectionnée comme la branche par défaut, l’option **Définir comme branche par défaut** est grisée. Dans ce cas, continuez en suivant les instructions
+
 #### Tâche 3 : Créer des ressources Azure
 
 Dans cette tâche, vous allez créer une application web Azure à l’aide du portail Azure.
@@ -69,13 +71,7 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide du po
 1. Dans le portail Azure, dans la barre d’outils, cliquez sur l’icône **Cloud Shell** située juste à droite de la zone de texte de recherche.
 1. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
 
-   > **Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
-
-   > **Remarque :** pour obtenir la liste des régions et leurs alias, exécutez la commande suivante à partir de Bash - Azure Cloud Shell :
-
-   ```bash
-   az account list-locations -o table
-   ```
+   > **Remarque** : Si c’est la première fois que vous démarrez **Cloud Shell** et que la fenêtre contextuelle **Prise en main** s'affiche, sélectionnez **Aucun compte de stockage requis** et l’abonnement que vous utilisez dans ce labo, puis cliquez sur **Appliquer**.
 
 1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un groupe de ressources (remplacez l’espace réservé `<region>` par le nom de la région Azure la plus proche de vous, par exemple « centralus », « westeurope » ou une autre région de votre choix).
 
@@ -88,12 +84,14 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide du po
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
-1. Créez un plan App Service Windows en exécutant la commande suivante :
+1. Créez un plan Windows App Service en exécutant la commande suivante :
 
    ```bash
    SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
+
+    > **Remarque** : Si vous recevez une erreur telle que « L’abonnement n’est pas enregistré pour utiliser l’espace de noms " Microsoft.Web " » lorsque vous exécutez la commande précédente, exécutez `az provider register --namespace Microsoft.Web` suivant, puis exécutez à nouveau la commande qui a généré l’erreur.
 
 1. Créez une application web avec un nom unique.
 
@@ -163,7 +161,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
    - Dans la liste déroulante **Abonnement Azure**, sélectionnez l’abonnement Azure dans lequel vous avez déployé les ressources Azure précédemment dans le labo, cliquez sur **Autoriser**, puis, lorsque vous y êtes invité, authentifiez-vous à l’aide du même compte d’utilisateur que celui que vous avez utilisé pendant le déploiement des ressources Azure.
    - Dans la liste déroulante **Nom de l’App Service**, sélectionnez le nom de l’application web que vous avez déployée précédemment dans le labo.
    - Dans la zone de texte **Package ou dossier**, **mettez à jour** la valeur par défaut sur `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-   - Dans les **paramètres d’application et de configuration**, ajoutez `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`.
+   - Ouvrez la section **Paramètres d’application et de configuration** et, dans la zone de texte **Paramètres de l’application**, ajoutez `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
 
 1. Confirmez les paramètres du volet Assistant en cliquant sur le bouton **Ajouter**.
 
@@ -207,11 +205,11 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
        downloadPath: "$(Build.ArtifactStagingDirectory)"
    ```
 
-1. Si la mise en retrait YAML est désactivée, avec la tâche ajoutée sélectionnée dans l’éditeur, appuyez deux fois sur la touche de **tabulation** pour mettre en retrait la tâche de quatre espaces.
+1. Si la mise en retrait YAML est désactivée et que la tâche ajoutée toujours sélectionnée dans l’éditeur, appuyez deux fois sur **Tabulation** pour mettre en retrait quatre espaces.
 
    > **Remarque** : ici aussi, vous pouvez ajouter une ligne vide avant et après pour faciliter la lecture.
 
-1. Cliquez sur **Enregistrer**, dans le volet **Enregistrer**, puis cliquez de nouveau sur **Enregistrer** pour valider la modification directement dans la branche principale.
+1. Cliquez sur **Valider et enregistrer**, puis, dans le volet **Valider et enregistrer**, cliquez à nouveau sur **Enregistrer** pour valider la modification directement dans la branche primaire.
 
    > **Remarque** : étant donné que notre fichier CI-YAML d’origine n’a pas été configuré pour déclencher automatiquement une nouvelle build, nous devons lancer cette dernière manuellement.
 
@@ -228,7 +226,7 @@ Dans cette tâche, vous allez ajouter la livraison continue à la définition YA
 
 1. Cliquez sur **Affichage**.
 1. Dans le volet **En attente d’examen**, cliquez sur **Autoriser**.
-1. Validez le message dans la fenêtre contextuelle **Autoriser**, puis confirmez en cliquant sur **Autoriser**.
+1. Validez le message dans la fenêtre **Autoriser l’accès ?**, puis confirmez en cliquant sur **Autoriser**.
 1. Cette opération lance la phase de déploiement. Attendez qu’elle se termine.
 
    > **Remarque** : en cas d’échec du déploiement en raison d’un problème lié à la syntaxe du pipeline YAML, utilisez le code suivant comme référence :
@@ -408,10 +406,9 @@ Les pipelines YAML en tant que code n’ont pas de portes de mise en production/
 1. Cliquez sur **Exécuter le pipeline** pour déclencher une nouvelle exécution de pipeline. Confirmez l’opération en cliquant sur **Exécuter**.
 1. Comme auparavant, la phase de génération démarre comme prévu. Attendez la fin de cette phase.
 1. Ensuite, étant donné que nous avons configuré _environment: approvals_ pour la phase de déploiement, l’opération demande une confirmation d’approbation avant de se lancer.
-1. Cela est visible dans l’affichage Pipeline, qui indique **En attente (0/1 vérifications réussies)**. Un message de notification s’affiche également pour signaler qu’**une approbation doit être examinée pour que cette exécution puisse se poursuivre jusqu’au déploiement sur Azure Web App**.
-1. Cliquez sur le bouton **Afficher** en regard de ce message.
-1. Dans le volet **Vérifications et validations manuelles pour le déploiement sur Azure Web App** qui s’affiche, cliquez sur le message **Approbation en attente**.
-1. Cliquez sur **Approuver**.
+1. Cette opération est visible dans l’affichage Pipeline, qui indique **En attente (1 vérification en cours)**. Un message de notification s’affiche également en indiquant que **1 approbation doit être examinée avant que cette exécution puisse se poursuivre vers Déploiement sur une application web Azure**.
+1. Cliquez sur le bouton **Vérifier** en regard de ce message.
+1. Dans le volet d’affichage **En attente de révision**, cliquez sur le bouton **Approuver**.
 1. Cette opération permet à la phase de déploiement de se lancer et de déployer le code source Azure Web App.
 
    > **Remarque :** bien que cet exemple utilise uniquement les approbations, sachez que les autres vérifications telles qu’Azure Monitor, l’API REST, etc., peuvent être utilisées de manière similaire.

@@ -28,7 +28,7 @@ Dans ce labo, vous allez découvrir comment utiliser un pipeline CI/CD Azure D
 - Poussez (push) une image vers Azure Container Registry.
 - Déployez une image Docker en tant que conteneur dans Azure App Service à l’aide d’Azure DevOps.
 
-## Durée estimée : 20 minutes
+## Durée estimée : 20 minutes
 
 ## Instructions
 
@@ -122,6 +122,8 @@ Dans cette tâche, vous allez importer et exécuter le pipeline CD.
 
 1. Ouvrez l’exécution du pipeline. Si vous voyez le message d’avertissement « Ce pipeline a besoin d’une autorisation pour accéder à une ressource avant que cette exécution puisse continuer à déployer », sélectionnez **Afficher**, puis **Autoriser** et à nouveau **Autoriser**. Cela permet au pipeline d’accéder à l’abonnement Azure.
 
+    > **Important** : Si vous n’autorisez pas le pipeline lors de la configuration, vous rencontrerez des erreurs d’autorisation pendant l’exécution. Les messages d’erreur courants incluent « Ce pipeline a besoin d’une autorisation pour accéder à une ressource » ou « Échec de l’exécution de pipeline en raison d’autorisations insuffisantes ». Pour résoudre ce problème, accédez à l’exécution du pipeline, cliquez sur **Afficher** à côté de la requête d’autorisation, puis cliquez sur **Autoriser** pour accorder l’accès nécessaire à votre abonnement et ressources Azure.
+
     > **Remarque** : le déploiement peut prendre quelques minutes.
 
     > [!IMPORTANT]
@@ -139,8 +141,10 @@ Dans cette tâche, vous allez importer et exécuter le pipeline CD.
 
 1. Accédez à App Service, puis cliquez sur **Parcourir**. Vous accédez au site web.
 
+1. Vérifiez que l’application eShopOnWeb s’exécute correctement. Une fois confirmé, vous avez terminé le labo avec succès.
+
 > [!IMPORTANT]
-> N’oubliez pas de supprimer les ressources créées dans le portail Azure pour éviter les modifications inutiles.
+> N’oubliez pas de supprimer les ressources créées dans le portail Azure pour éviter les frais inutiles.
 
 ## Révision
 

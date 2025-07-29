@@ -152,7 +152,9 @@ Vous devez créer une connexion de service dans Azure DevOps, ce qui vous permet
 
 1. Vérifiez que l’option **Accorder une autorisation d’accès à tous les pipelines** est décochée et sélectionnez **Enregistrer**.
 
-   > **Remarque :** l’option **Accorder une autorisation d’accès à tous les pipelines** n’est pas recommandée pour les environnements de production. Elle est utilisée uniquement dans ce labo pour simplifier la configuration du pipeline.
+   > **Important :** L’option **Accorder l’autorisation d’accès à tous les pipelines** n’est pas recommandée pour les environnements de production : sélectionner cette option revient à accorder l’accès à la connexion de service à tous les pipelines du projet. En revanche, lorsque cette option n'est pas sélectionnée, vous pouvez approuver l’accès à la connexion de service lors de la première exécution de chaque pipeline.
+
+   > **Remarque** : Si l’option **Accorder l’accès à tous les pipelines** est désactivée (elle est grisée) et ne peut pas être modifiée, poursuivez le lab.
 
    > **Note** : si vous voyez un message d’erreur indiquant que vous n’avez pas les autorisations nécessaires pour créer une connexion de service, réessayez ou configurez la connexion de service manuellement.
 
