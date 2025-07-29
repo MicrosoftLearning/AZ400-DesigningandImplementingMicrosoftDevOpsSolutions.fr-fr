@@ -114,7 +114,7 @@ Dans cette tâche, vous allez créer deux applications web Azure représentant l
 1. Dans le portail Azure, cliquez sur l’icône **Cloud Shell**, située directement à droite de la zone de texte de recherche en haut de la page.
 1. Si vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **Bash**.
 
-   > **Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**.
+   > **Remarque** : Si c’est la première fois que vous démarrez **Cloud Shell** et que le message **Vous n'avez aucun stockage monté** s’affiche, sélectionnez l’abonnement que vous utilisez dans ce labo, puis cliquez sur **Appliquer**.
 
 1. À partir de l’invite **Bash**, dans le volet **Cloud Shell**, exécutez la commande suivante pour créer un groupe de ressources (remplacez l’`<region>`espace réservé de variable par le nom de la région Azure qui hébergera les deux applications web Azure, par exemple « westeurope » ou « centralus » ou toute autre région disponible de votre choix) :
 
@@ -142,6 +142,8 @@ Dans cette tâche, vous allez créer deux applications web Azure représentant l
    ```
 
    > **Remarque** : enregistrez le nom de l’application web DevTest. Vous en aurez besoin plus tard dans ce labo.
+
+   > **Remarque** : Si vous rencontrez une erreur « L’abonnement n’est pas enregistré pour utiliser l’espace de noms " Microsoft.Web " », exécutez la commande suivante pour enregistrer le fournisseur de ressources Microsoft.Web : `az provider register --namespace Microsoft.Web` et attendez que l’enregistrement se termine avant de créer les applications web.
 
 1. Attendez la fin du processus d’approvisionnement des ressources des services d’application web, puis fermez le volet **Cloud Shell**.
 

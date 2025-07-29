@@ -83,7 +83,7 @@ Commençons par importer le pipeline de build nommé [eshoponweb-ci-pr.yml](http
     - **DotNet Test** : pilote de test .NET utilisé pour exécuter des tests unitaires.
     - **DotNet Publish** : publie l’application et ses dépendances dans un dossier en vue d’un déploiement sur un système d’hébergement. Dans ce cas, il s’agit de **Build.ArtifactStagingDirectory**.
 
-1. Cliquez sur le bouton **Enregistrer** pour enregistrer la définition de pipeline.
+1. Dans le volet **Passer en revue le fichier YAML de votre pipeline**, cliquez sur le symbole caret pointant vers le bas en regard du bouton **Exécuter**, puis sur **Enregistrer**.
 1. Votre pipeline est nommé en fonction du nom du projet. **Renommons**-le pour mieux identifier le pipeline. Accédez à **Pipelines > Pipelines**, puis cliquez sur le pipeline qui vient d’être créé. Cliquez sur les points de suspension et sur l’option **Renommer/Déplacer**. Nommez-le **eshoponweb-ci-pr**, puis cliquez sur **Enregistrer**.
 
 #### Tâche 2 : ajouter des stratégies de branche
@@ -151,7 +151,7 @@ Commençons par importer le pipeline CI nommé [eshoponweb-ci.yml](https://gith
 
 La définition de pipeline de build par défaut n’active pas l’intégration continue.
 
-1. Cliquez sur le bouton **Modifier** dans le coin supérieur droit.
+1. Cliquez sur l’option **Modifier le pipeline** sous le menu points de suspension près du bouton **Exécuter nouveau** dans le coin supérieur droit
 1. À présent, vous devez remplacer les lignes **# trigger:** et **# - main** par le code suivant :
 
     ```YAML

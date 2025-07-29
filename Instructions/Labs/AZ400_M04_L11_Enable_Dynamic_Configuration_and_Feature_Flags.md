@@ -94,6 +94,8 @@ Importons le pipeline CD nommé [eshoponweb-cd-webapp-code.yml](https://github.
 
 1. Cliquez sur **Enregistrer et exécuter**, puis attendez que l’exécution du pipeline se termine.
 
+    > **Remarque** : Vous devez cliquer sur **Enregistrer et exécuter** deux fois. Si une autorisation est demandée dans la fenêtre Travaux, sélectionnez **Déployer**, cliquez sur **Afficher**, puis sur **Autoriser** deux fois pour finaliser l’exécution de pipeline.
+
     > **Remarque** : le déploiement peut prendre quelques minutes.
 
     La définition CD se compose des tâches suivantes :
@@ -128,8 +130,8 @@ Si vous souhaitez savoir comment les implémenter dans votre application, consul
 1. Dans la section **Paramètres**, cliquez sur **Identité**. Dans la section **Affecté par le système**, basculez l’état sur **Activé**, cliquez sur **Enregistrer > Oui**, puis attendez quelques secondes pour que l’opération se termine.
 1. Revenez au service App Configuration, cliquez sur **Contrôle d’accès**, puis sur **Ajout de l’attribution de rôle**.
 1. Dans la section **Rôle**, sélectionnez **Lecteur des données App Configuration**.
-1. Dans la section **Membres**, activez l’option **Gérer l’identité**, puis sélectionnez l’identité managée de votre application web (elles doivent avoir le même nom).
-1. Cliquez sur **Vérifier + attribuer**.
+1. Dans la section **Membres**, cochez **Gérer l’identité**, puis cliquez sur **+ Sélectionner des membres**. Dans le champ **Identité managée**, sélectionnez **App Service (1)**, choisissez votre service d’application, puis cliquez sur **Sélectionner**.
+1. Cliquez sur **Vérifier et attribuer** deux fois pour terminer l’attribution de rôle.
 
 #### Tâche 3 : configurer l’application web
 

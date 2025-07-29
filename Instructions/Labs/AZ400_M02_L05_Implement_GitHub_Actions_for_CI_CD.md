@@ -58,7 +58,7 @@ Dans cette tâche, vous allez créer un référentiel GitHub public vide et impo
 
     | Champ | Valeur |
     | --- | --- |
-    | Votre ancienne URL de clonage du référentiel| <https://github.com/MicrosoftLearning/eShopOnWeb> |
+    | L’URL de votre référentiel source| <https://github.com/MicrosoftLearning/eShopOnWeb> |
     | Propriétaire | Alias de votre compte |
     | Nom du dépôt | eShopOnWeb |
     | Confidentialité | **Public** |
@@ -83,7 +83,7 @@ Dans cette tâche, vous allez créer le principal de service Azure utilisé par 
 1. Sous l’onglet **Créer un groupe de ressources**, attribuez le nom suivant à votre groupe de ressources : **rg-eshoponweb-NAME** (remplacez NAME par un alias unique). Cliquez sur **Vérifier + Créer > Créer**.
 1. Dans le portail Azure, ouvrez **Cloud Shell** (à côté de la barre de recherche).
 
-    > **Remarque** : si c’est la première fois que vous ouvrez Cloud Shell, vous devez configurer le [stockage persistant](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage).
+    > **Remarque** : si le portail Azure vous demande de créer un stockage, vous pouvez choisir l’option **Aucun compte de stockage requis**, sélectionnez votre abonnement et cliquer sur le bouton **Appliquer**
 
 1. Vérifiez que le terminal s’exécute en mode **Bash** et exécutez la commande suivante, en remplaçant **SUBSCRIPTION-ID** et **RESOURCE-GROUP** par vos propres identificateurs (les deux sont disponibles dans la page **Vue d’ensemble** du groupe de ressources) :
 
@@ -132,7 +132,7 @@ Dans cette tâche, vous allez modifier le workflow GitHub donné et l’exécute
     - Remplacez **NAME** dans **WEBAPP-NAME** par un alias unique. Il sera utilisé pour créer un site web global unique à l’aide d’Azure App Service.
 1. Lisez attentivement la description du flux de travail, les commentaires sont fournis pour vous aider à la compréhension.
 
-1. Cliquez sur **Démarrer la validation** et **Valider les modifications** en laissant les valeurs par défaut (modification de la branche principale). Le flux de travail est exécuté automatiquement.
+1. Cliquez sur **Valider les modifications...** en haut à droite et **Valider les modifications** en conservant les valeurs par défaut (modification de la branche primaire). Le flux de travail est exécuté automatiquement.
 
 #### Tâche 3 : passer en revue l’exécution du flux de travail GitHub
 

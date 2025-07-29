@@ -28,7 +28,7 @@ Une fois ce labo terminé, vous pourrez configurer un pipeline CI pour une appli
 - Tests d’intégration
 - Tests fonctionnels
 
-## Durée estimée : 20 minutes
+## Durée estimée : 20 minutes
 
 ## Instructions
 
@@ -72,7 +72,7 @@ Dans cette tâche, vous allez ajouter la définition de build YAML qui sera util
 Commençons par importer le pipeline CI nommé [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
 1. Accédez à **Pipelines > Pipelines**.
-1. Cliquez sur le bouton **Nouveau pipeline**.
+1. Cliquez sur le bouton **Nouveau pipeline** (ou **Créer un pipeline** si aucun pipeline n’a encore été défini).
 1. Sélectionnez **Azure Repos Git** (YAML).
 1. Sélectionnez le référentiel **eShopOnWeb**.
 1. Sélectionnez **Fichier YAML Azure Pipelines existant**.
@@ -85,7 +85,7 @@ Commençons par importer le pipeline CI nommé [eshoponweb-ci.yml](https://gith
     - **DotNet Publish** : publie l’application et ses dépendances dans un dossier en vue d’un déploiement sur un système d’hébergement. Dans ce cas, il s’agit de **Build.ArtifactStagingDirectory**.
     - **Publier l’artefact - Site web** : publiez l’artefact de l’application (créé à l’étape précédente) et rendez-le disponible en tant qu’artefact de pipeline.
     - **Publier l’artefact - Bicep** : publiez l’artefact d’infrastructure (fichier Bicep) et rendez-le disponible en tant qu’artefact de pipeline.
-1. Cliquez sur le bouton  **Enregistrer** (et non **Enregistrer et exécuter**) pour enregistrer la définition du pipeline.
+1. Cliquez sur le bouton **Enregistrer** (et non **Enregistrer et exécuter**) dans le coin supérieur droit de la page pour enregistrer la définition du pipeline. Le bouton **Enregistrer** est accessible en cliquant sur la flèche à droite de **Enregistrer et exécuter** (ou **Exécuter**).
 
 #### Tâche 2 : ajouter des tests au pipeline CI
 
@@ -95,6 +95,7 @@ Vous pouvez remarquer que la tâche Tests unitaires fait déjà partie du pipeli
 
 - Les **tests unitaires** testent une seule partie de la logique de votre application. Pour mieux le décrire, on peut lister ce qu’il fait et ce qu’il ne fait pas. Un test unitaire ne teste pas la manière dont votre code fonctionne avec les dépendances ou l’infrastructure (cet aspect est vérifié par les tests d’intégration).
 
+1. Modifiez le pipeline que vous avez créé à l’étape précédente en cliquant sur le bouton **Modifier**.
 1. Vous devez maintenant ajouter la tâche Tests d’intégration après la tâche Tests unitaires :
 
     ```YAML
@@ -119,7 +120,7 @@ Vous pouvez remarquer que la tâche Tests unitaires fait déjà partie du pipeli
 
     > Les **tests fonctionnels** sont écrits du point de vue de l’utilisateur, et vérifient que le système répond aux exigences, contrairement aux tests d’intégration qui sont écrits du point de vue du développeur, pour vérifier que certains composants du système fonctionnent correctement ensemble.
 
-1. Cliquez sur **Enregistrer**. Dans le volet **Enregistrer**, cliquez à nouveau sur **Enregistrer** pour valider les modifications directement dans la branche principale.
+1. Cliquez sur le bouton **Valider et enregistrer**, puis si la validation réussit, cliquez à nouveau sur **Enregistrer** pour valider les modifications dans la branche primaire.
 
 #### Tâche 3 : vérifier le résumé des tests
 
