@@ -202,6 +202,7 @@ Dans cet exercice, vous allez configurer un pipeline de mise en production.
 Dans cette tâche, vous allez configurer les tâches de mise en production dans le cadre du pipeline de mise en production.
 
 1. Dans le projet **eShopOnWeb** du portail Azure DevOps, dans le volet de navigation vertical, sélectionnez **Pipelines**, puis, dans la section **Pipelines**, cliquez sur **Mises en production**.
+   > **Remarque** : Si la section **Versions** n'est pas visible, c'est probablement parce que le bouton ** Désactiver la création de pipelines de version classiques** est activé **dans la section ** **Paramètres du projet ** > **Pipelines** > **Paramètres** > **Général**.
 1. Cliquez sur **Nouveau pipeline**.
 1. Dans la fenêtre **Sélectionner un modèle**, **choisissez****Déploiement d’Azure App Service** (Déployer votre application sur Azure App Service. Choisissez l’application web parmi Windows, Linux, des conteneurs, des applications de fonction ou WebJobs) sous la **liste proposée** des modèles.
 1. Cliquez sur **Appliquer**.
