@@ -89,7 +89,7 @@ Dans cette tâche, vous allez créer une application web Azure à l’aide de Cl
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
-1. Créez un plan App Service Windows en exécutant la commande suivante :
+1. Créez un plan Windows App Service en exécutant la commande suivante :
 
    ```bash
    SERVICEPLANNAME='az400l14-sp'
