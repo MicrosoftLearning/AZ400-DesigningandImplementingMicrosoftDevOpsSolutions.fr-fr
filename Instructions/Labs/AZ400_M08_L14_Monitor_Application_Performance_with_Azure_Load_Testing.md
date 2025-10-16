@@ -204,7 +204,7 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 1. L’extrait de code ajouté à l’éditeur doit ressembler à ce qui suit et refléter votre nom pour les paramètres azureSubscription et WebappName :
 
    ```yml
-   - task: AzureRmWebAppDeployment@4
+   - task: AzureRmWebAppDeployment@5
      inputs:
        ConnectionType: "AzureRM"
        azureSubscription: "SERVICE CONNECTION NAME"
@@ -228,7 +228,7 @@ Dans cette tâche, vous allez ajouter une définition de build YAML au projet ex
 
    ![Capture d’écran d’Azure Pipelines avec eShopOnWeb en cours d’exécution.](images/m3/eshoponweb-m9l16-pipeline.png)
 
-1. Confirmez l’exécution de ce pipeline en cliquant sur **Exécuter** à partir du volet qui s’affiche et en cliquant une fois de plus sur **Exécuter**.
+1. Confirmez l’exécution de ce pipeline en cliquant sur **Exécuter le pipeline** dans le volet qui s’affiche, puis confirmez en cliquant une nouvelle fois sur **Exécuter**.
 1. Notez les 2 phases différentes affichées, **Générer la solution .NET Core** et **Déployer sur Azure Web App**.
 1. Attendez que le pipeline démarre.
 
@@ -389,8 +389,8 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
 1. Pour créer et exécuter un test de charge, la définition du workflow Azure Pipelines utilise l’extension de **tâche Test de charge Azure** disponible dans la Place de marché Azure DevOps. Ouvrez l’[extension de tâche Test de charge Azure](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) dans la Place de marché Azure DevOps, puis sélectionnez **Obtenir gratuitement**.
 1. Sélectionnez votre organisation Azure DevOps, puis sélectionnez **Installer** pour installer l’extension.
 1. À partir du portail Azure DevOps et du projet, accédez à **Pipelines** et sélectionnez le pipeline créé au début de cet exercice. Cliquez sur **Modifier**.
-1. Dans le script YAML, accédez à la **ligne 56** et appuyez sur ENTRÉE/RETOUR pour ajouter une nouvelle ligne vide. (Juste avant la phase de déploiement du fichier YAML).
-1. À la ligne 57, sélectionnez l’Assistant des tâches sur le côté droit et recherchez **Test de charge Azure**.
+1. Dans le script YAML, accédez à la **ligne 64** et appuyez sur ENTRÉE/RETOUR pour ajouter une nouvelle ligne vide. (Juste avant la phase de déploiement du fichier YAML).
+1. À la ligne 65, sélectionnez l’Assistant de tâches à droite et recherchez **Test de charge Azure** ( assurez-vous de positionner le curseur au niveau de la mise en retrait de la tâche précédente).
 1. Complétez le volet graphique avec les paramètres corrects de votre scénario :
 
    - Abonnement Azure : sélectionnez l’abonnement où sont exécutées vos ressources Azure.
@@ -424,12 +424,12 @@ Effectuez les étapes suivantes pour télécharger les fichiers d’entrée d’
    ```
 
 1. Si la mise en retrait de l’extrait de code YAML donne des erreurs (lignes rouges ondulées), corrigez-les en ajoutant 2 espaces ou une tabulation pour positionner correctement l’extrait de code.
-1. Une fois les deux extraits de code ajoutés au pipeline CI/CD, **enregistrez** les modifications.
+1. Une fois les deux extraits ajoutés au pipeline CI/CD, cliquez sur **Valider et enregistrer**, puis sur **Enregistrer** les modifications.
 1. Une fois enregistrées, cliquez sur **Exécuter** pour déclencher le pipeline.
 1. Confirmez la branche (principale) et cliquez sur le bouton **Exécuter** pour démarrer l’exécution du pipeline.
-1. Sur la page d’état du pipeline, cliquez sur l’étape **Build** pour ouvrir les détails complets de journalisation des différentes tâches du pipeline.
-1. Attendez que le pipeline démarre l’étape de build et arrive à la tâche **AzureLoadTest** dans son flux.
-1. Pendant l’exécution de la tâche, accédez au **test de charge Azure** dans le portail Azure et découvrez comment le pipeline crée un RunTest nommé **adoloadtest1**. Vous pouvez le sélectionner pour afficher les valeurs de résultat du travail TestRun.
+1. Depuis la page d’état du pipeline, cliquez sur l’étape **Déployer** pour ouvrir les détails de journalisation détaillés des différentes tâches du pipeline.
+1. Attendez que le pipeline lance l’étape de déploiement et arrive à la tâche **AzureLoadTest** dans son flux.
+1. Pendant l’exécution de la tâche, accédez au **Test de charge Azure** dans le portail Azure et observez comment le pipeline crée un nouveau RunTest, nommé **ado_load_test**. Vous pouvez le sélectionner pour afficher les valeurs de résultat du travail TestRun.
 1. Revenez à la vue Exécution du pipeline CI/CD Azure DevOps, où la **tâche AzureLoadTest** a réussi. Les valeurs résultant du test de charge sont également visibles dans la sortie de journalisation détaillée :
 
    ```text
